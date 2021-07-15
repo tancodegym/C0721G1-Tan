@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập tạo form đơn giản</title>
+    <style>
+        .hobby {
+            color: red;
+        }
+
+        .box {
+            width: 600px;
+            height: 300px;
+            float: left;
+        }
+
+        .element {
+            width: 100%;
+            float: left;
+            color:blue;
+        }
+
+        label {
+            width: 30%;
+            float: left;
+            margin-left: 2%;
+
+        }
+
+        .nhap {
+            width: 60%;
+            margin-left: 2%;
+            float: left;
+            color:orange;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<form method="post">
+
+    <div class="box">
+        <fieldset style="border: 20px solid aqua">
+          <div style="color:white"> <center><h1 style="background: red ">SỞ THÍCH CỦA BẠN</h1></center></div>
+            <div class="element">
+                <label>Họ và tên: </label>
+                <input class="nhap" type="text">
+            </div><br/>
+            <div class="element">
+                <label>Email: </label>
+                <input class="nhap" type="text">
+            </div>
+            <div class="element">
+                <label>Sở thích: </label>
+                <div class="nhap" >
+                    <input class="hobby" value="sport" type="checkbox"/>Thể Thao
+                    <input class="hobby" value="sport" type="checkbox"/>Âm Nhạc
+                    <input class="hobby" value="sport" type="checkbox"/>Đọc Sách <br/>
+                    <input class="hobby" value="sport" type="checkbox"/>Lướt web
+                    <input class="hobby" value="sport" type="checkbox"/>Chơi game
+                    <input class="hobby" value="sport" type="checkbox"/>Điện ảnh<br/>
+                    <input class="hobby" value="sport" type="checkbox"/>Du lịch
+                </div>
+            </div>
+           <center> <input type="submit" value="Gửi thông tin"/> <input type="submit" value="Nhập lại"/></center>
+        </fieldset>
+    </div>
+</form>
+</body>
+</html>
