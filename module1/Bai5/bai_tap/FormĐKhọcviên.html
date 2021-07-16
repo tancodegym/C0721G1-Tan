@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Đăng Ký Học Viên</title>
+    <style>
+        .mauchu {
+            color: blue;
+            float: left
+        }
+
+        .box {
+            width: 600px;
+            height: 300px;
+            float: left;
+        }
+
+        .diachi {
+            margin-top;
+            color: blue
+        }
+
+
+        table {
+            border: 2px #d61b06;
+        }
+
+        .cot2 {
+            cellpadding: 150px;
+            cellspacing:50px;
+            float-left;
+            margin-right:300px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <form>
+
+            <table style="background-color:yellow" >
+                <tr>
+                    <td colspan="2">
+                        <div style="color:blue"><h1 style="background-color:lightskyblue">ĐĂNG KÝ HỌC VIÊN</h1></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mauchu">Họ và tên</td>
+                    <td><input type="text" class="cot2" size="20"/></label></td>
+                <tr>
+                    <td><label class="mauchu">Ngày sinh</td>
+                    <td><input type="date" class="cot2" size="5"/></label></td>
+                </tr>
+                <tr>
+                    <td><label class="mauchu">Giới tính </label></td>
+                    <td class="cot2"
+                    "><input type="radio" value="nam"/>Nam<input
+                        type="radio" name="gender" value="nữ"/>Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="diachi">Địa chỉ</td>
+                    <td><textarea class="cot2" rows="5"
+                                  cols="20">
+
+                    </textarea>
+                    </td>
+                    </label></tr>
+                <tr>
+                    <td><label class="mauchu">Lớp
+                    </td>
+                    <td><Select class="cot2" name="dropdown">
+                        <option value="--Chọn lớp--">--Chọn lớp--</option>
+                        <option value="3">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="3">4</option>
+                        <option value="3">5</option>
+                        <option value="3">6</option>
+
+
+
+                    </select>
+                    </td>
+                    </label>
+                </tr>
+
+
+                <tr>
+                    <td><label class="mauchu">Email</td>
+                    <td><input class="cot2" type="email"/></label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td
+                    <label class="mauchu">Điện thoại
+                        </td>
+                        <td><input class="cot2" type="tel"/>
+                    </label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="cot2"
+                    ">
+
+                    <input type="button" value="Đăng ký"/>
+                    <input type="button" class="giua"
+                           value="Nhập lại"/>
+                    </td>
+                    </td>
+            </table>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
