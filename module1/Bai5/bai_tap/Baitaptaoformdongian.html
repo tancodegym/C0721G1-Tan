@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <title>Bài tập tạo form đơn giản</title>
     <style>
-        .hobby {
-            color: red;
-        }
 
         .box {
-            width: 600px;
+            width: 500px;
             height: 300px;
             float: left;
         }
@@ -29,12 +26,12 @@
 
         .nhap {
             width: 60%;
-            margin-left: 2%;
+            margin: 2%;
             float: left;
             color:orange;
         }
 
-
+        .hobby{color:orange}
     </style>
 </head>
 <body>
@@ -45,12 +42,12 @@
         <fieldset style="border: 20px solid aqua">
           <div style="color:white"> <center><h1 style="background: red ">SỞ THÍCH CỦA BẠN</h1></center></div>
             <div class="element">
-                <label>Họ và tên: </label>
-                <input class="nhap" type="text">
+                <label for="hoten">Họ và tên: </label>
+                <input class="nhap" id="hoten" type="text">
             </div><br/>
             <div class="element">
-                <label>Email: </label>
-                <input class="nhap" type="text">
+                <label for="email">Email: </label>
+                <input class="nhap" id="email" type="text">
             </div>
             <div class="element">
                 <label>Sở thích: </label>
