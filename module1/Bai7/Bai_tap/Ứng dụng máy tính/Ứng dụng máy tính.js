@@ -40,3 +40,10 @@ function thuong() {
     var thuong = A / B;
     document.getElementById("text").innerHTML = thuong
 };
+function can() {
+    var can = document.getElementById("nhap1").value;
+
+    var Can = parseInt(can);
+    var CAN = Math.sqrt(Can);
+
+    document.getElementById("text").innerHTML = CAN};
