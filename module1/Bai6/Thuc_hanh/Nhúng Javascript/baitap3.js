@@ -1,2 +1,2 @@
-
-    alert('Xin Chào! Hello');
+function hello(){
+    alert('Xin Chào! Hello')};

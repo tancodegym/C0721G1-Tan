@@ -4,7 +4,7 @@ a = prompt('Nhập vào số a');
 b = prompt('Nhập vào số b');
 var A = parseInt(a);
 var B = parseInt(b);
-if (A %= B = 0) {
+if ( (a%=b) == 0) {
     alert('a là bội của b')
 }
 

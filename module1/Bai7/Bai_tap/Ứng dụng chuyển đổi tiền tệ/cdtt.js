@@ -8,6 +8,7 @@ function cv() {
 
     if (T1 === "usd" && T2 === "usd") {
         document.write('Result:' + a)
+
     }
     ;
     if (T1 === "usd" && T2 === "vietnam") {
