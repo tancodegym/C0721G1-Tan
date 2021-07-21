@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máy tính đơn giản</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            border-color: blue;
+            margin: auto;
+            width: 200px;
+            height: 300px;
+        }
+        td{
+            border-color: lightseagreen;
+            background-color: yellow;
+        }
+        input{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<form name="maytinh">
+    <table border="1px">
+
+        <tr><td colspan="4"><input type="text" id="duoi" name="dis" disabled></td></tr>
+        <tr>
+            <td><input type="button" value="1" onclick="f('1')"></td>
+            <td><input type="button" value="2" onclick="f('2')"></td>
+            <td><input type="button" value="3" onclick="f('3')"></td>
+            <td><input type="button" value="+" onclick="f('+')"></td>
+
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="f('4')"></td>
+            <td><input type="button" value="5" onclick="f('5')"></td>
+            <td><input type="button" value="6" onclick="f('6')"></td>
+            <td><input type="button" value="-" onclick="f('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="f('7')"></td>
+            <td><input type="button" value="8" onclick="f('8')"></td>
+            <td><input type="button" value="9" onclick="f('9')"></td>
+            <td><input type="button" value="*" onclick="f('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="C" onclick="del()"></td>
+            <td><input type="button" value="0" onclick="f('0')"></td>
+            <td><input type="button" value="/" onclick="f('/')"></td>
+            <td><input type="button" value="=" onclick="tinh('=')"></td>
+            </tr>
+
+</table>
+</form>
+<script src="Máy%20tính%20đơn%20giản.js"></script>
+</body>
+</html>
+
