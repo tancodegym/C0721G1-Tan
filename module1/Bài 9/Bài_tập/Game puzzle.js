@@ -1,5 +1,5 @@
 var anh = ["https://i.imgur.com/sQum2pK.png", "https://i.imgur.com/1r83vWM.png", "https://i.imgur.com/Aph7l0k.png"]
-var n = 0;
+    var n = 0;
 
 function doi1() {
     var anh1 = document.getElementById("anh1");
