@@ -1,7 +1,7 @@
 var x= '';
 function a(id){
     return document.getElementById(id);
-    
+
 }
 function f(value) {
     var x= '';
