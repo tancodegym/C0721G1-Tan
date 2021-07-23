@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài8</title>
+    <style>
+        input{
+            width: 500px;
+            height: 500px;
+            font-size: xx-large;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" onclick="choi()" value="Chơi">
+<script>
+    function choi() {
+        var a = prompt("Nhập vào khoảng muốn chơi :");
+        var x=1;
+        while(x<a){
+            x=Math.random(a);
+            var b=prompt("Nhập vào số bạn dự đoán");
+            if(x=b) {
+                alert("Chúc mừng bạn đã đoán đúng !");
+            }
+            else if(x<b){
+                alert("Bạn đã dự đoán số lớn hơn")
+            }
+            else{
+                alert("Bạn đã dự đoán số nhỏ hơn !")
+            }
+            x+=x*Math.random(a);
+        }
+
+
+
+
+
+    }
+</script>
+</body>
+</html>
