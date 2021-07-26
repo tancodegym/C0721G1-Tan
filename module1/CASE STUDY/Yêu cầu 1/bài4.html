@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài4</title>
+</head>
+<body>
+<script>
+    var n = 5;
+    for(i = 1; i <= n; ++i)
+    {
+        for(j = 1; j <=n+ i - 1; ++j)
+        {
+            if(j == n - i + 1 || j == n + i - 1 || i == n){
+                document.write("*")
+            }
+            else {
+                document.write("&nbsp&nbsp")}
+        }
+
+        document.write("</br>");
+    }
+
+</script>
+
+</body>
+</html>

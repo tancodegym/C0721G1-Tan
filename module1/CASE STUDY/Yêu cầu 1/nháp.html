@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var n=5;
+    for(i=1;i<+n;i++){
+        for (j=1;j<=n-i;j++){
+        document.write("&nbsp")}
+        for(j=1;j<=2*i-1;j++){
+            if(j==i||j==2*i-1){
+                document.write{"*"}
+            }
+            else{
+                document.write("&nbsp")
+            }
+        }document.write("</br>")
+        if(i==n-1){
+            document.write()
+        }
+    }
+</script>
+</body>
+</html>

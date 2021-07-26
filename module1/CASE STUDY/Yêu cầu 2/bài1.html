@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài1</title>
+</head>
+<body>
+<script>
+    var l = parseInt(prompt("Nhập vào số tiền lương của nhân viên"));
+    if (l > 15000000) {
+        document.write("<h1>Bạn phải nộp thuế tất cả tiền lương</h1>");
+    }
+   else if(l==15000000){
+       var t1=l-(l*20/100);
+        document.write("Tiền lương của bạn sau khi nộp thuế là :" +t1);
+    }
+   else if(l>=7000000){
+       var t2=l-(l*10/100);
+        document.write("Tiền lương của bạn sau khi nộp thuế là :" +t2);
+    }
+   else {
+        var t3=l-(l*5/100);
+        document.write("Tiền lương của bạn sau khi nộp thuế là :" +t3);
+    }
+
+
+
+</script>
+
+</body>
+</html>
