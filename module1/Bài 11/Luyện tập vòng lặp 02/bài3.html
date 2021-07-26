@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài3</title>
+</head>
+<body>
+<script>
+    // Hình 1
+    var N = parseInt(prompt("Nhập vào chiều dài đáy tam giác"))
+
+    for (i = 0; i < N; i++) {
+        for (j = 0; j <= i; j++) {
+            document.writeln("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br>");
+
+    for (i = 0; i < N; i++) {
+        for (j = ((N - 1) - i); j >= 0; j--) {
+            document.writeln("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br>");
+
+
+    for (i = 0; i < N; i++) {
+        for (j = N - i; j > 0; j--) {
+            document.write("&nbsp&nbsp");
+        }
+        for (m = 1; m <= i + 1; m++) {
+            document.write("*");
+
+        }
+        document.write("</br>")
+    }
+    document.write("</br>");
+
+    for (i = 0; i < N; i++) {
+        for (j = N - i; j > 0; j--) {
+            document.write("*");
+
+        }
+        for (m = 1; m <= i + 1; m++) {
+            document.write("&nbsp&nbsp");
+        }
+        document.write("</br>");
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài2</title>
+</head>
+<body>
+<script>
+    // 5! = 1x2x3x4x5
+
+    var a = parseInt(prompt("Nhập vào số a"));
+    if (a <= 0) {
+        alert("Số bạn nhập phải lớn hơn 0")
+        ;
+    } else {
+        var giaithua = 1;
+
+        for (i = 1; i <= a; i++) {
+            giaithua = giaithua * i
+        }
+        document.write(giaithua);
+    }
+</script>
+</body>
+</html>

@@ -4,39 +4,38 @@
     <meta charset="UTF-8">
     <title>bài8</title>
     <style>
-        input{
+        input {
             width: 500px;
             height: 500px;
-            font-size: xx-large;
+            font-size: 80px;
             margin-left: 400px;
+            background-color: blue;
         }
     </style>
 </head>
 <body>
-<input type="button" onclick="choi()" value="Chơi">
+<input type="button" onclick="choi()" value="PLAY GAME">
 <script>
     function choi() {
-        var a = prompt("Nhập vào khoảng muốn chơi :");
-        var x=1;
-        while(x<a){
-            x=Math.random(a);
-            var b=prompt("Nhập vào số bạn dự đoán");
-            if(x=b) {
+        var a = parseInt(prompt("Nhập vào số a:"));
+        var b = parseInt(prompt("Nhập vào số b(b>a)"));
+        var random = Math.round(Math.random() * (b - a) + a);
+        console.log(random);
+
+        for (i = 0; i < 3; i++) {
+            var x = parseInt(prompt("Nhập vào số bạn đoán(từ a-b), bạn chỉ có 3 lần nhập"));
+            if (x === random) {
                 alert("Chúc mừng bạn đã đoán đúng !");
+                break;
+            } else {
+                if (x <= random) {
+                    alert("Số bạn đoán nhỏ hơn số được chọn");
+                } else {
+                    alert("số bạn đoán lớn hơn số được chọn");
+                }
             }
-            else if(x<b){
-                alert("Bạn đã dự đoán số lớn hơn")
-            }
-            else{
-                alert("Bạn đã dự đoán số nhỏ hơn !")
-            }
-            x+=x*Math.random(a);
         }
-
-
-
-
-
+        alert("Bạn đã dự đoán xong");
     }
 </script>
 </body>

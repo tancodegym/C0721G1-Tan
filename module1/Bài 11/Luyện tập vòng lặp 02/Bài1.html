@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài1</title>
+</head>
+<body>
+<!-- In dãy fibonacci-->
+<script>
+    var N = parseInt(prompt("Nhập vào số lượng số bạn muốn in trong dãy fibonacci"));
+    var a = 0;
+    var b = 1;
+    var f;
+    while (N > 0) {
+        document.write(a + "</br>");
+        f = b;
+        b = a + b;
+        a = f;
+        N--;
+    }
+</script>
+</body>
+</html>

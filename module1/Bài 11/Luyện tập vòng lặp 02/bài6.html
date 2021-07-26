@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài6</title>
+</head>
+<body>
+<script>
+    var h = parseInt(prompt("Nhập vào chiều cao trái tim"));
+    for (i = 0; i < h; i++) {
+        for (j = h - i; j > 0; j--) {
+            document.write("&nbsp&nbsp");
+        }
+        for (a = 1; a <= i * 2 + 1; a++) {
+            document.write("*");
+        }
+        for (b = h - i; b > 0; b--) {
+            document.write("&nbsp&nbsp&nbsp&nbsp");
+        }
+        for (k = 1; k <= i * 2 + 1; k++) {
+            document.write("*");
+        }
+        document.write("</br>")
+    }
+    for (x = 0; x < h * 2; x++) {
+        for (y = 0; y <= x; y++) {
+            document.write("&nbsp&nbsp");
+
+        }
+        for (z = h * 4 - y * 2 + 3; z > 1; z--) {
+            document.write("*")
+
+        }
+        document.write("</br>")
+
+    }
+</script>
+</body>
+</html>

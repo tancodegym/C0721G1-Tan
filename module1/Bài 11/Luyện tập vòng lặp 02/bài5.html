@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài5</title>
+</head>
+<body>
+<script>
+    var tien = parseInt(prompt("Nhập vào số tiền bạn đã vay"));
+    var thang = parseInt(prompt("Nhập vào số tháng bạn đã vay"));
+    var lai = parseInt(prompt("Nhập vào lãi suất hàng tháng(%)"));
+    var laisuat = lai / 100;
+    var tienthang = 0;
+    var tongtienlai = tienthang;
+    for (i = 1; i <= thang; i++) {
+        tienthang = tien * laisuat / 12;
+        tongtienlai = tongtienlai + tienthang;
+        document.write("Tiền lãi tháng" + "&nbsp" + i + "&nbsp" + "của bạn là"
+            + "&nbsp" + tienthang + "VNĐ")
+
+        ;
+        document.write("</br>")
+    }
+    document.write("Tổng tiền lã của bạn là: " + tongtienlai + "&nbsp" + "VNĐ");
+
+</script>
+
+</body>
+</html>

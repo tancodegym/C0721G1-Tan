@@ -7,9 +7,9 @@
 <body>
 <script> //hiển thị số chia hết cho 5 đầu tiên của fibonacci
 // Dùng while
-var a = 1, b = 0, f=0;
-    while (f <= 5) {
-    f =a;
+var a = 1, b = 0, f = 0;
+while (f <= 5) {
+    f = a;
     a = a + b;
     b = f;
     if (f % 5 === 0) {
@@ -19,14 +19,16 @@ var a = 1, b = 0, f=0;
 }
 
 
-//Dùng for
-//     var a=1, b=0, f;
-//     for (i = 0;; i++) {
+// Dùng
+// for
+//     var a = 1, b = 0, f;
+//     for (i = 0; ; i++) {
 //         f = a;
 //         a = a + b;
 //         b = f;
-//         if (f%5===0){
-//             document.write('Số đầu tiên chia hết cho 5 của dãy Fibonacci là:' +f);break;
+//         if (f % 5 === 0) {
+//             document.write('Số đầu tiên chia hết cho 5 của dãy Fibonacci là:' + f);
+//             break;
 //         }
 //     }
 </script>
