@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài6</title>
+</head>
+<body>
+<script>
+    let n = prompt("Nhập vào số phần tử của mảng")
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = prompt("Nhập vào các phần tử của mảng");
+    }
+    let stringa = arr.join(",");
+    for (i = 0; i < n; i++) {
+        for (j = i; j < arr.length; j++) {
+            var stringb = stringa.replace(/-/g, '_');
+        }
+    }
+    let arrX = stringb.split(",");
+    document.write(arrX);
+
+</script>
+
+</body>
+</html>

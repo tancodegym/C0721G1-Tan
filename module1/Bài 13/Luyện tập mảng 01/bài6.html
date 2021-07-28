@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài6</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    for (i = 0; i < 5; i++) {
+        arr[i] = prompt("Nhập vào phần tử thứ: " + (i + 1) + " của mảng")
+    }
+    let V = parseInt(prompt("Nhập vào số nguyên V"));
+    let check = false;
+    for (j = 0; j < arr.length; j++) {
+        if (arr[j] == V) {
+            check = true;
+            break;
+
+        }
+    }
+    if (check) {
+        alert("V is in the array")
+    } else {
+        alert("V is not in the array")
+    }
+
+</script>
+
+</body>
+</html>

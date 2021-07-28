@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài2</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    for (i = 0; i < 10; i++) {
+        arr[i] = prompt("Nhập vào phần tử" + " " + i + " " + "của mảng");
+    }
+    let max = arr[0];
+    let x=0
+    for (j = 0; j < arr.length; j++) {
+        if (arr[j] < arr[j + 1]) {
+            max = arr[j + 1]
+            x=j+1;
+
+        }
+
+    }
+    document.write("Phần tử có giá trị lớn nhất là" +max);
+    document.write("Vị trí tại" +x);
+
+
+</script>
+
+</body>
+</html>

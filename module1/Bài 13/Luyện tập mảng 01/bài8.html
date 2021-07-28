@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài8</title>
+</head>
+<body>
+<script>
+    let n=prompt("Nhập vào số phần tử của mảng");
+    let arr=[];
+    for(i=0;i<n;i++){
+        arr[i]=prompt("Nhập vào phần tử thứ: "+i);
+    }
+    let x;
+    for(j=0;j<arr.length;j++){
+        for(k=0;k<arr.length;k++){
+            if(arr[j]<arr[k]){
+                x=arr[j];
+                arr[j]=arr[k];
+                arr[k]=x;
+            }
+        }
+    }
+    document.write(arr);
+</script>
+
+</body>
+</html>

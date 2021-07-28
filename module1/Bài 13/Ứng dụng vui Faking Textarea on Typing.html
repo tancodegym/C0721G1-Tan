@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng vui Faking Textarea on Typing</title>
+    <style>
+        div {
+            margin-left: 500px;
+        }
+
+        h3 {
+            margin-left: 60px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h3>Typing anything slowly</h3>
+    <form name="game">
+        <textarea onkeydown="iptext()" name="textarea" style="width: 300px; height: 300px" onclick="hello()"></textarea>
+    </form>
+    <p id="hello"></p>
+</div>
+<script>
+    var text = "";
+
+    let p = [];
+    p[0] = "!";
+    p[1] ="C";
+    p[2] = "h";
+    p[3] = "ư";
+    p[4] = "ơ";
+    p[5] = "n";
+    p[6] = "g";
+    p[7] = " ";
+    p[8] = "t";
+    p[9] = "r";
+    p[10] = "ì";
+    p[11] = "n";
+    p[12] = "h";
+    p[13] = " ";
+    p[14] = "đ";
+    p[15] = "ã";
+    p[16] = " ";
+    p[17] = "b";
+    p[18] = "ị";
+    p[19] = " ";
+    p[20] = "l";
+    p[21] = "ỗ";
+    p[22] = "i";
+    p[23] = " ";
+    p[24] = "h";
+    p[25] = "ã";
+    p[26] = "y";
+    p[27] = " ";
+    p[28] = "r";
+    p[29] = "e";
+    p[30] = "s";
+    p[31] = "e";
+    p[32] = "t";
+    p[33] = " ";
+    p[34] = "l";
+    p[35] = "ạ";
+    p[36] = "i";
+    p[37] = " ";
+    p[38] = "m";
+    p[39] = "á";
+    p[40] = "y";
+    p[41] = " ";
+    p[42] = "t";
+    p[43] = "í";
+    p[44] = "n";
+    p[45] = "h";
+
+
+
+    console.log(p);
+
+
+    function hello() {
+        document.getElementById("hello").innerHTML = "Hello ! Hãy gõ bất kì phím nào trên bàn phím";
+
+    };
+
+    function iptext() {
+        t = document.game.textarea.value;
+        j = t.length;
+        if (j > 0) {
+            for (let i = 1; i <=j; i++) {
+                console.log(i)
+                console.log(j)
+                text = text + p[i];
+                if (i == 46) {
+                    document.game.textarea.value = "";
+                    text = "";
+                    break;
+                }
+            }
+        }
+        document.game.textarea.value = text;
+        console.log(text);
+        text = "";
+        setTimeout("iptext()", 1)
+    }
+
+
+</script>
+</body>
+</html>

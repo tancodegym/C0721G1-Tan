@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Từ điển</title>
+</head>
+<body>
+<script>
+    var word = prompt("Nhập vào từ bạn cần tra");
+    var English=["number","name","class","apple","begin","end","debug"]
+    var Vietnam=["con số","tên","lớp","táo","bắt đầu","kết thúc","sửa lỗi"]
+    var local=English.indexOf(word);
+    if (local!=-1){
+        alert(Vietnam[local]);
+    }
+    else{
+        alert("Từ điển chưa cập nhập")
+    }
+
+
+
+
+</script>
+</body>
+</html>

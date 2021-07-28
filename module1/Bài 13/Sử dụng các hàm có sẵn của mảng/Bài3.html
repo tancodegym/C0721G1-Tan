@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài3</title>
+</head>
+<body><script>
+var text = prompt("Nhập vào đoạn text");
+var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var LOWER = 'abcdefghijklmnopqrstuvwxyz';
+var rs = [];
+
+for(let x=0; x<text.length; x++)
+{
+if(UPPER.includes(text[x]))
+{
+rs.push(text[x].toLowerCase());
+}
+else if(LOWER.includes(text[x]))
+{
+rs.push(text[x].toUpperCase());
+}
+else
+{
+rs.push(text[x]);
+}
+}
+document.write(rs.join(" "));
+</script>
+</body>
+</html>
