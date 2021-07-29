@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài2</title>
+</head>
+<body>
+<script>
+    let n=2;
+    let m=prompt("Nhập vào kích thước mảng 2 chiều");
+    let count=0;
+    let a = [[]];
+    for(var i=0;i<2;i++){
+        a[i]= [];
+        for (var j=0;j<m;j++){
+            a[i][j]=parseInt(prompt("Nhập vào phần tử thứ: "+j+" của mảng: "+(i+1)));
+            if(checkSNT(a[i][j])){
+                count++;
+            }
+        }
+    }
+    console.log(a);
+    console.log(count);
+    function checkSNT(N) {
+        let check = true;
+        for (let i = 2; i < N; i++) {
+            if (N % i === 0) {
+                check = false;
+                break;
+            }
+        }
+        return check;
+
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài1</title>
+</head>
+<body>
+<script>
+
+    var m = prompt("Nhập vào chiều dài mảng");
+    var n = prompt("Nhập vào chiều rộng mảng");
+    var i = 0;
+    var arr = [[]];
+    for(var r = 0; r < m; ++r)
+    {
+        arr[r] = [];
+        for(var c = 0; c < n; ++c)
+        {
+            arr[r][c] = parseInt(prompt("Nhập vào phần tử thứ: "+c+" của mảng thứ "+(r+1));
+            if(arr[r][c]%2===0){
+                i=i+arr[r][c];
+            }
+        }
+    }
+    console.log(arr);
+    console.log("Tổng của các phần tử chia hết cho 2 trong mảng là:  " +i);
+
+
+</script>
+
+</body>
+</html>

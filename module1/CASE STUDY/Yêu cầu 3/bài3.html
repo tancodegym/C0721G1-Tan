@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài3</title>
+</head>
+<body>
+<script>
+    //     Bài 3: Cho một danh sách các phân số, hãy tìm chỉ số của phân số lớn nhất (đếm từ 0)
+    //     Giả định rằng không có các phân số bằng nhau trong tập đầu vào
+    //     Ví dụ: numerators = [5, 2, 5] và denominators = [6, 3, 4], thì kết quả maxFraction(numerators, denominators) = 2.
+    // ⇨	5/4 là phân số lớn nhất, có chỉ số là 2.
+    let a = [];
+    let b = [];
+    let n = prompt("Nhập vào số phần tử mảng a và b");
+        for (i = 0; i < n; i++) {
+        a[i] = prompt("Nhập vào số thứ: " + i + " của mảng a");
+    }
+    for (j = 0; j < n; j++) {
+        b[j] = prompt("Nhập vào số thứ: " + j + " của mảng b");
+    }
+        let max = (a[a.length-1])/(b[b.length-1]);
+    document.write("Số phần tử mảng a: [" + a + "]")
+    document.write("</br>")
+    document.write("Số phần tử mảng b: [" + b + "]")
+    document.write("</br>")
+    document.write("Giá trị của phân số lớn nhất là: "+max+" có chỉ số là: "+(n-1));
+</script>
+</body>
+</html>
