@@ -12,15 +12,14 @@ let arr = word.split("");
 isPalindrome(word);
 
 function isPalindrome(s) {
-    arr.pop();
-    arr.shift();
         if (arr.length == 1 ||arr.length==0) {
-        alert(word + "is Palindrome");
+        alert(word + "  is Palindrome");
     } else if (arr.length > 1) {
         if (arr[0] === arr[arr.length - 1]){
+            arr.pop();
+            arr.shift();
             console.log(arr[0]+arr[arr.length-1])
-            alert(word + " is Palindrome");
-            isPalindrome();
+               isPalindrome();
         } else {
             alert("not palindrome")
         }
