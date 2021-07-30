@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Kiểm tra từ đối xứng</title>
+</head>
+<body>
+<script>let word = prompt("Enter a word");
+
+let arr = word.split("");
+
+isPalindrome(word);
+
+function isPalindrome(s) {
+    arr.pop();
+    arr.shift();
+        if (arr.length == 1 ||arr.length==0) {
+        alert(word + "is Palindrome");
+    } else if (arr.length > 1) {
+        if (arr[0] === arr[arr.length - 1]){
+            console.log(arr[0]+arr[arr.length-1])
+            alert(word + " is Palindrome");
+            isPalindrome();
+        } else {
+            alert("not palindrome")
+        }
+    }}
+</script>
+
+</body>
+</html>
