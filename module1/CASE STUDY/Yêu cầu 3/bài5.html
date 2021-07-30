@@ -4,26 +4,96 @@
     <meta charset="UTF-8">
     <title>bài5</title>
     <style>
-        div{
+        div {
             margin-left: 500px;
         }
     </style>
 </head>
 <body>
-<div >
-    <h1><strong>MENU</strong></h1><form><pre>
-    <label>1.Cafe           <input type="number" value="1"></label></br>
-    <label>2.Cam vắt        <input type="number" value="2"></label></br>
-    <label>3.Nước ép cà rốt <input type="number" value="3"></label></br>
-    <label>4.Nước ép cà chua<input type="number" value="4"></label></br>
-    <label>5.Nước lọc       <input type="number" value="5"></label></br>
-    <label>6.Nước dừa       <input type="number" value="6"></label></br>
-    <label>7.Thoát gọi món  <input type="button" value="Tính tiền"></label>
+<div>
+    <h1><strong>MENU</strong></h1>
+    <form><pre>
+    <label>1.Cafe               <input type="number" onchange="tcafe()" id="cf" value="1"></label> <p>Thành tiền:</p><p
+            id="t1"></p></br>
+        <label>2.Cam vắt        <input type="number" onchange="tcv()" id="cv" value="2"></label>   <p>Thành tiền:</p><p
+            id="t2"></p></br>
+        <label>3.Nước ép cà rốt <input type="number" onchange="tcr()" id="cr" value="3"></label>   <p>Thành tiền:</p><p
+            id="t3"></p></br>
+        <label>4.Nước ép cà chua<input type="number" onchange="tcc()" id="cc" value="4"></label>   <p>Thành tiền:</p><p
+            id="t4"></p></br>
+        <label>5.Nước lọc       <input type="number" onchange="tnl()" id="nl" value="5"></label>   <p>Thành tiền:</p><p
+            id="t5"></p></br>
+        <label>6.Nước dừa       <input type="number" onchange="tnd()" id="nd" value="6"></label>   <p>Thành tiền:</p><p
+            id="t6"></p></br>
+        <label>7.Thoát gọi món  <input type="button" onclick="tinhtien()" id="order" value="Order"></label>
     </pre>
-</form>
+    </form>
 </div>
 <script>
-    let menu=["Cafe","Cam vắt","Nước ép cà rốt","Nước ép cà chua","Nước lọc","Nước dừa",]
+
+        let t1, t2, t3, t4, t5, t6 = 0;
+
+        function tcafe() {
+
+            let cf = parseInt(document.getElementById("cf").value);
+            t1 = cf * 10000;
+            document.getElementById("t1").innerHTML = t1;
+            console.log(t1)
+        }
+
+        function tcv() {
+
+            let cv = parseInt(document.getElementById("cv").value);
+            t2 = cv * 10000;
+            document.getElementById("t2").innerHTML = t2;
+            console.log(t2)
+        }
+
+        function tcr() {
+
+            let cr = parseInt(document.getElementById("cr").value);
+            t3 = cr * 20000;
+            document.getElementById("t3").innerHTML = t3;
+            console.log(t3)
+        }
+
+        function tcc() {
+
+            let cc = parseInt(document.getElementById("cc").value);
+            t4 = cc * 20000;
+            document.getElementById("t4").innerHTML = t4;
+            console.log(t4)
+        }
+
+        function tnl() {
+
+            let nl = parseInt(document.getElementById("nl").value);
+            t5 = nl * 20000;
+            document.getElementById("t5").innerHTML = t5;
+            console.log(t5)
+        }
+
+        function tnd() {
+
+            let nd = parseInt(document.getElementById("nd").value);
+            t6 = nd * 20000;
+            document.getElementById("t6").innerHTML = t6;
+            console.log(t6)
+        }
+
+        function tinhtien() {
+            let total = t1 + t2 + t3 + t4 + t5 + t6;
+            console.log(t1)
+            console.log(t2)
+            console.log(t3)
+            console.log(t4)
+            console.log(t5)
+            console.log(t6)
+            alert("Tổng số tiền bạn phải trả là: " + total);
+        }
+
+
+
 </script>
 
 </body>

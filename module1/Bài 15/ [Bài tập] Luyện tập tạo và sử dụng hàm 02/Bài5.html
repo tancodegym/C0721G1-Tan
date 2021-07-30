@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài5</title>
+</head>
+<body>
+<script>
+    function minofthree(a,b,c) {
+        let A = parseInt(prompt("Enter a number A"));
+        let B = parseInt(prompt("Enter a number B"));
+        let C = parseInt(prompt("Enter a number C"));
+        let min=A;
+            if(min>B){
+                min=B;
+                if (min>C){
+                    min=C;
+                }
+                else if(min =C){
+                    alert("Min is: " +C);
+                }
+                else {
+                    alert("Min is: " +B)
+                }
+
+            }
+            else {
+                if(min>C){
+                    alert("Min is: " +C);
+                }
+                else {
+                    alert("Min is : " +A)
+                }
+
+            }
+    }
+    minofthree();
+</script>
+
+</body>
+</html>

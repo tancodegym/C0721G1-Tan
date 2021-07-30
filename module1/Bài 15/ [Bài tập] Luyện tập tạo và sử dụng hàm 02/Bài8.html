@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài8</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập vào độ dài của mảng"));
+    let arr = [];
+    for (i = 0; i < n; i++) {
+        arr[i] = parseInt(prompt("Nhập vào phần tử ở vị trí " + i));
+    }
+
+    let temp = null;
+    function reverse() {
+        for (left=0,right=arr.length-1; left < right;left++,right--) {
+            temp = arr[left];
+            arr[left]=arr[right];
+            arr[right]=temp;
+        }
+    }
+    document.write(arr);
+    document.write("</br>");
+    reverse();
+    document.write(arr);
+</script>
+
+</body>
+</html>

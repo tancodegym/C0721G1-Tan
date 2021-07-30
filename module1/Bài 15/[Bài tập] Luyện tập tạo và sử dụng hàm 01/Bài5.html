@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài5</title>
+</head>
+<body>
+<script>
+    let n =prompt("Enter a name of star");
+    let star=["Polaris","Aldebaran","Deneb","Vega","Altair","Dubhe","Regulus"];
+    let constellation =[ "Ursa Minor","Tarurus","Cygnus","Lyra","Aquila","Ursa Major","Leo"];
+    function checkstar(a){
+        let check=true;
+        for (i=0;i<star.length;i++){
+            if (n==star[i]){
+                alert("Constallation of "+star[i]+" is: "+constellation[i]);
+                break;
+                check=false;
+            }
+        }
+        if(check){
+        alert("No corresponding constellation found");}
+
+    }
+
+    checkstar();
+</script>
+</body>
+</html>

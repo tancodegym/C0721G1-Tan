@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[Bài tập] Ứng dụng quản lý sản phẩm sử dụng hàm</title>
+</head>
+<body>
+<h1>Manager Product</h1>
+<input type="text" placeholder="Enter name of product" id="input">
+<input type="button" style="background-color: green" onclick="addProduct()" value="Add">
+<h2>Display All Product</h2>
+<div id="show"></div>
+<script>
+    let arrProduct = [];
+    displayProduct();
+
+    function displayProduct() {
+        let table = "<table border='1'>" +
+            "<tr><th>Name of Product</th></tr>";
+        for (let i = 0; i < arrProduct.length; i++) {
+            table = table + "<tr>" +
+                "<td>" + arrProduct[i] + "</td>" +
+                "<td><button onclick='Edit(" + i + " )'>Edit</button></td>" +
+                "<td><button onclick='del(" + i + ")'>Del</button> </td>" +
+                "</tr>"
+        }
+        document.getElementById("show").innerHTML = table;
+    }
+
+    function addProduct() {
+        let nameProduct = document.getElementById("input").value;
+        document.getElementById("input").value = "";
+        arrProduct.push(nameProduct);
+        displayProduct();
+    }
+
+    function Edit(index) {
+        arrProduct[index] = prompt("Nhập vào tên sản phẩm cần sửa");
+        displayProduct();
+        alert("Edit complete")
+    }
+
+    function del(index) {
+
+        if (confirm("are you want to delete this product")) {
+            arrProduct.splice(index, 1);
+            displayProduct();
+            alert("Delete complete");
+        }
+    }
+</script>
+</body>
+</html>
