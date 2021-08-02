@@ -13,7 +13,7 @@
 <div>
     <h1><strong>MENU</strong></h1>
     <form><pre>
-    <label>1.Cafe               <input type="number" onchange="tcafe()" id="cf" value="1"></label> <p>Thành tiền:</p><p
+       <label>1.Cafe            <input type="number" onchange="tcafe()" id="cf" value="1"></label> <p>Thành tiền:</p><p
             id="t1"></p></br>
         <label>2.Cam vắt        <input type="number" onchange="tcv()" id="cv" value="2"></label>   <p>Thành tiền:</p><p
             id="t2"></p></br>
@@ -30,57 +30,43 @@
     </form>
 </div>
 <script>
-
         let t1, t2, t3, t4, t5, t6 = 0;
-
         function tcafe() {
-
             let cf = parseInt(document.getElementById("cf").value);
             t1 = cf * 10000;
             document.getElementById("t1").innerHTML = t1;
             console.log(t1)
         }
-
         function tcv() {
-
             let cv = parseInt(document.getElementById("cv").value);
             t2 = cv * 10000;
             document.getElementById("t2").innerHTML = t2;
             console.log(t2)
         }
-
         function tcr() {
-
             let cr = parseInt(document.getElementById("cr").value);
             t3 = cr * 20000;
             document.getElementById("t3").innerHTML = t3;
             console.log(t3)
         }
-
         function tcc() {
-
             let cc = parseInt(document.getElementById("cc").value);
             t4 = cc * 20000;
             document.getElementById("t4").innerHTML = t4;
             console.log(t4)
         }
-
         function tnl() {
-
             let nl = parseInt(document.getElementById("nl").value);
             t5 = nl * 20000;
             document.getElementById("t5").innerHTML = t5;
             console.log(t5)
         }
-
         function tnd() {
-
             let nd = parseInt(document.getElementById("nd").value);
             t6 = nd * 20000;
             document.getElementById("t6").innerHTML = t6;
             console.log(t6)
         }
-
         function tinhtien() {
             let total = t1 + t2 + t3 + t4 + t5 + t6;
             console.log(t1)

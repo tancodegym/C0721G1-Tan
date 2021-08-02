@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+<script>
+    class rectangle {
+        constructor(l,h,) {
+            this.l=l;
+            this.h=h;
+        }
+        getArea(){
+            return this.l*this.h;
+        }
+        getPerimeter(){
+            return (this.l+this.h) *2
+        }
+    }
+    let rec = new rectangle(15,7);
+    let area=rec.getArea();
+    let perimeter=rec.getPerimeter();
+    alert("Diện tích của hình chữ nhật là: " +area + " Chu vi của hình chữ nhật là: " + perimeter);
+</script>
+</body>
+</html>

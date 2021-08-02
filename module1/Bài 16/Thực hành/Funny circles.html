@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny circles</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+    class Circle{
+        constructor(x, y, radius){
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+        }
+    }
+    this.createRandomPosCircle = function() {
+        let ctx = document.getElementById("myCanvas").getContext("2d");
+        let radius = Math.floor(Math.random() * 80);
+        let color = getRandomColor();
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+    this.getRandomHex=function(){
+        return Math.floor(Math.random()*255);
+    }
+
+    this.getRandomColor=function(){
+        var red = getRandomHex();
+        var green = getRandomHex();
+        var blue = getRandomHex();
+        return "rgb(" + red + "," + blue + "," + green +")";
+    }
+
+
+
+    this.createMultipleCircle=function() {
+        for (var i = 0; i < 30; i++) {
+           this.createRandomPosCircle();
+        }
+
+
+
+    }
+    for (let i = 0; i<10; i++) {
+        createMultipleCircle();
+    }
+
+
+</script>
+
+</body>
+</html>

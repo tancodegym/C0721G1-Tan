@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Mobile {
+        constructor(pin, status) {
+            this.pin = pin;
+            this.status = status;
+            this.inboxMessage = [];
+            this.sentMessage = [];
+            this.draft="";
+        }
+
+        isOnOfMobile() {
+            if (this.status) {
+                alert("Điện thoại đang bật")
+                return this.status;
+            } else {
+                alert("ĐIện htoaij đang tắt.")
+                return this.status;
+            }
+        }
+
+        setOnOfMobile() {
+            if (this.status) {
+                this.status = false;
+                alert("Đã tắt điện thoại");
+            } else {
+                this.status = true;
+                alert("Đã bật điện thoại");
+            }
+        }
+
+        sendMessage(message, mobile) {
+            if (this.isOnOfMobile()) {
+                this.sentMessage.push(message);
+                mobile.receiveMessage(message);
+                this.setPin();
+            } else {
+                alert("Điện thoại đang tắt nên không xài được!");
+            }
+        }
+
+        viewInbox(message) {
+            if (this.isOnOfMobile()) {
+                this.setPin();
+                return this.inboxMessage;
+            } else {
+                alert("Điện thoại đang tắt nên không xài được!");
+            }
+        }
+
+        viewSent(message) {
+            if (this.isOnOfMobile()) {
+                this.setPin();
+                return this.sentMessage;
+            } else {
+                alert("Điện thoại đang tắt nên không xài được!");
+            }
+        }
+
+        receiveMessage(message) {
+            this.inboxMessage.push(message);
+        }
+        saveDraft (message){
+            if (this.isOnOfMobile()) {
+                this.setPin();
+                this.draft=mesage;
+            }
+            else {
+                alert("Điện thoại đang tắt");
+            }
+        }
+
+        setPin() {
+            this.pin--;
+        }
+
+        getPin() {
+            if (this.isOnOfMobile()) {
+                this.setPin();
+                return this.pin;
+            } else {
+                alert("Điện thoại đang tắt nên không xài được!");
+            }
+        }
+
+        chargePin() {
+            this.pin = 100;
+        }
+
+    }
+
+    let nokie = new Mobile(100, true);
+    let iphone = new Mobile(100, true);
+    nokie.inboxMessage("chào ipone")
+
+
+</script>
+</html>
