@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài2</title>
+</head>
+<body>
+<script>
+    let string = prompt("Nhập vào xâu kí tự");
+    let array = string.split("");
+    console.log(array);
+
+    let arr1 = [];
+    // let p;
+    //có dùng sort();
+    // array.sort();
+    // function dem() {
+    //     for (let i = 0; i < array.length; i++) {
+    //         if(array[i]!==p){
+    //             arr1.push(array[i])
+    //         }
+    //         p=array[i];
+    //     }
+    // }
+    //không dùng sort();
+    arr1[0] = array[0];
+
+    function dem() {
+        for (i = 1; i < array.length; i++) {
+            for (j = 0; j < arr1.length; j++) {
+                if (arr1[j] == array[i]) {
+                    break;
+                }
+                if (j == arr1.length - 1) {
+                    arr1.push(array[i]);
+                }
+            }
+        }
+
+
+    }
+
+    dem();
+    console.log(arr1);
+    let count = arr1.length
+    document.write("Số lượng kí tự khác nhau là:  " + count);
+
+
+</script>
+
+</body>
+</html>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-    class rectangle {
+    class Rectangle {
         constructor(l,h,) {
             this.l=l;
             this.h=h;
@@ -17,11 +17,20 @@
         getPerimeter(){
             return (this.l+this.h) *2
         }
+        setLength(lenght){
+            this.l=lenght;
     }
-    let rec = new rectangle(15,7);
+    setHeight(height){
+            this.h=height;
+    }
+    }
+    let rec = new Rectangle(15,7);
     let area=rec.getArea();
     let perimeter=rec.getPerimeter();
+
     alert("Diện tích của hình chữ nhật là: " +area + " Chu vi của hình chữ nhật là: " + perimeter);
+    rec.setHeight(5);
+    rec.setLength(15);
 </script>
 </body>
 </html>

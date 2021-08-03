@@ -33,7 +33,7 @@
             this.w = w;
         }
         setWeight() {
-            this.w++;
+            return   this.w++;
         }
         checkApple() {
             if (apple.isEmpty()) {
@@ -70,10 +70,12 @@
             return this.setName();
         }
         setName(name) {
-            this.name = name;
+           return  this.name = name;
         }
     }
     let adam = new Human("Adam", true, 70);
+    adam.getGentle();
+    eva.getGentle();
     let eva = new Human("Eva", false, 60);
     adamvaeva();
     function adamvaeva() {

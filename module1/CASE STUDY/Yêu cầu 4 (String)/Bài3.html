@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài3</title>
+</head>
+<body>
+<script>
+    let a = prompt("Nhập vào xâu a");
+    let b= prompt("Nhập vào xâu b");
+    let arrA = a.split("");
+    let arrB = b.split("");
+    let count=0;
+    for(i=0;i<arrA.length;i++){
+        for(j=0;j<arrB.length;j++){
+            if(arrA[i]==arrB[j]){
+                count++;
+                arrB.splice(j,1)
+                break;
+            }
+        }
+    }
+    document.write("Số phần tử chung của 2 xâu là : " +count);
+
+
+
+</script>
+
+</body>
+</html>

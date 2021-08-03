@@ -6,7 +6,65 @@
 </head>
 <body>
 <script>
-    
+    let string = prompt('Nhập một xâu kí tự: ');
+    let arr = string.split('')
+    let arr1 = [];
+    for (let i = 0; i < arr.length;) {
+        if (arr[i] == ' ' && arr[i + 1] == ' ') {
+            for (let j = i; j < arr.length; j++) {
+                arr[j] = arr[j + 1];
+            }
+            arr[arr.length - 1] = '';
+        } else if (arr[0] == ' ') {
+            for (let j = i; j < arr.length; j++) {
+                arr[j] = arr[j + 1];
+            }
+            arr[arr.length - 1] = '';
+
+        } else if (arr[arr.length - 1] = ' ') {
+            for (let j = i; j < arr.length; j++) {
+                arr[j] = arr[j + 1];
+            }
+            arr[arr.length - 1] = '';
+        } else {
+            i++;
+        }
+    }
+
+    function transfer() {
+        arr1.push(arr[0].toLocaleUpperCase());
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i - 1] == ' ') {
+                arr1.push(arr[i].toLocaleUpperCase());
+            } else {
+                arr1.push(arr[i].toLocaleLowerCase());
+            }
+        }
+    }
+
+    transfer();
+    let newString = arr1.join("")
+    document.write("</br>");
+    document.write("Xâu sau khi chuẩn hóa là : " + newString)
+
+    let arr2 = arr1.join('').split(' ')
+    let max = arr2[0].length;
+    let stringMax = arr2[0];
+
+    function getMaxString() {
+        for (let i = 1; i < arr2.length; i++) {
+            if (max < arr2[i].length) {
+                max = arr2[i].length;
+                stringMax = arr2[i];
+            }
+        }
+    }
+
+    getMaxString();
+    document.write("</br>");
+    document.write("Chuỗi có độ dài lớn nhất là:" + stringMax);
+
+
 </script>
 
 </body>
