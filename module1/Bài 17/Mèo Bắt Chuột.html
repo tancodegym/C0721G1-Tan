@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mèo Bắt Chuột</title>
+</head>
+<body>
+<script>
+    class Rat{
+        constructor(ratName,ratW,ratS,) {
+            this.name=ratName;
+            this.ratW=ratW;
+            this.ratS=ratS;
+            this.alive=true;
+        }
+        ratVoice(){
+            alert("chít chít")
+        }
+        ratDie(){
+            this.alive=false;
+            alert("Chuột đã chết")
+        }
+    }
+    let rat=new Rat("Cống",1,10);
+
+    class Cat{
+        constructor(catName,catW,catS) {
+            this.catName=catName;
+            this.catW=catW;
+            this.catS=catS;
+        }
+        catVoice(){
+            alert("méo meo")
+        }
+        catchRat(){
+            if(this.catS>rat.ratS){
+                rat.ratVoice();
+                alert("Mèo đã bắt được chuột")
+                this.catVoice();
+            }
+        }
+        setCatWeight(){
+            return this.catW +=rat.ratW;
+
+        }
+        eatRat(){
+            if(rat.alive){
+                alert("Mèo ăn chuột")
+                this.setCatWeight();
+                rat.ratDie();
+            }
+        }
+    }
+    let cat = new Cat("Meo",10,15);
+    cat.catchRat();
+    cat.eatRat();
+</script>
+
+</body>
+</html>
