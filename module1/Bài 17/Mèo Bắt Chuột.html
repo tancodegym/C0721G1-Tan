@@ -20,9 +20,12 @@
             this.alive=false;
             alert("Chuột đã chết")
         }
+        getRatWeight(){
+            return this.ratW;
+        }
     }
     let rat=new Rat("Cống",1,10);
-
+    alert("Cân nặng của chuột là: " +rat.getRatWeight());
     class Cat{
         constructor(catName,catW,catS) {
             this.catName=catName;
@@ -31,6 +34,9 @@
         }
         catVoice(){
             alert("méo meo")
+        }
+        getCatWeight(){
+            return this.catW;
         }
         catchRat(){
             if(this.catS>rat.ratS){
@@ -52,8 +58,10 @@
         }
     }
     let cat = new Cat("Meo",10,15);
+    alert("Cân nặng của mèo trước khi ăn chuột là " +cat.getCatWeight())
     cat.catchRat();
     cat.eatRat();
+    alert("Cân nặng của mèo sau khi ăn chuột là " +cat.getCatWeight())
 </script>
 
 </body>
