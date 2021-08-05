@@ -137,14 +137,14 @@
         }
         let count=0;
         for(let i=0;i<arrayResult;i++){
-            if(arrayResult[i]==veso.number[i]||arrayResult[i]==veso.number[i+6]||arrayResult[i]==veso.number[i+12]||arrayResult[i]==veso.number[i+18]){
+            if(arrayResult[i]==veso.number[i]||arrayResult[i]==veso.number[i+5]||arrayResult[i]==veso.number[i+11]||arrayResult[i]==veso.number[i+17]){
                 count++;
             }
         }
         switch (count) {
             case 3,4: alert("Bạn đã trúng giải khuyến khích 1000$");
             break;
-            case 5: alert("Bạn đã trúng giải nhất 1 triệu");
+            case 5: alert("Bạn đã trúng giải nhất 1 triệu $");
                 break;
             case 6: alert("Bạn đã trúng giải đặc biệt 1 tỉ $");
                 break;
