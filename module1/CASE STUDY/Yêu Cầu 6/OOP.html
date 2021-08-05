@@ -4,29 +4,157 @@
     <meta charset="UTF-8">
     <title>VietLot</title>
     <style>
-        input{
-            width: 50px;
-            height: 50px;
-            background: white;
-            -moz-border-radius: 100px / 50px;
-            -webkit-border-radius: 100px / 50px;
-            border-radius: 100px / 50px;
+        .otron {
+            width: 100px;
+            height: 100px;
+            border: solid 5px blue;
+            background: #999;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            font-size: 30px;
+            text-align: center;
         }
-
+        body{
+            margin-left: 300px;
+        }
+        h1{
+            margin-left: 250px;
+        }
+        .input3{
+            margin-left: 320px;
+        }
+        .input1{
+            margin-left: 150px;
+        }
     </style>
 </head>
 
 <body>
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
-<input type="text">
+<h1>Xổ Số VietLot</h1>
+<div>
+    <h2>Chọn vé bạn muốn mua</h2>
+    <input class="otron" placeholder="00-99" id="1" type="text">
+    <input class="otron" placeholder="00-99" id="2" type="text">
+    <input class="otron" placeholder="00-99" id="3" type="text">
+    <input class="otron" placeholder="00-99" id="4" type="text">
+    <input class="otron" placeholder="00-99" id="5" type="text">
+    <input class="otron" placeholder="00-99" id="6" type="text">
+    </br>
+    </br>
+    </br>
+    <input class="input1" id="buttonMua" type="button" onclick="veso.chooseNumber()" value="Mua vé tự chọn">
+    <input class="input1" id="random" type="button" onclick="veso.randomNumber()" value="Mua vé ngẫu nhiên">
+    <p id="veDaMua"></p>
+</div>
+<div>
+    <h2>Kết quả </h2>
+    <input class="otron" id="o7" type="text" disabled>
+    <input class="otron" id="o8" type="text" disabled>
+    <input class="otron" id="o9" type="text" disabled>
+    <input class="otron" id="o10" type="text" disabled>
+    <input class="otron" id="o11" type="text" disabled>
+    <input class="otron" id="o12" type="text" disabled>
+    </br>
+    </br>
+    </br>
+    <input class="input3" type="button" onclick="quaySo(),checkResult()" value="Quay Số">
 
+</div>
 
 
 <script>
+
+    class VeSo {
+        constructor() {
+            this.number = [];
+        }
+        chooseNumber() {
+            if (this.number.length < 24){
+                let inputs=document.getElementsByTagName("input");
+                for(let i=0;i<6;i++){
+                   let ve=inputs[i].value;
+                   this.number.push(ve);
+                }
+                displayVeDaMua();
+            }
+            else{
+                alert("Bạn đã mua đủ 4 vé !")
+            }
+        }
+        randomNumber() {
+            if (this.number.length < 24) {
+                let ve = "";
+                for (let i = 1; i <= 6; i++) {
+                    let numberR = Math.floor(Math.random() * 100);
+                    this.number.push(numberR);
+                    ve += numberR;
+
+                }
+                displayVeDaMua();
+            } else {
+                alert("Bạn đã mua đủ 4 vé !")
+            }
+
+        }
+    }
+
+    let veso = new VeSo();
+    let a = veso.number;
+
+    function displayVeDaMua() {
+        let table = "<table border='1'>" +
+            "<tr><th>Vé đã Mua</th></tr>";
+        for (let i = 0; i <veso.number.length; i++) {
+            if(i==6||i==12||i==18)
+            {
+                table = table +"<tr><th>Vé đã Mua</th></tr>"+ "<tr>" +
+                    "<td>" + veso.number[i] + "</td>" +
+                    "</tr>"
+            }
+            else {
+                table = table + "<tr>" +
+                    "<td>" + veso.number[i] + "</td>" +
+                    "</tr>"
+            }
+        }
+        document.getElementById("veDaMua").innerHTML = table + "</table>";
+    }
+    function quaySo() {
+        let inputs=document.getElementsByTagName("input");
+        for(i=8;i<=13;i++){
+            let numberR = Math.floor(Math.random() * 100);
+            inputs[i].value=numberR;
+        }
+
+    }
+    function checkResult() {
+        let arrayResult=[];
+        let inputs = document.getElementsByTagName("input");
+        for (let i = 8; i <= 13; i++) {
+            let ve = inputs[i].value;
+            arrayResult.push(ve);
+        }
+        let count=0;
+        for(let i=0;i<arrayResult;i++){
+            if(arrayResult[i]==veso.number[i]||arrayResult[i]==veso.number[i+6]||arrayResult[i]==veso.number[i+12]||arrayResult[i]==veso.number[i+18]){
+                count++;
+            }
+        }
+        switch (count) {
+            case 3,4: alert("Bạn đã trúng giải khuyến khích 1000$");
+            break;
+            case 5: alert("Bạn đã trúng giải nhất 1 triệu");
+                break;
+            case 6: alert("Bạn đã trúng giải đặc biệt 1 tỉ $");
+                break;
+                default: alert("Chúc bạn may mắn lần sau");
+        }
+        console.log(veso.number);
+        console.log(arrayResult);
+    }
+
+
 </script>
 </body>
 </html>

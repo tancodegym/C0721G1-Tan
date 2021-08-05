@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Thêm mới sản phẩm</h1>
+<input style="border-radius: 50%" type="text" id="name" placeholder="Nhập tên sản phẩm">
+<input type="text" id="production" placeholder="Nhập tên Nhà sản xuất">
+<input type="text" id="price" placeholder="Nhập giá sản phẩm">
+<button type="button" onclick="addNewProduct(); edit()">Thêm mới</button>
+
+<div id="output"></div>
+</body>
+<script>
+    class Product {
+        constructor(tenSP, nhaSX, giaTien) {
+            this.tenSP = tenSP;
+            this.nhaSX = nhaSX;
+            this.giaTien = giaTien;
+        }
+
+        getTenSP() {
+            return this.tenSP;
+        }
+
+        setTenSP(value) {
+            this.tenSP = value;
+        }
+
+        getNhaSX() {
+            return this.nhaSX;
+        }
+
+        setNhaSX(value) {
+            this.nhaSX = value;
+        }
+
+        getGiaTien() {
+            return this.giaTien;
+        }
+
+        setGiaTien(value) {
+            this.giaTien = value;
+        }
+    }
+
+    let productList = [];
+    let product = new Product("Iphone X", "Apple", 1000);
+    let product2 = new Product("Iphone 11", "Apple", 1000);
+    let product3 = new Product("Iphone 12", "Apple", 1000);
+    let product4 = new Product("Iphone 13", "Apple", 1000);
+
+    productList.push(product);
+    productList.push(product2);
+    productList.push(product3);
+    productList.push(product4);
+    console.log(productList);
+    display();
+
+    //Tạo 1 table.
+    function display() {
+        let table = "<table border='1'>" +
+            "<tr> <th> Tên sản phẩm </th>" +
+            " <th> Nhà Sản Xuất </th>" +
+            " <th> Giá tiền </th></tr>";
+        for (let i = 0; i < productList.length; i++) {
+            table += "<tr>" +
+                "<td onclick='editTenSP("+ i +")' id='tenSP"+i+"'>" + productList[i].getTenSP() + "</td>" +
+                "<td>" + productList[i].getNhaSX() + "</td>" +
+                "<td>" + productList[i].getGiaTien() + "</td>" +
+                "<td><button onclick='showEdit(" + i + ")'>Sửa</button></td>" +
+                "<td><button onclick='del(" + i + ")'>Xóa</button></td>" +
+                "</tr>"
+        }
+        document.getElementById("output").innerHTML = table;
+    }
+
+    check = true;
+    //Thêm phần tử mới vào mảng. Nếu biến check = True thì mới cho thêm mới.
+    function addNewProduct() {
+        if (check) {
+            let ten = document.getElementById("name").value;
+            let nhaSX = document.getElementById("production").value;
+            let giaTien = document.getElementById("price").value;
+            document.getElementById("name").value = "";
+            document.getElementById("production").value = "";
+            document.getElementById("price").value = "";
+            let product = new Product(ten, nhaSX, giaTien);
+            productList.push(product);
+            display();
+        }
+    }
+
+    function editTenSP(index) {
+        console.log(productList[index]);
