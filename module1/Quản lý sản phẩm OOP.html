@@ -10,7 +10,6 @@
 <input type="text" id="production" placeholder="Nhập tên Nhà sản xuất">
 <input type="text" id="price" placeholder="Nhập giá sản phẩm">
 <button type="button" onclick="addNewProduct(); edit()">Thêm mới</button>
-
 <div id="output"></div>
 </body>
 <script>
@@ -20,11 +19,9 @@
             this.nhaSX = nhaSX;
             this.giaTien = giaTien;
         }
-
         getTenSP() {
             return this.tenSP;
         }
-
         setTenSP(value) {
             this.tenSP = value;
         }
@@ -32,20 +29,16 @@
         getNhaSX() {
             return this.nhaSX;
         }
-
         setNhaSX(value) {
             this.nhaSX = value;
         }
-
         getGiaTien() {
             return this.giaTien;
         }
-
         setGiaTien(value) {
             this.giaTien = value;
         }
     }
-
     let productList = [];
     let product = new Product("Iphone X", "Apple", 1000);
     let product2 = new Product("Iphone 11", "Apple", 1000);
