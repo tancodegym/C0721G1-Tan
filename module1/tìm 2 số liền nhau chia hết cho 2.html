@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // let b = [1, 5, 2, 4, 3];
+    // let a;
+    // for (i = 0; i < b.length; i++) {
+    //     for (j = 0; j < b.length; j++) {
+    //         if (b[i] < b[j]) {
+    //             a = b[i];
+    //             b[i] = b[j];
+    //             b[j] = a;
+    //         }
+    //     }
+    // }
+    // console.log(b);
+    //
+    // var number = (prompt("Nhập n"));
+    //
+    // var str = number.toString();
+    // console.log(str);
+    //
+    // var b = str.split(',');
+    // console.log(b);
+    //
+    let b = [1,2,3,4,4,5,6,6,1,9]
+    let A=[];
+    console.log(A);
+    for (i = 0; i < b.length; i++) {
+        let x=0;
+         x = (parseInt(b[i]) + parseInt(b[i + 1]));
+
+        console.log(x);
+        if (x % 2 === 0) {
+            A.push(b[i], b[i + 1])
+        }
+
+    }
+    document.write(A);
+    // Bài giải
+    // let str = prompt('nhập 1 dãy số : ');
+    // console.log(str)
+    // let b = [str[0]];
+    // let  c = [b[0]];
+    // for (i = 1; i < str.length; i++) {
+    //     b.push(str[i]);
+    // }
+    // console.log(b)
+    // for (j = 0; j < b.length; j++) {
+    //
+    //     let x = (parseInt(b[j]) + parseInt(b[j + 1]));
+    //     console.log(x)
+    //     if (x % 2 === 0) {
+    //         c.push(b[j],b[j+1]);
+    //     }
+    // }
+    // document.write(c.join(' '))
+    // let str = prompt('nhập 1 dãy số : ');
+    // let b = [str[0]];
+    // let  c = [b[0]];
+    // for (i = 1; i < str.length; i++) {
+    //     b.push(str[i]);
+    // }
+    // console.log(b)
+    // for (j = 0; j < b.length; j++) {
+    //
+    //     let x = (parseInt(b[j]) + parseInt(b[j + 1]));
+    //     console.log(x)
+    //     if (x % 2 === 0) {
+    //         c.push(b[j],b[j+1]);
+    //     }
+    // }
+    // document.write(c.join(' '))
+    // var num = prompt("Enter a number");
+    // var str = num.toString();
+    // var rs = [str[0]];
+    // for (i = 1; i < str.length; i++) {
+    //     if (str[i - 1] % 2 === 0 && str[i] % 2 === 0) {
+    //         rs.push('-', str[i]);
+    //     } else {
+    //         rs.push(str[i]);
+    //     }
+    // }
+    // document.write(rs.join(" "));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài2</title>
+</head>
+<body>
+<script>
+    // Câu 2:Viết chương trình cho phép nhập 2
+    // Phân số và kiểm tra xem 2 phân số đó có bằng nhau hay không
+    //     .Xây dựng hàm nhận vào bốn tham số lần lượt là tử số, mẫu số của từng phân số,
+    //     thựchiện kiểm tra xem hai phân số có bằng nhau không.
+    // -Lưu ý: Không thực hiện phép chia sau đó lấy kết quả so sánh
+    let a1=parseInt(prompt("Nhập vào tử số thứ 1"));
+    let a2=parseInt(prompt("Nhập vào mẫu số thứ 1"));
+    let b1=parseInt(prompt("Nhập vào tử số thứ 2"));
+    let b2=parseInt(prompt("Nhập vào mẫu số thứ 2"));
+    function soSanh() {
+        if(a1/a2===b1/b2){
+            alert("true");
+        }
+        else{
+            alert("false");
+        }
+    }
+    soSanh();
+
+</script>
+</body>
+</html>

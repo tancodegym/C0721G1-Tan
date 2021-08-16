@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<canvas id="cV"  width="500" height="300" style="border: 1px solid black"></canvas>
+<body><script>
+    // HCN
+// let canvas = document.getElementById("myCanvas");
+// let ctx = canvas.getContext("2d");
+// ctx.fillStyle = "blue";
+// ctx.fillRect(100,50,200,100);
+
+
+
+// var c = document.getElementById("cV");
+// var ctx = c.getContext("2d");
+//
+// // Create gradient
+// var grd = ctx.createLinearGradient(0,0,200,0);
+// grd.addColorStop(0,"black");
+// // grd.addColorStop(1,"white");
+//
+// // Fill with gradient
+// ctx.fillStyle = grd;
+// ctx.fillRect(100,50,200,100);
+
+    // Tạo màu random:
+    // function getRandomHex(){
+    //     return Math.floor(Math.random()*255);
+    // }
+    //
+    // function getRandomColor(){
+    //     var red = getRandomHex();
+    //     var green = getRandomHex();
+    //     var blue = getRandomHex();
+    //     return "rgb(" + red + "," + blue + "," + green +")";
+    // }
+
+// let canvas = document.getElementById("cV");
+// let ctx = canvas.getContext("2d");
+//     var color = getRandomColor();
+//     grd.addColorStop()
+// ctx.beginPath();
+// ctx.arc(250, 150, 150, 0, Math.PI * 2);
+//     ctx.fillStyle = color;
+//     ctx.fill();
+// ctx.stroke();
+//
+
+
+
+var c = document.getElementById("cV");
+var ctx = c.getContext("2d");
+var grd = ctx.createRadialGradient(0,0,50,250,150,150);
+grd.addColorStop(0,"red");
+
+    ctx.beginPath();
+    ctx.arc(250, 150, 150, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+    ctx.stroke();
+</script>
+</body>
+</html>

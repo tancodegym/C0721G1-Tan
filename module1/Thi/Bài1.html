@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài1</title>
+</head>
+<body>
+<script>
+    // Câu 1: Nhập từ bàn phím mảng số nguyên a gồm n phần tử (n<=50)
+    //     , đưa ra màn hình mảng vừa nhập vào và 1 mảng mới b bao gồm tất cả các số nguyên tố của mảng a.
+    let n = parseInt(prompt("Nhập vào số phần tử của mảng "));
+    if (n <= 0 || n > 50) {
+        alert("Nhập lại n đi bạn");
+    } else {
+        let arr = [];
+        let brr = [];
+        for (let i = 0; i < n; i++) {
+            arr[i] = parseInt(prompt("Nhập vào số nguyên thứ : " + i));
+            if (arr[i] >= 2 && checkSNT(arr[i])) {
+                brr.push(arr[i]);
+            }
+        }
+        console.log("Mảng vừa nhập là: " + arr);
+        console.log("Mảng bao gồm tất cả các số nguyên tố của mảng đã nhập là" + brr);
+    };
+    function checkSNT(N) {
+        let check = true;
+        for (let i = 2; i < N; i++) {
+            if (N % i === 0) {
+                check = false;
+                break;
+            }
+        }
+        return check;
+
+    }
+</script>
+</body>
+</html>

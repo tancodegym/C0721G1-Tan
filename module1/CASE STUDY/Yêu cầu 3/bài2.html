@@ -20,19 +20,19 @@
     for (j = 0; j < b1; j++) {
         b[j] = prompt("Nhập vào số thứ: " + j + " của mảng b");
     }
-    let missvalue = [];
+    let missValue = [];
 
     for (i = 0; i < b.length; i++) {
         let check = a.includes(b[i]);
         if (check == false)
     {
-        missvalue.push(b[i]);}
+        missValue.push(b[i]);}
     }
     document.write("Số phần tử mảng a: [" + a + "]")
     document.write("</br>")
     document.write("Số phần tử mảng b: [" + b + "]")
     document.write("</br>")
-    document.write("Số phần tử mảng b mà mảng a không có là: [" + missvalue + "]")
+    document.write("Số phần tử mảng b mà mảng a không có là: [" + missValue + "]")
 </script>
 
 </body>

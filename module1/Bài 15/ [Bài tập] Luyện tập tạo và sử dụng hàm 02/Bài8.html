@@ -6,18 +6,19 @@
 </head>
 <body>
 <script>
-    let n = parseInt(prompt("Nhập vào độ dài của mảng"));
+    let n = prompt("Nhập vào độ dài của mảng");
     let arr = [];
     for (i = 0; i < n; i++) {
-        arr[i] = parseInt(prompt("Nhập vào phần tử ở vị trí " + i));
+        arr[i] = prompt("Nhập vào phần tử ở vị trí " + i);
     }
 
-    let temp = null;
+
     function reverse() {
         for (left=0,right=arr.length-1; left < right;left++,right--) {
-            temp = arr[left];
-            arr[left]=arr[right];
-            arr[right]=temp;
+            [arr[left],arr[right]]=[arr[right],arr[left]];
+            // temp=arr[left];
+            // arr[left]=arr[right];
+            // arr[right]=temp;
         }
     }
     document.write(arr);

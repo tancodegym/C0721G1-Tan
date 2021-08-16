@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var h = 5;
+    // for (x = 0; x < h * 2; x++) {
+    //     for (y = 0; y <= x; y++) {
+    //         document.write("&nbsp&nbsp");
+    //
+    //     }
+    //     for (z = h * 4 - y * 2; z > 1; z--) {
+    //         if (x == 0) {
+    //             if ((y % 2) != 0) {
+    //                 document.write("*")
+    //
+    //             } else {
+    //                 document.write("&nbsp");
+    //
+    //
+    //             }}
+    //         else if
+    //             ((y == x) || (y ==(2 * h) - x ))
+    //         {
+    //                 document.write("*");
+    //             }
+    //
+    //         else {
+    //                 document.write("&nbsp")
+    //
+    //
+    //
+    //         }
+    //     }
+    //
+    //
+    //     document.write("</br>")
+    //
+    // }
+    let height=10;
+    for (let i = 0; i <= height; i++) {
+        for (let j = height+ i; j > 0; j--) {
+            document.write("&nbsp&nbsp")
+        }
+        for (let m = 1;m<=((height*2)-(i*2-1)); m++) {
+            if (i===0||m===((height*2)-(i*2-1))||m===1){
+                document.write("*")
+            }else {
+                document.write("&nbsp&nbsp")
+            }
+        }
+        document.write("<br>")
+    }
+
+</script>
+</body>
+</html>

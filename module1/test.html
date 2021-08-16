@@ -6,49 +6,131 @@
 </head>
 <body>
 <script>
-    t= 1 2 3
-    v = 3 2 1
-    t = 4 5 6 7 8 9
-    v = 6 5 4 3 2 1
-    t = 100
-    x= t/100
-    // for (let i = 0; i < arr.length;) {
-    //     if (arr[i] == ' ' && arr[i + 1] == ' ' || arr[0] == ' ' || arr[arr.length - 1] == ' ') {
-    //         for (let j = i; j < arr.length; j++) {
-    //             arr[j] = arr[j + 1];
+    // kiểm tra kiểu dữ liệu của biến;
+    // let a="a";
+    // b=123;
+    // if(typeof a==="string"){
+    //     alert("true")
+    // }
+    // let bTypeof=typeof b;
+    // document.write(bTypeof);
+    // let isb=isNaN(a);
+    // document.write(isb);
+
+
+
+
+   //LOẠI BỎ PHẦN TỬ TRÙNG LẶP:
+   // Cách 1: Dùng hàm Set
+   // var arr=[1,4,2,3,3,2,4,5];
+   // var number=Array.from(new Set(arr));
+   // console.log(number); // return number[1,4,2,3,5];
+
+   // Cách 2 :
+   // dùng for truyền thống
+   // let n=prompt("enter a number");
+   // let arr=[];
+   // for(let i=0; i<n;i++){
+   //     arr[i]=prompt("Nhập vào phần tử thứ : " +i);
+   // }
+   // console.log(arr);
+   // let l=arr.length;
+   // for(let j=0; j<l;j++){
+   //     for(let k=j+1;k<l;k++){
+   //         if(arr[j]===arr[k]){
+   //             arr.splice(k,1);
+   //         }
+   //     }
+   // }
+   // console.log(arr);
+
+   // //Xóa 2 phần tử đầu và thêm vào phần tử "abc"  TRONG MẢNG:
+   // var arr=[1,2,3,4,5,6];
+   // arr.splice(0,2,"abc");
+   //
+
+   // Tính số cặp phần tử giống nhau:
+   // var arr = [1,1,2,2,4,,,3,64,2,1,1];
+   // let count=0;
+   // for(let i=0; i<arr.length;i++){
+   //     for(let j =0;j<arr.length;j++){
+   //         if(arr[i]===arr[j]){
+   //             count++;
+   //             arr.splice(i,1);
+   //             arr.splice(j,1);
+   //         }
+   //     }
+   // }
+   // alert(count)
+
+   Xóa mảng bằng cách đặt chiều dài;
+   // var arr=[1,2,3,4,5,6];
+   // arr.length=3;
+   // console.log(arr); //arr=[1,2,3]
+
+
+    // thay thế toàn bộ  phần tử ab trong chuỗi string thành 12:
+    // let string="abcabcabc";
+    // var str=string.replace(/ab/g,"12");
+    // console.log(str);
+
+    // cộng mảng 1 vào mảng 2nhanh và gọn
+    // var arr1=[1,2,3];
+    // var arr2=[9,10,11];
+    // arr2.push.apply(arr2,arr1);
+    // console.log(arr2);
+
+
+    // /SWAP 2 biến không dùng temp:
+    // let a=1; let b=10;
+    // [a,b]=[b,a];
+    // console.log(a,b);
+
+
+
+
+    // // for (let i = 0; i < arr.length;) {
+    // //     if (arr[i] == ' ' && arr[i + 1] == ' ' || arr[0] == ' ' || arr[arr.length - 1] == ' ') {
+    // //         for (let j = i; j < arr.length; j++) {
+    // //             arr[j] = arr[j + 1];
+    // //         }
+    // //         arr[arr.length - 1] = '';
+    // //     } else {
+    // //         i++;
+    // //     }
+    // // }
+    //     <script>
+    //     let a = [[1, 2, 3],
+    //     [4, 7, 6],
+    //     [12, 8, 9]];
+    // let left = 0; //đường chéo trái 1+7+9=17
+    // let right=0; //đường chéo phải 3+7+12=19
+    // let abs =Math.abs(left-right);
+    // for(let i=0;i<a.length;i++){
+    //     for(let j=0; j<a.length;j++){
+    //         if(i==j){
+    //             left +=a[i][j]
     //         }
-    //         arr[arr.length - 1] = '';
-    //     } else {
-    //         i++;
     //     }
     // }
-        <script>
-        let a = [[1, 2, 3],
-        [4, 7, 6],
-        [12, 8, 9]];
-    let left = 0; //đường chéo trái 1+7+9=17
-    let right=0; //đường chéo phải 3+7+12=19
-    let abs =Math.abs(left-right);
-    for(let i=0;i<a.length;i++){
-        for(let j=0; j<a.length;j++){
-            if(i==j){
-                left +=a[i][j]
-            }
-        }
-    }
-    console.log(left);
-    for(let x=0;x<a.length;x++){
-        for (let y=0;y<a.length;y++){
-            if(x+y==a.length-1){
-                right==a[x][y]
-            }
+    // console.log(left);
+    // for(let x=0;x<a.length;x++){
+    //     for (let y=0;y<a.length;y++){
+    //         if(x+y==a.length-1){
+    //             right==a[x][y]
+    //         }
+    //
+    //     }
+    //
+    // }
+    // console.log(right)
+    //
+    // 7 11 s t
+    // 5 15 a b
+    // 3 2  m n
+    // -2 2 1
+    // 5 -6
 
-        }
-
-    }
-    console.log(right)
-
-</script>
 </script>
 </body>
 </html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài3</title>
+    <style>
+        table {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Quản Lý Sổ Tiết Kiệm</h1>
+<label for="mS"><input id="mS" type="text" minlength="0" maxlength="5">Mã Sổ</label><br><br>
+<label for="loaiTK"><input id="loaiTK" type="text" maxlength="10">Loại Tiết Kiệm</label><br><br>
+<label for="tenKH"><input id="tenKH" type="text" maxlength="30">Tên Khách Hàng</label><br><br>
+<label for="cmnd"><input id="cmnd" type="number" max="5">Số chứng minh nhân dân</label><br><br>
+<label for="dateOpenSo"><input id="dateOpenSo" type="date" max="5">Ngày mở sổ</label><br><br>
+<label for="soTien"><input id="soTien" type="number">Số tiền gửi</label><br><br>
+<label><input type="button" onclick="themSTK()" value="Thêm Sổ tiết kiệm theo mẫu"></label>
+<label><input type="button" onclick="addSTK()" value="Thêm Sổ tiết kiệm ẩn thông tin"></label>
+<label><input type="button" onclick="xoaSTK()" value="Xóa Sổ tiết kiệm theo mã sổ"></label>
+<div id="output"></div>
+
+<script>
+    class SoTietKiem {
+        constructor(maSo, typeTK, nameKH, cMND, dateOpenSo, soTien) {
+            this._maSo = maSo;
+            this._typeTK = typeTK;
+            this._nameKH = nameKH;
+            this._cMND = cMND;
+            this._dateOpenSo = dateOpenSo;
+            this._soTien = soTien;
+        }
+
+        getmaSo() {
+            return this._maSo;
+        }
+
+        gettypeTK() {
+            return this._typeTK;
+        }
+
+
+        getnameKH() {
+            return this._nameKH;
+        }
+
+
+        getcMND() {
+            return this._cMND;
+        }
+
+
+        getdateOpenSo() {
+            return this._dateOpenSo;
+        }
+
+
+        getsoTien() {
+            return this._soTien;
+        }
+
+    }
+
+    let arrSTK = [];
+    let stk1 = new SoTietKiem("123", "1 năm", "Trần Ngọc Tân", "201605626", "1/1/2021", 1000000);
+    let stk2 = new SoTietKiem("abc", "2 năm", "Trần Ngọc Tân", "201605626", "1/2/2021", 1000000);
+    arrSTK.push(stk1);
+    arrSTK.push(stk2);
+    console.log(arrSTK);
+    displaySTK();
+
+    function displaySTK() {
+        let table = "<table style='border-collapse: collapse' border='1px'>+" +
+            "<tr><th>Mã Sổ</th>" +
+            "<th>Loại Tiết Kiệm</th>" +
+            "<th>Tên Khách Hàng</th>" +
+            "<th>Số Chứng Minh Nhân Dân</th>" +
+            "<th>Ngày Mở Sổ</th>" +
+            "<th>Số Tiền Gửi</th></tr>";
+        for (let i = 0; i < arrSTK.length; i++) {
+            table += "<tr>" +
+                "<td>" + arrSTK[i].getmaSo() + "</td>" +
+                "<td>" + arrSTK[i].gettypeTK() + "</td>" +
+                "<td>" + arrSTK[i].getnameKH() + "</td>" +
+                "<td>" + arrSTK[i].getcMND() + "</td>" +
+                "<td>" + arrSTK[i].getdateOpenSo() + "</td>" +
+                "<td>" + arrSTK[i].getsoTien() + "</td>" +
+                "<td><input type='button' onclick='delSTK(" + i + " )'value='Xóa '></td></tr>";
+        }
+        document.getElementById("output").innerHTML = table;
+
+        ;
+    }
+
+    function themSTK() {
+        let maSTK = document.getElementById("mS").value;
+        let loaiSTK = document.getElementById("loaiTK").value;
+        let tenKH = document.getElementById("tenKH").value;
+        let soCMND = document.getElementById("cmnd").value;
+        let ngayMoSo = document.getElementById("dateOpenSo").value;
+        let soTienGui = document.getElementById("soTien").value;
+        document.getElementById("mS").value = "";
+        document.getElementById("loaiTK").value = "";
+        document.getElementById("tenKH").value = "";
+        document.getElementById("cmnd").value = "";
+        document.getElementById("dateOpenSo").value = "";
+        document.getElementById("soTien").value = "";
+        let soTK = new SoTietKiem(maSTK, loaiSTK, tenKH, soCMND, ngayMoSo, soTienGui);
+        arrSTK.push(soTK);
+        alert('Đã thêm thành công sổ tiết kiệm');
+        displaySTK();
+
+    }
+
+    function addSTK() {
+        for (let j = 0; j < arrSTK.length; j++) {
+            let maSo = prompt("Nhập vào mã sổ tiết kiệm");
+            let loaiSo = prompt("Nhập vào loại tiết kiệm");
+            let tenKhachHang = prompt("Nhập vào tên khách hàng");
+            let maSoCMND = parseInt(prompt("Nhập vào mã số chứng minh thư"));
+            let dateSo = prompt("Nhập vào ngày mở sổ");
+            let tien = parseInt(prompt("Nhập vào số tiền gửi"));
+            if (maSo === arrSTK[j].getmaSo()) {
+                alert("Mã sổ tiết kiệm đã tồn tại, không thể thêm mới");
+                break;
+            }
+            if (maSo.length > 5) {
+                alert("Mã sổ tiết kiệm không hợp lệ, dài hơn 5 kí tự");
+                break;
+            }
+            if (loaiSo.length > 10) {
+                alert("Loại  tiết kiệm không hợp lệ, dài hơn 10 kí tự");
+                break;
+            }
+            if (tenKhachHang.length > 30) {
+                alert("Tên khách hàng không hợp lệ, dài hơn 30 kí tự");
+                break;
+            }
+            if (typeof maSoCMND !== "number") {
+                alert("Số chứng minh thư không hợp lệ, không được có kí tự khác ngoài số");
+                break;
+            }
+            if (typeof dateSo !== "string") {
+                alert("Ngày mở sổ không hợp lệ");
+                break;
+            }
+            if (typeof tien !== "number") {
+                alert("Số tiền gửi không hợp lệ, không được có kí tự khác ngoài số");
+                break;
+            } else {
+                let stk = new SoTietKiem(maSo, loaiSo, tenKhachHang, maSoCMND, dateSo, tien);
+                arrSTK.push(stk);
+                alert('Đã thêm thành công sổ tiết kiệm');
+                displaySTK();
+                break;
+            }
+        }
+
+
+    }
+
+    function delSTK(index) {
+        if (confirm("Bạn có chắc chắn muốn xóa ???")) {
+            arrSTK.splice(index, 1);
+            displaySTK();
+            alert("Đã xóa xong");
+        }
+    }
+
+    function xoaSTK() {
+        let m = prompt("Nhập vào mã sổ bạn muốn xóa");
+        if (confirm("Bạn có chắc chắn muốn xóa ???")) {
+            for (let j = 0; j < arrSTK.length; j++) {
+                if (m === arrSTK[j].getmaSo()) {
+                    arrSTK.splice(j, 1);
+                    displaySTK();
+                    alert("Đã xóa xong");
+                    break;
+                } else {
+                    alert("Bạn đã nhập sai mã sổ muốn xóa, hãy nhập lại");
+                    displaySTK();
+                    break;
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

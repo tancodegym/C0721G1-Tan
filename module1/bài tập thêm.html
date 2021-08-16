@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 1. Cho một xâu kí tự, tìm số lượng xâu con khác nhau của xâu đó (không tính xâu rỗng)
+    // Ví dụ
+    // - Với inputString = "abac", thì kết quả different(inputString) = 9.
+    // 9 xâu con khác nhau của xâu đầu vào là:
+    //     "a", "b", "c", "ab", "ac", "ba", "aba", "bac", "abac".
+    // 2. Cho một xâu T và xâu S. Tìm tất cả các lần xuất hiện của xâu S trong xâu T.
+    //     Ví dụ
+    // S = abc
+    // T = abcabcabc
+    // Các lần xuất hiện: 1, 4, 7.
+    // 3. Mọi người vào trang web https://codelearn.io/learning/javascript-co-ban để luyện tập thêm những phần cần ôn.
+// Bài 1
+     let str=prompt("enter a string");
+        //Cách 1:
+    let subString=new Array();
+    let reSult = 1;
+    for(let i=0;i<str.length;i++){
+        for(let j=i+1;j<=str.length;j++){
+            subString.push(str.substring(i,j));
+        }
+    }
+    console.log(subString);
+
+    for(let k=0;k<subString.length;k++){
+          for(let m=k+1;m<subString.length;m++){
+              if(subString[m]===subString[k]){
+                  subString.splice(m,1);
+              }
+           }
+    }
+    console.log(subString);
+
+
+
+     // Cách 2:
+     // let arr = [];
+     //    arr.push(str[0])
+     //    let c;
+     //    for (let i = 0; i < str.length; i++){
+     //        c = '';
+     //        for (let j  = i; j < str.length; j++){
+     //            c += str[j];
+     //            for (let k = 0; k < arr.length; k++){
+     //
+     //                console.log(c)
+     //                if (arr[k] == c){
+     //                    break;
+     //                }
+     //                if (k == arr.length - 1){
+     //                    arr.push(c);
+     //                    break;
+     //                }
+     //            }
+     //        }
+     //    }
+     //    console.log(arr);
+
+
+
+
+
+
+    // Bài 2
+    // // Tìm tất cả các lần xuất hiện của xâu S trong xâu T.
+    // let s="abc";
+    // let t="abcabcabc";
+    // let arr=[];
+    //     for (let i = 0; i < t.length; ++i) {
+    //         if (t.substring(i, i + s.length) == s) {
+    //             arr.push(i);
+    //         }}
+    //
+    //     console.log("Vị trí xuất hiện của xâu s trong xâu t là: " +arr);
+    //     console.log(" Số lần xuất hiện của xâu s trong xâu t là: "+ arr.length);
+    // // Hoặc tính số lần xuất hiện của xâu s trong xâu t :
+    //     let s="abc";
+    //     let t="abcabcabc";
+    //
+    //     let a=t.split(s);
+    //     console.log(a);
+    //     let n = t.split(s).length-1;
+    //     alert(" Số lần xuất hiện của xâu s trong xâu t là: " +n);
+
+</script>
+</body>
+</html>
