@@ -2,10 +2,10 @@ package _03_bai3_Array.bai_tap;
 
 import java.util.Scanner;
 
-public class TimPhanTuLonNhatTrongMang2Chieu {
+public class TinhTongCacSoODuongCheoChinhCuaMaTranVuong {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhập vào kích thước ma trận");
+        System.out.println("Nhập vào kích thước ma trận vuông");
         int n = Integer.parseInt(input.nextLine());
         int [][] matrix=new int[n][n];
         System.out.println("Enter " + matrix.length + " rows and " +
@@ -22,9 +22,15 @@ public class TimPhanTuLonNhatTrongMang2Chieu {
             }
             System.out.println();
         }
-        int max = matrix[0][0];
+        int total=0;
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix[row].length; column++) {
+               if(row == column){
+                   total = total+ matrix[row][column];
+               }
+            }
 
-        System.out.println(" Phần tử lớn nhất của ma trận là: " +max);
-
+        }
+        System.out.println("Tổng các phần tử đường chéo chính là: " +total);
     }
 }
