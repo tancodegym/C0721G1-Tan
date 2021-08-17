@@ -16,11 +16,11 @@ public class DaoNguocPhanTuCuaMang {
         array = new int[size];
         int i = 0;
         while (i < array.length) {
-            System.out.print("Enter element " + (i + 1) + ": ");
+            System.out.println("Enter element " + (i + 1) + ": ");
             array[i] = scanner.nextInt();
             i++;
         }
-        System.out.printf("%-20s%s", "Elements in array: ", "");
+        System.out.println("Elements in array: ");
         for (int item : array) {
             System.out.print(item + "\t");
         }
@@ -29,7 +29,7 @@ public class DaoNguocPhanTuCuaMang {
             array[j] = array[size - 1 - j];
             array[size - 1 - j] = temp;
         }
-        System.out.printf("\n%-20s%s", "Reverse array: ", "");
+        System.out.println("Reverse array: ");
         for (int value : array) {
             System.out.print(value + "\t");
         }
