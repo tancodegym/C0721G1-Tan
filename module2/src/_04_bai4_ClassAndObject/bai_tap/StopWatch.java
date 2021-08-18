@@ -13,6 +13,7 @@ class StopWatch {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+
     public LocalTime getStartTime() {
         return startTime;
     }
@@ -38,8 +39,8 @@ class StopWatch {
     }
 }
 
- class DemThoiGianThucThiCuaThuatToanSapXepChon {
-    public static int[] sapXep(int ...a) {
+class DemThoiGianThucThiCuaThuatToanSapXepChon {
+    public static int[] sapXep(int... a) {
         int indexMin, i, j;
         for (i = 0; i < a.length - 1; i++) {
             indexMin = i;
@@ -57,20 +58,21 @@ class StopWatch {
         }
         return a;
     }
+
     public static void main(String[] args) {
-        int[] a=new int[100000];
-        for (int i =0;i<a.length;i++){
-            a[i]=(int)(Math.random()*1000);
+        int[] a = new int[100000];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (int) (Math.random() * 1000);
         }
         LocalTime start = LocalTime.now();
-        a= sapXep(a);
+        a = sapXep(a);
         LocalTime end = LocalTime.now();
         StopWatch stopWatch = new StopWatch(start, end);
-        System.out.println("Time: "+stopWatch.getElapsedTime());
+        System.out.println("Time: " + stopWatch.getElapsedTime());
 
     }
 
-    }
+}
 
 
 

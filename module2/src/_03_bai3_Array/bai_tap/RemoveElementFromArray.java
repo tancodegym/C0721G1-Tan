@@ -2,7 +2,7 @@ package _03_bai3_Array.bai_tap;
 
 import java.util.Scanner;
 
-public class XoaPhanTuKhoiMang {
+public class RemoveElementFromArray {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập vào số phần tử của mảng: ");
@@ -23,7 +23,6 @@ public class XoaPhanTuKhoiMang {
             if( x==array[i]){
                 index_del =i;
                 System.out.println("Phần tử cần xóa có trong mảng là: " + array[i]+" có vị trí là " + index_del);
-
             }
         }
         for(int j = index_del;j<array.length-1;j++){

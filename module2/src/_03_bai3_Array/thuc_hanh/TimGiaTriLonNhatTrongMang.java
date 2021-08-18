@@ -26,13 +26,13 @@ public class TimGiaTriLonNhatTrongMang {
             System.out.println(value);
         }
         int max = array[0];
-        int vitri = 1;
+        int index = 1;
         for (int j = 0; j < array.length; j++) {
             if (array[j] > max) {
                 max = array[j];
-                vitri = j + 1;
+                index = j + 1;
             }
         }
-        System.out.println("The largest property value in the list is " + max + " ,at position " + vitri);
+        System.out.println("The largest property value in the list is " + max + " ,at position " + index);
     }
 }
