@@ -4,92 +4,92 @@ import java.util.Scanner;
 
 class QuadraticEquation
 {
-    public double a,b,c;
+    public double aBac2,bBac1,cHangSo;
     double x1,x2;
     double delta;
     Scanner input=new Scanner(System.in);
-    public void getHeSo()
+    public void getFactor()
     {
         System.out.print("Nhập vào hệ số bậc 2 a: ");
-        this.a=Double.parseDouble(input.nextLine());
+        this.aBac2=Double.parseDouble(input.nextLine());
         System.out.print("Nhập vào hệ số bậc 1 b: ");
-        this.b=Double.parseDouble(input.nextLine());
+        this.bBac1=Double.parseDouble(input.nextLine());
         System.out.print("Nhập hằng số c: ");
-        this.c=Double.parseDouble(input.nextLine());
+        this.cHangSo=Double.parseDouble(input.nextLine());
     }
     public double getDiscriminant()
     {
-        delta=((Math.pow(b, 2))-4*a*c);
+        delta=((Math.pow(bBac1, 2))-4*aBac2*cHangSo);
         return delta;
     }
-    public double nghiemduynhat()
+    public double testOnly()
     {
-        x1=-c/b;
+        x1=-cHangSo/bBac1;
         return x1;
     }
-    public double nghiemkep()
+    public double doubleTest()
     {
-        x1=-b/(2*a);
+        x1=-bBac1/(2*aBac2);
         return x1;
     }
-    public void nghiemphanbiet()
+    public void twoTest()
     {
-        x1=((-b+Math.sqrt(delta))/(2*a));
-        x2=((-b-Math.sqrt(delta))/(2*a));
+        x1=((-bBac1+Math.sqrt(delta))/(2*aBac2));
+        x2=((-bBac1-Math.sqrt(delta))/(2*aBac2));
         System.out.println("x1= "+x1);
         System.out.println("x2= "+x2);
     }
 }
 
-class KiemTra
+class Test
 {
     QuadraticEquation  pt=new QuadraticEquation ();
-    public void nhapPhuongTrinh()
+    public void inputEquation()
     {
-        pt.getHeSo();
+        pt.getFactor();
     }
-    public void kiemTra()
+    public void test()
     {
-        if(pt.a==0)
+        if(pt.aBac2==0)
         {
-            if(pt.b==0)
+            if(pt.bBac1==0)
             {
-                System.out.print("phuong trinh vo so nghiem");
+                System.out.print("Phương trình vô nghiệm");
             }
             else
             {
 
-                System.out.print("phuong trinh co nghiem duy nhat: "+pt.nghiemduynhat());
+                System.out.print("Phương trình có 1 nghiệm duy nhất: "+pt.testOnly());
             }
         }
         else
         {
             if (pt.getDiscriminant()<0)
             {
-                System.out.print("phuong trinh vo nghiem");
+                System.out.print("Phương trình vô nghiệm");
             }
 
             else
             {
                 if(pt.getDiscriminant()==0)
                 {
-                    System.out.print("phuong trinhg co nghiem kep: "+pt.nghiemkep());
+                    System.out.print("Phương trình có 2 nghiệm trùng nhau: "+pt.doubleTest());
                 }
                 else
                 {
-                    System.out.println("phuong trinh co 2 nghiem phan biet: ");
-                    pt.nghiemphanbiet();
+                    System.out.println("Phương trình có 2 nghiệm phân biệt: ");
+                    pt.twoTest();
                 }
             }
         }
     }
 }
-class GiaiPhuongTrinhBac2
+class SolutionOfEquation
 {
     public static void main(String[] args)
     {
-        KiemTra dieuKien=new KiemTra();
-        dieuKien.nhapPhuongTrinh();
-        dieuKien.kiemTra();
+        Test Equation=new Test();
+        Equation.inputEquation();
+        Equation.test();
     }
 }

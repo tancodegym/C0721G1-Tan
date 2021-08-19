@@ -2,39 +2,37 @@ package _04_bai4_ClassAndObject.bai_tap;
 
 import java.time.LocalTime;
 
+
 class StopWatch {
-    private LocalTime startTime, endTime;
+  private  long startTime,endTime;
 
     public StopWatch() {
-        startTime = LocalTime.now();
+        this.startTime = System.currentTimeMillis();
+        this.endTime = System.currentTimeMillis();
     }
 
-    public StopWatch(LocalTime startTime, LocalTime endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public long getStartTime() {
+        return this.startTime;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
+    public long getEndTime() {
+        return this.endTime;
     }
 
     public void start() {
-        startTime = LocalTime.now();
+        this.startTime = System.currentTimeMillis();
     }
 
     public void end() {
-        endTime = LocalTime.now();
-    }
+        this.endTime = System.currentTimeMillis();}
 
-    public int getElapsedTime() {
-        int hour = endTime.getHour() - startTime.getHour();
-        int minute = endTime.getMinute() - startTime.getMinute();
-        int second = endTime.getSecond() - startTime.getSecond();
-        int mSecond = (hour * 3600 + minute * 60 + second) * 1000;
+    public long getElapsedTime() {
+//        int hour = endTime.getHour() - startTime.getHour();
+//        int minute = endTime.getMinute() - startTime.getMinute();
+//        int second = endTime.getSecond() - startTime.getSecond();
+        long start= getStartTime();
+        long end=getEndTime();
+        long mSecond = end-start;
         return mSecond;
     }
 }
@@ -60,19 +58,22 @@ class DemThoiGianThucThiCuaThuatToanSapXepChon {
     }
 
     public static void main(String[] args) {
-        int[] a = new int[100000];
-        for (int i = 0; i < a.length; i++) {
-            a[i] = (int) (Math.random() * 1000);
+        int[] arr = new int[100000];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) (Math.random() * 1000);
         }
-        LocalTime start = LocalTime.now();
-        a = sapXep(a);
-        LocalTime end = LocalTime.now();
-        StopWatch stopWatch = new StopWatch(start, end);
+//        LocalTime start = LocalTime.now();
+//        LocalTime end = LocalTime.now();
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        arr = sapXep(arr);
+        stopWatch.end();;
         System.out.println("Time: " + stopWatch.getElapsedTime());
 
     }
 
 }
+
 
 
 
