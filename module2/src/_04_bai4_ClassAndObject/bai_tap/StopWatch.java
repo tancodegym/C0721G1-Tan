@@ -37,8 +37,8 @@ class StopWatch {
     }
 }
 
-class DemThoiGianThucThiCuaThuatToanSapXepChon {
-    public static int[] sapXep(int... a) {
+class CountTime {
+    public static int[] sort(int... a) {
         int indexMin, i, j;
         for (i = 0; i < a.length - 1; i++) {
             indexMin = i;
@@ -66,7 +66,7 @@ class DemThoiGianThucThiCuaThuatToanSapXepChon {
 //        LocalTime end = LocalTime.now();
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        arr = sapXep(arr);
+        arr = sort(arr);
         stopWatch.end();;
         System.out.println("Time: " + stopWatch.getElapsedTime());
 
