@@ -24,7 +24,7 @@ class Student {
     void getName() {
         System.out.println(name);
     }
-
+// private không gợi được 
     void getClasses() {
         System.out.println(classes);
     }

@@ -20,6 +20,9 @@ public class LopHinhChuNhat {
             return "Rectangle{"+" width= "+width+", height= " +height + "}";
         }
     }
+
+}
+class Run{
     public static class Main{
         public static void main(String[] args) {
             Scanner input = new Scanner(System.in);
@@ -27,7 +30,7 @@ public class LopHinhChuNhat {
             double width = Double.parseDouble(input.nextLine());
             System.out.print("Enter the height:");
             double height = Double.parseDouble(input.nextLine());
-            Rectangle rectangle = new Rectangle(width, height);
+            LopHinhChuNhat.Rectangle rectangle = new LopHinhChuNhat.Rectangle(width, height);
             System.out.println("Your Rectangle \n"+ rectangle.display());
             System.out.println("Perimeter of the Rectangle: "+ rectangle.getPerimeter());
             System.out.println("Area of the Rectangle: "+ rectangle.getArea());

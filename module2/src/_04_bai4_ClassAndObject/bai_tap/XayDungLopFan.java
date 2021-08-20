@@ -1,8 +1,9 @@
 package _04_bai4_ClassAndObject.bai_tap;
 
 import java.time.LocalTime;
+import java.util.Scanner;
 
-public class XayDungLopFan {
+
     static class Fan {
         private final int SLOW = 1;
         private final int MEDIUM = 2;
@@ -53,23 +54,34 @@ public class XayDungLopFan {
             String status = "";
             if (this.isOn()) {
                 status += (" Fan is on," );
-                status += (" Speed is: " + this.speed+" ,"  );
+                status += (" Speed is: " + getSpeed()+" ,"  );
             } else {
                 status += (" Fan is off," );
             }
-            status += (" Radius is: " + this.radius +" ," );
-            status += (" Color is: " + this.color +"." );
+            status += (" Radius is: " + getRadius() +" ," );
+            status += (" Color is: " + getColor() +"." );
             return status;
         }
     }
-    public static void main(String[] args) {
-        Fan quatA = new Fan(3,true,10,"yellow");
-        Fan quatB = new Fan(2,false,5,"blue");
-        System.out.println("Infor of Fan A : " +quatA.toString());
-        System.out.println("Infor of Fan B : " +quatB.toString());
 
+
+class RunFan {
+    public static void main(String[] args) {
+        Fan quatA = new Fan(3, true, 10, "yellow");
+        Fan quatB = new Fan(2, false, 5, "blue");
+        System.out.println("Infor of Fan A : " + quatA.toString());
+        System.out.println("Infor of Fan B : " + quatB.toString());
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter speed of fan: ");
+        int speedOfFan = Integer.parseInt(input.nextLine());
+        System.out.println("Choose status of Fan:");
+        boolean status = Boolean.parseBoolean(input.nextLine());
+        System.out.println("Enter radius of Fan:");
+        double radius = Double.parseDouble(input.nextLine());
+        System.out.println("Enter color of Fan:");
+        String color = input.nextLine();
+        Fan newFan = new Fan(speedOfFan, status, radius, color);
+        System.out.println("Infor of new Fan : " + newFan.toString());
 
     }
-
-
 }

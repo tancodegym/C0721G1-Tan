@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 
 class StopWatch {
-  private  long startTime,endTime;
+    private long startTime, endTime;
 
     public StopWatch() {
         this.startTime = System.currentTimeMillis();
@@ -24,15 +24,16 @@ class StopWatch {
     }
 
     public void end() {
-        this.endTime = System.currentTimeMillis();}
+        this.endTime = System.currentTimeMillis();
+    }
 
     public long getElapsedTime() {
 //        int hour = endTime.getHour() - startTime.getHour();
 //        int minute = endTime.getMinute() - startTime.getMinute();
 //        int second = endTime.getSecond() - startTime.getSecond();
-        long start= getStartTime();
-        long end=getEndTime();
-        long mSecond = end-start;
+        long start = getStartTime();
+        long end = getEndTime();
+        long mSecond = end - start;
         return mSecond;
     }
 }
@@ -67,7 +68,7 @@ class CountTime {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         arr = sort(arr);
-        stopWatch.end();;
+        stopWatch.end();
         System.out.println("Time: " + stopWatch.getElapsedTime());
 
     }
