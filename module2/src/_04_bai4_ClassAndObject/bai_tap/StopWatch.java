@@ -1,8 +1,5 @@
 package _04_bai4_ClassAndObject.bai_tap;
 
-import java.time.LocalTime;
-
-
 class StopWatch {
     private long startTime, endTime;
 
@@ -28,9 +25,6 @@ class StopWatch {
     }
 
     public long getElapsedTime() {
-//        int hour = endTime.getHour() - startTime.getHour();
-//        int minute = endTime.getMinute() - startTime.getMinute();
-//        int second = endTime.getSecond() - startTime.getSecond();
         long start = getStartTime();
         long end = getEndTime();
         long mSecond = end - start;
@@ -57,22 +51,21 @@ class CountTime {
         }
         return a;
     }
+}
 
+class TestTime {
     public static void main(String[] args) {
         int[] arr = new int[100000];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 1000);
         }
-//        LocalTime start = LocalTime.now();
-//        LocalTime end = LocalTime.now();
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        arr = sort(arr);
+        arr = CountTime.sort(arr);
         stopWatch.end();
         System.out.println("Time: " + stopWatch.getElapsedTime());
 
     }
-
 }
 
 

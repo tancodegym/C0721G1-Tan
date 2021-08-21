@@ -20,16 +20,17 @@ public class AccessModifier {
         }
 
     }
-    static class TestCircle {
-        public static void main(String[] args) {
-            Scanner input = new Scanner(System.in);
-            System.out.println("Enter number of radius: ");
-            double r=Double.parseDouble(input.nextLine());
-            Circle circle= new Circle(r);
-            double area = circle.getArea();
-            System.out.println("Area of circle is: " +area);
-            System.out.println("Radius of circle is: " +circle.getRadius());
-        }
 
+}
+ class TestCircle {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter number of radius: ");
+        double r=Double.parseDouble(input.nextLine());
+        AccessModifier.Circle circle= new AccessModifier.Circle(r);
+        double area = circle.getArea();
+        System.out.println("Area of circle is: " +area);
+        System.out.println("Radius of circle is: " +circle.getRadius());
     }
+
 }

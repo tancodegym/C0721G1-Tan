@@ -45,11 +45,13 @@ class Main {
 
 class QuanLySinhVien {
     static SinhVien[] sinhViens = new SinhVien[100];
+
     static {
         sinhViens[0] = new SinhVien("Học Sinh A", 18, "A", 1);
         sinhViens[1] = new SinhVien("Học Sinh B", 36, "B", 2);
         sinhViens[2] = new SinhVien("Học Sinh C", 72, "C", 3);
     }
+
     public static void themSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập tên sinh viên cần thêm:");
@@ -90,6 +92,7 @@ class QuanLySinhVien {
             }
         }
     }
+
     public static void xoaSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần xóa");
@@ -106,6 +109,7 @@ class QuanLySinhVien {
             }
         }
     }
+
     public static void timThongTinSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần tìm");
@@ -123,6 +127,7 @@ class QuanLySinhVien {
             }
         }
     }
+
     public static void hienThiSinhVien() {
         for (SinhVien sinhVien : sinhViens) {
             if (sinhVien != null) {
@@ -136,7 +141,8 @@ class QuanLySinhVien {
 
 
 }
- class SinhVien {
+
+class SinhVien {
     private int id;
     private String ten;
     private int tuoi;

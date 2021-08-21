@@ -1,10 +1,9 @@
 package _04_bai4_ClassAndObject.bai_tap;
 
-import java.time.LocalTime;
 import java.util.Scanner;
 
 
-    static class Fan {
+    class Fan {
         private final int SLOW = 1;
         private final int MEDIUM = 2;
         private final int FAST = 3;

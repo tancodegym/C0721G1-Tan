@@ -24,14 +24,12 @@ class Student {
     void getName() {
         System.out.println(name);
     }
-// private không gợi được 
     void getClasses() {
         System.out.println(classes);
     }
 
 }
-
-class Test {
+class TestStudent {
     public static void main(String[] args) {
         Student studentA = new Student();
         Student studentB = new Student();
