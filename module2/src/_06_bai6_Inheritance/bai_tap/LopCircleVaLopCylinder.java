@@ -1,5 +1,5 @@
 package _06_bai6_Inheritance.bai_tap;
-class Circle {
+ class Circle {
     private double radius ;
     private String color;
     public Circle(double radius,String color){
