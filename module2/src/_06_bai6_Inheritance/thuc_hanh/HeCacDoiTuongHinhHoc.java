@@ -173,7 +173,13 @@ class Square extends Rectangle {
         setWidth(side);
         setLength(side);
     }
+    public double getArea() {
+        return getSide()*getSide();
+    }
 
+    public double getPerimeter() {
+        return 4 * getSide();
+    }
     @Override
     public void setWidth(double width) {
         setSide(width);
