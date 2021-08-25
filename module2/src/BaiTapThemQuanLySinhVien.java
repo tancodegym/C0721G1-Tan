@@ -47,9 +47,7 @@ class QuanLySinhVien {
 
     static {
         sinhViens[0] = new SinhVien(null, 0, "ABC", 25, "C0721G1");
-//
     }
-
     public static void themSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập tên sinh viên cần thêm:");
@@ -78,7 +76,6 @@ class QuanLySinhVien {
             }
         }
     }
-
     public static void suaThongTinSinhVien() {
 
         Scanner input = new Scanner(System.in);
@@ -115,7 +112,6 @@ class QuanLySinhVien {
             }
         }
     }
-
     public static void xoaSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần xóa");
@@ -132,7 +128,6 @@ class QuanLySinhVien {
             }
         }
     }
-
     public static void timThongTinSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần tìm");
@@ -152,7 +147,6 @@ class QuanLySinhVien {
             }
         }
     }
-
     public static void hienThiSinhVien() {
         for (SinhVien sinhVien : sinhViens) {
             if (sinhVien != null) {
@@ -166,17 +160,14 @@ class QuanLySinhVien {
         }
     }
 }
-
 class DiaChi {
     private static String soNha;
     private static String tenDuong;
     private static String tenPhuong;
     private static String tenQuan;
     private static String tenTinh;
-
     public DiaChi() {
     }
-
     public DiaChi(String soNha, String tenDuong, String tenPhuong, String tenQuan, String tenTinh) {
         this.soNha = soNha;
         this.tenDuong = tenDuong;
