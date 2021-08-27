@@ -1,7 +1,7 @@
 package _10_bai10_DSADanhSach.thuc_hanh;
 
 public class TrienKhaiLopLinkedListDonGian {
-    public static class MyLinkedList {
+    private static class MyLinkedList {
         private Node head;
         private int numNodes;
 
@@ -57,7 +57,7 @@ public class TrienKhaiLopLinkedListDonGian {
         }
     }
 
-    public static class TestMyLinkedList {
+    private static class TestMyLinkedList {
         public static void main(String[] args) {
             System.out.println("Test LinkedList");
             MyLinkedList ll = new MyLinkedList(10);
