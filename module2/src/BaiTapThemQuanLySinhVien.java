@@ -1,5 +1,7 @@
 
-import java.util.Arrays;
+import java.util.ArrayList;
+
+import java.util.Collections;
 import java.util.Scanner;
 
 class Main {
@@ -12,6 +14,7 @@ class Main {
             System.out.println("3. Sửa thông tin sinh viên");
             System.out.println("4. Hiển thị danh sách sinh viên");
             System.out.println("5. Tìm thông tin sinh viên");
+            System.out.println("6. Hiển thị danh sách sinh viên sắp xếp theo tên");
             System.out.println("0. Thoát");
             System.out.println("Nhập vào số bạn chọn: ");
             int choice = Integer.parseInt(input.nextLine());
@@ -34,6 +37,9 @@ class Main {
                 case 5:
                     QuanLySinhVien.timThongTinSinhVien();
                     break;
+                case 6:
+                    QuanLySinhVien.sapXepTheoTen();
+                    break;
                 default:
                     System.out.println("Bạn đã nhập sai, vui lòng nhập lại !");
                     break;
@@ -43,11 +49,18 @@ class Main {
 }
 
 class QuanLySinhVien {
-    static SinhVien[] sinhViens = new SinhVien[100];
+
+    static ArrayList<SinhVien> studentList = new ArrayList<>();
 
     static {
-        sinhViens[0] = new SinhVien(null, 0, "ABC", 25, "C0721G1");
+        studentList.add(new SinhVien(new DiaChi("117", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 1, "Nguyen Van A", 20, "C07"));
+        studentList.add(new SinhVien(new DiaChi("118", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 2, "Nguyen Van A", 25, "C08"));
+        studentList.add(new SinhVien(new DiaChi("110", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 3, "Nguyen Van E", 15, "C03"));
+        studentList.add(new SinhVien(new DiaChi("111", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 4, "Nguyen Van E", 35, "C05"));
+        studentList.add(new SinhVien(new DiaChi("120", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 5, "Nguyen Van D", 10, "C04"));
+
     }
+
     public static void themSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập tên sinh viên cần thêm:");
@@ -68,106 +81,88 @@ class QuanLySinhVien {
         String tenTinh = input.nextLine();
         DiaChi diaChi = new DiaChi(soNha, tenDuong, tenPhuong, tenQuan, tenTinh);
         SinhVien sv = new SinhVien(diaChi, 0, tenSinhVien, tuoiSinhVien, lopSinhVien);
-        for (int i = 0; i < sinhViens.length; i++) {
-            if (sinhViens[i] == null) {
-                sinhViens[i] = sv;
-                sinhViens[i].setId(i + 1);
-                break;
-            }
-        }
+        studentList.add(sv);
+
     }
+
     public static void suaThongTinSinhVien() {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần sửa");
         int id = Integer.parseInt(input.nextLine());
-        for (SinhVien sinhVien : sinhViens) {
-            if (sinhVien == null) {
-                System.out.println("Bạn nhập sai id hãy thực hiện lại");
-                break;
-            }
-            if (id == sinhVien.getId()) {
-                System.out.println("Nhập tên sinh viên bạn muốn sửa");
-                String tenSinhVienMuonSua = input.nextLine();
-                System.out.println("Nhập tuổi sinh viên đó:");
-                int tuoiSinhVienMuonSua = Integer.parseInt(input.nextLine());
-                System.out.println("Nhập lớp sinh viên muốn sửa");
-                String lopSinhVienMuonSua = input.nextLine();
-                System.out.println("Nhập số nhà:");
-                String soNha = input.nextLine();
-                System.out.println("Nhập tên đường");
-                String tenDuong = input.nextLine();
-                System.out.println("Nhập tên phường/xã:");
-                String tenPhuong = input.nextLine();
-                System.out.println("Nhập tên quận/huyện");
-                String tenQuan = input.nextLine();
-                System.out.println("Nhập tên tỉnh/thành phố:");
-                String tenTinh = input.nextLine();
-                DiaChi diaChi = new DiaChi(soNha, tenDuong, tenPhuong, tenQuan, tenTinh);
-                sinhVien.setTen(tenSinhVienMuonSua);
-                sinhVien.setTuoi(tuoiSinhVienMuonSua);
-                sinhVien.setTenLop(lopSinhVienMuonSua);
-                sinhVien.setDiaChi(diaChi);
+        System.out.println("Nhập tên sinh viên bạn muốn sửa");
+        String tenSinhVienMuonSua = input.nextLine();
+        System.out.println("Nhập tuổi sinh viên đó:");
+        int tuoiSinhVienMuonSua = Integer.parseInt(input.nextLine());
+        System.out.println("Nhập lớp sinh viên muốn sửa");
+        String lopSinhVienMuonSua = input.nextLine();
+        System.out.println("Nhập số nhà:");
+        String soNha = input.nextLine();
+        System.out.println("Nhập tên đường");
+        String tenDuong = input.nextLine();
+        System.out.println("Nhập tên phường/xã:");
+        String tenPhuong = input.nextLine();
+        System.out.println("Nhập tên quận/huyện");
+        String tenQuan = input.nextLine();
+        System.out.println("Nhập tên tỉnh/thành phố:");
+        String tenTinh = input.nextLine();
+        DiaChi diaChi = new DiaChi(soNha, tenDuong, tenPhuong, tenQuan, tenTinh);
+        studentList.get(id).setDiaChi(diaChi);
+        studentList.get(id).setTuoi(tuoiSinhVienMuonSua);
+        studentList.get(id).setTen(tenSinhVienMuonSua);
+        studentList.get(id).setTenLop(lopSinhVienMuonSua);
 
-            }
-        }
+
     }
+
+
     public static void xoaSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần xóa");
         int id = Integer.parseInt(input.nextLine());
-        for (int i = 0; i < sinhViens.length; i++) {
-            if (sinhViens[i] == null) {
-                break;
-            }
-            if (id == sinhViens[i].getId()) {
-                for (int j = i; j < sinhViens.length; j++) {
-                    sinhViens[i] = sinhViens[i + 1];
-                }
-                sinhViens[sinhViens.length - 1] = null;
-            }
-        }
+        studentList.remove(id);
+        hienThiSinhVien();
     }
+
     public static void timThongTinSinhVien() {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập id sinh viên cần tìm");
         int id = Integer.parseInt(input.nextLine());
-        for (SinhVien sinhVien : sinhViens) {
-            if (sinhVien == null) {
-                System.out.println("Bạn nhập sai id hãy thực hiện lại");
-                break;
-            }
-            if (id == sinhVien.getId()) {
-                System.out.println(Arrays.toString(sinhViens));
-                System.out.println("ID: " + sinhVien.getId());
-                System.out.println("Tên Sinh viên: " + sinhVien.getTen());
-                System.out.println("Tuổi :" + sinhVien.getTuoi());
-                System.out.println("Lớp: " + sinhVien.getTenLop());
-                System.out.println("Địa chỉ: " + sinhVien.getDiaChi());
-            }
+        System.out.println("ID: " + studentList.get(id - 1).getId());
+        System.out.println("Tên Sinh viên: " + studentList.get(id - 1).getTen());
+        System.out.println("Tuổi :" + studentList.get(id - 1).getTuoi());
+        System.out.println("Lớp: " + studentList.get(id - 1).getTenLop());
+        System.out.println("Địa chỉ: " + studentList.get(id - 1).getDiaChi());
+    }
+
+    public static void hienThiSinhVien() {
+        for (SinhVien sinhVien : studentList) {
+            System.out.println(sinhVien.toString());
+//            System.out.println("ID: " + sinhVien.getId());
+//            System.out.println("Tên Sinh viên: " + sinhVien.getTen());
+//            System.out.println("Tuổi :" + sinhVien.getTuoi());
+//            System.out.println("Lớp: " + sinhVien.getTenLop());
+//            System.out.println("Địa chỉ: " + sinhVien.getDiaChi());
         }
     }
-    public static void hienThiSinhVien() {
-        for (SinhVien sinhVien : sinhViens) {
-            if (sinhVien != null) {
-                System.out.println(sinhVien);
-                System.out.println("ID: " + sinhVien.getId());
-                System.out.println("Tên Sinh viên: " + sinhVien.getTen());
-                System.out.println("Tuổi :" + sinhVien.getTuoi());
-                System.out.println("Lớp: " + sinhVien.getTenLop());
-                System.out.println("Địa chỉ: " + sinhVien.getDiaChi());
-            }
-        }
+
+    public static void sapXepTheoTen() {
+        Collections.sort(studentList);
+        hienThiSinhVien();
     }
 }
+
+
 class DiaChi {
     private static String soNha;
     private static String tenDuong;
     private static String tenPhuong;
     private static String tenQuan;
     private static String tenTinh;
+
     public DiaChi() {
     }
+
     public DiaChi(String soNha, String tenDuong, String tenPhuong, String tenQuan, String tenTinh) {
         this.soNha = soNha;
         this.tenDuong = tenDuong;
@@ -219,7 +214,7 @@ class DiaChi {
 
 }
 
-class SinhVien {
+class SinhVien implements Comparable<SinhVien> {
     private int id;
     private String ten;
     private int tuoi;
@@ -279,9 +274,23 @@ class SinhVien {
                 ", tên quận: " + DiaChi.getTenQuan() +
                 ", tên tỉnh: " + DiaChi.getTenTinh();
     }
+    @Override
+    public String toString () {
+        return "(ID: " + getId() +"Tên: " + getTen() + ", Tuổi: " + getTuoi() + ", Tên lớp: " + getTenLop() +" "+ getDiaChi() ;
+    }
+
 
 
     public void setDiaChi(DiaChi diaChi) {
         this.diaChi = diaChi;
+    }
+
+    @Override
+    public int compareTo(SinhVien sinhVien) {
+        if (this.getTen() == sinhVien.getTen()) {
+            return this.getTuoi() - sinhVien.getTuoi();
+        } else {
+            return this.getTen().compareTo(sinhVien.getTen());
+        }
     }
 }

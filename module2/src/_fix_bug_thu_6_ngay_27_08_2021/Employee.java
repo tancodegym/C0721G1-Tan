@@ -9,7 +9,7 @@ public class Employee extends Person {
 
     @Override
     public void howToMove() {
-        System.out.println("Employee by motorbike or car");
+        System.out.println("Employee move by motorbike or car");
     }
     @Override
     public String toString() {

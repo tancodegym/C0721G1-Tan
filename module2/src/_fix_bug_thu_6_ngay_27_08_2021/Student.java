@@ -17,7 +17,7 @@ public  class Student extends Person {
 
     @Override
     public void howToMove() {
-        System.out.println("Student goes by any vehicle");
+        System.out.println("Student move by any vehicle");
     }
 
     @Override
