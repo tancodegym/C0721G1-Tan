@@ -1,7 +1,11 @@
 
+import _12_bai12_JavaCollectionFramework.bai_tap.LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework;
+import _12_bai12_JavaCollectionFramework.thuc_hanh.SapXepVoiComparableVaComparator;
+
 import java.util.ArrayList;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 class Main {
@@ -53,11 +57,11 @@ class QuanLySinhVien {
     static ArrayList<SinhVien> studentList = new ArrayList<>();
 
     static {
-        studentList.add(new SinhVien(new DiaChi("117", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 1, "Nguyen Van A", 20, "C07"));
+        studentList.add(new SinhVien(new DiaChi("117", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 5, "Nguyen Van A", 20, "C07"));
         studentList.add(new SinhVien(new DiaChi("118", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 2, "Nguyen Van A", 25, "C08"));
-        studentList.add(new SinhVien(new DiaChi("110", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 3, "Nguyen Van E", 15, "C03"));
-        studentList.add(new SinhVien(new DiaChi("111", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 4, "Nguyen Van E", 35, "C05"));
-        studentList.add(new SinhVien(new DiaChi("120", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 5, "Nguyen Van D", 10, "C04"));
+        studentList.add(new SinhVien(new DiaChi("110", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 1, "Nguyen Van E", 15, "C03"));
+        studentList.add(new SinhVien(new DiaChi("111", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 3, "Nguyen Van E", 35, "C05"));
+        studentList.add(new SinhVien(new DiaChi("120", "TotDong", "HoaMinh", "LienChieu", "DaNang"), 4, "Nguyen Van D", 10, "C04"));
 
     }
 
@@ -136,19 +140,20 @@ class QuanLySinhVien {
     }
 
     public static void hienThiSinhVien() {
+        IdSinhVienCompartor idSinhVienCompartor= new IdSinhVienCompartor();
+        Collections.sort(studentList,idSinhVienCompartor);
         for (SinhVien sinhVien : studentList) {
             System.out.println(sinhVien.toString());
-//            System.out.println("ID: " + sinhVien.getId());
-//            System.out.println("Tên Sinh viên: " + sinhVien.getTen());
-//            System.out.println("Tuổi :" + sinhVien.getTuoi());
-//            System.out.println("Lớp: " + sinhVien.getTenLop());
-//            System.out.println("Địa chỉ: " + sinhVien.getDiaChi());
+
         }
     }
 
     public static void sapXepTheoTen() {
         Collections.sort(studentList);
-        hienThiSinhVien();
+        for (SinhVien sinhVien : studentList) {
+            System.out.println(sinhVien.toString());
+
+        }
     }
 }
 
@@ -213,7 +218,20 @@ class DiaChi {
     }
 
 }
+ class IdSinhVienCompartor implements Comparator<SinhVien>{
 
+
+    @Override
+    public int compare(SinhVien o1, SinhVien o2) {
+        if(o1.getId() > o2.getId()){
+            return 1;
+        }else if(o1.getId() == o2.getId()){
+            return 0;
+        }else{
+            return -1;
+        }
+    }
+}
 class SinhVien implements Comparable<SinhVien> {
     private int id;
     private String ten;

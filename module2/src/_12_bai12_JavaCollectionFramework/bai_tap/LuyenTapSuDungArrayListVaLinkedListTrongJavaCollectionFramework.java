@@ -1,7 +1,10 @@
 package _12_bai12_JavaCollectionFramework.bai_tap;
 
+import _12_bai12_JavaCollectionFramework.thuc_hanh.SapXepVoiComparableVaComparator;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
@@ -10,7 +13,6 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
     static class RunMain {
         public static void main(String[] args) {
             Scanner input = new Scanner(System.in);
-
             while (true) {
                 System.out.println("Menu");
                 System.out.println("1. Add Product");
@@ -49,11 +51,12 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
 //                        ProductManager.sortProductByPriceDown();
 //                        break;
                     default:
-                        System.out.println("Bạn đã nhập sai, vui lòng nhập lại !");
+                        System.out.println("Please enter again !");
                         break;
                 }
             }
         }
+
 
         static class Product implements Comparable<Product> {
             private int id;
@@ -94,7 +97,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
             }
 
             public String productToString() {
-                return "Id of product: " + getId() +
+                return "Id : " + getId() +
                         ", Name of product: " + getNameProduct() +
                         ", Price of product " + getPriceProduct();
             }
@@ -109,6 +112,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
         static class ProductManager {
             static ArrayList<Product> products = new ArrayList<>();
 
+
             static {
                 products.add(new Product(1, 1000, "HonDa"));
                 products.add(new Product(2, 2000, "Yamaha"));
@@ -116,7 +120,6 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.add(new Product(4, 9000, "Suzuki"));
                 products.add(new Product(5, 3000, "BMW"));
             }
-
             public static void addProduct() {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter id of product:");
@@ -141,7 +144,6 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.get(idProduct).setPriceProduct(priceProduct);
                 displayProduct();
             }
-
             public static void deleteProduct() {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter id of product:");
@@ -149,8 +151,9 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.remove(idProduct);
                 displayProduct();
             }
-
             public static void displayProduct() {
+                IdProductCompartor idProductCompartor = new IdProductCompartor();
+                Collections.sort(products,idProductCompartor);
                 for (Product product : products) {
                     System.out.println(product.productToString());
                 }
@@ -168,16 +171,32 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 }
                 System.out.println("Product after search is: " + products.get(index).productToString());
             }
-
             public static void sortProductByPriceUp() {
                 Collections.sort(products);
-                System.out.println("Sort by prices:");
-                displayProduct();
-
-
+                System.out.println("Sort by prices up:");
+                for (Product product : products) {
+                    System.out.println(product.productToString());
+                }
             }
-
-
+//            public static void sortProductByPriceDown() {
+//                PriceDownProductCompartor priceDownProductCompartor = new PriceDownProductCompartor();
+//                Collections.sort(products,priceDownProductCompartor);
+//                System.out.println("Sort by prices down:");
+//                for (Product product : products) {
+//                    System.out.println(product.productToString());
+//                }
+//            }
         }
     }
-}
+    public static class IdProductCompartor implements Comparator<RunMain.Product> {
+        @Override
+        public int compare(RunMain.Product o1, RunMain.Product o2) {
+            if(o1.getId() > o2.getId()){
+                return 1;
+            }else if(o1.getId() == o2.getId()){
+                return 0;
+            }else{
+                return -1;
+            }
+        }
+    }}
