@@ -1,6 +1,5 @@
 package _12_bai12_JavaCollectionFramework.bai_tap;
 
-import _12_bai12_JavaCollectionFramework.thuc_hanh.SapXepVoiComparableVaComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +7,6 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
-
 
     static class RunMain {
         public static void main(String[] args) {
@@ -111,8 +109,6 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
 
         static class ProductManager {
             static ArrayList<Product> products = new ArrayList<>();
-
-
             static {
                 products.add(new Product(1, 1000, "HonDa"));
                 products.add(new Product(2, 2000, "Yamaha"));
