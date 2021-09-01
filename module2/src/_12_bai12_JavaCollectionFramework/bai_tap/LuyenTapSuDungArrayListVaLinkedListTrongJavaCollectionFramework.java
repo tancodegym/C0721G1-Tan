@@ -19,7 +19,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 System.out.println("4. Display Product list");
                 System.out.println("5. Find Product by name");
                 System.out.println("6. Sort Product by  price up");
-//                System.out.println("7. Sort Product by  price down");
+                System.out.println("7. Sort Product by  price down");
                 System.out.println("0. Exit Menu");
                 System.out.println("Enter your choice: ");
                 int choice = Integer.parseInt(input.nextLine());
@@ -45,9 +45,9 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                     case 6:
                         ProductManager.sortProductByPriceUp();
                         break;
-//                    case 7:
-//                        ProductManager.sortProductByPriceDown();
-//                        break;
+                    case 7:
+                        ProductManager.sortProductByPriceDown();
+                        break;
                     default:
                         System.out.println("Please enter again !");
                         break;
@@ -109,6 +109,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
 
         static class ProductManager {
             static ArrayList<Product> products = new ArrayList<>();
+
             static {
                 products.add(new Product(1, 1000, "HonDa"));
                 products.add(new Product(2, 2000, "Yamaha"));
@@ -116,6 +117,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.add(new Product(4, 9000, "Suzuki"));
                 products.add(new Product(5, 3000, "BMW"));
             }
+
             public static void addProduct() {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter id of product:");
@@ -140,6 +142,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.get(idProduct).setPriceProduct(priceProduct);
                 displayProduct();
             }
+
             public static void deleteProduct() {
                 Scanner input = new Scanner(System.in);
                 System.out.println("Enter id of product:");
@@ -147,9 +150,10 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 products.remove(idProduct);
                 displayProduct();
             }
+
             public static void displayProduct() {
                 IdProductCompartor idProductCompartor = new IdProductCompartor();
-                Collections.sort(products,idProductCompartor);
+                Collections.sort(products, idProductCompartor);
                 for (Product product : products) {
                     System.out.println(product.productToString());
                 }
@@ -167,6 +171,7 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                 }
                 System.out.println("Product after search is: " + products.get(index).productToString());
             }
+
             public static void sortProductByPriceUp() {
                 Collections.sort(products);
                 System.out.println("Sort by prices up:");
@@ -174,25 +179,42 @@ public class LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework {
                     System.out.println(product.productToString());
                 }
             }
-//            public static void sortProductByPriceDown() {
-//                PriceDownProductCompartor priceDownProductCompartor = new PriceDownProductCompartor();
-//                Collections.sort(products,priceDownProductCompartor);
-//                System.out.println("Sort by prices down:");
-//                for (Product product : products) {
-//                    System.out.println(product.productToString());
-//                }
-//            }
+            public static void sortProductByPriceDown() {
+                PriceDownProductCompartor priceDownProductCompartor = new PriceDownProductCompartor();
+                Collections.sort(products,priceDownProductCompartor);
+                System.out.println("Sort by prices down:");
+                for (Product product : products) {
+                    System.out.println(product.productToString());
+                }
+            }
         }
     }
+
     public static class IdProductCompartor implements Comparator<RunMain.Product> {
         @Override
         public int compare(RunMain.Product o1, RunMain.Product o2) {
-            if(o1.getId() > o2.getId()){
+            if (o1.getId() > o2.getId()) {
                 return 1;
-            }else if(o1.getId() == o2.getId()){
+            } else if (o1.getId() == o2.getId()) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+    }
+    public static class PriceDownProductCompartor implements Comparator<RunMain.Product> {
+
+
+        @Override
+        public int compare(LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework.RunMain.Product o1, LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework.RunMain.Product o2) {
+            if(o1.getPriceProduct() < o2.getPriceProduct()){
+                return 1;
+            }else if(o1.getPriceProduct() == o2.getPriceProduct()){
                 return 0;
             }else{
                 return -1;
             }
         }
-    }}
+
+    }
+}
