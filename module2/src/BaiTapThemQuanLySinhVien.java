@@ -1,6 +1,4 @@
 
-import _12_bai12_JavaCollectionFramework.bai_tap.LuyenTapSuDungArrayListVaLinkedListTrongJavaCollectionFramework;
-import _12_bai12_JavaCollectionFramework.thuc_hanh.SapXepVoiComparableVaComparator;
 
 import java.util.ArrayList;
 

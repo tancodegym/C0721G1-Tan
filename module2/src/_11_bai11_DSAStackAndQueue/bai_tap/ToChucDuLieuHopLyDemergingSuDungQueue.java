@@ -44,60 +44,61 @@ public class ToChucDuLieuHopLyDemergingSuDungQueue {
             System.out.println(data.dataToString());
         }
     }
-    static class Data implements Comparable<Data> {
-        private String name;
-        private boolean gender;
-        private LocalDate dateOfBirth;
 
-        public Data() {
+}
+ class Data implements Comparable<Data> {
+    private String name;
+    private boolean gender;
+    private LocalDate dateOfBirth;
 
-        }
+    public Data() {
 
-        public Data(String name, boolean gender, LocalDate dateOfBirth) {
-            this.name = name;
-            this.gender = gender;
-            this.dateOfBirth = dateOfBirth;
-        }
+    }
 
-        public String getName() {
-            return name;
-        }
+    public Data(String name, boolean gender, LocalDate dateOfBirth) {
+        this.name = name;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public boolean isGender() {
-            return gender;
-        }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        public String getGender() {
-            if (isGender()) {
-                return "Male";
-            } else return "Female";
-        }
+    public boolean isGender() {
+        return gender;
+    }
 
-        public void setGender(boolean gender) {
-            this.gender = gender;
-        }
+    public String getGender() {
+        if (isGender()) {
+            return "Male";
+        } else return "Female";
+    }
 
-        public LocalDate getDateOfBirth() {
-            return dateOfBirth;
-        }
+    public void setGender(boolean gender) {
+        this.gender = gender;
+    }
 
-        public void setDateOfBirth(LocalDate dateOfBirth) {
-            this.dateOfBirth = dateOfBirth;
-        }
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 
-        public String dataToString() {
-            return "Name: " + getName() + ", Gender:  " + getGender() + ", Date of birth: " + getDateOfBirth();
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 
-        }
+    public String dataToString() {
+        return "Name: " + getName() + ", Gender:  " + getGender() + ", Date of birth: " + getDateOfBirth();
 
-        @Override
-        public int compareTo(Data d) {
-            return this.getDateOfBirth().compareTo(d.getDateOfBirth());
-        }
+    }
+
+    @Override
+    public int compareTo(Data d) {
+        return this.getDateOfBirth().compareTo(d.getDateOfBirth());
     }
 }
 
