@@ -6,26 +6,26 @@ class RunMain {
     public static void main(String[] args) {
         boolean check = true;
         Scanner input = new Scanner(System.in);
-        System.out.println("Menu Student Manager\n" +
-                "1.Thêm học sinh\n" +
-                "2.Hiển thị học sinh\n" +
-                "3.Thoát");
-        System.out.println("Enter your choose:");
-        int choose = Integer.parseInt(input.nextLine());
-
         while (check) {
+            System.out.println("Menu Student Manager\n" +
+                    "1.Thêm học sinh\n" +
+                    "2.Hiển thị học sinh\n" +
+                    "3.Thoát");
+            System.out.println("Enter your choose:");
+            int choose = Integer.parseInt(input.nextLine());
+
             switch (choose) {
                 case 1:
                     StudentManager.add();
                     break;
                 case 2:
                     StudentManager.show(StudentManager.studentMap);
-                    check = false;
                     break;
                 case 3:
                     System.exit(0);
                     break;
                 default:
+                    check=false;
                     break;
             }
         }
