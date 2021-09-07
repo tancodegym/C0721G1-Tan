@@ -28,9 +28,12 @@ public class House extends Facility{
     public void setNumberOfFloor(int numberOfFloor) {
         this.numberOfFloor = numberOfFloor;
     }
+
     @Override
-    public String toString(){
-        return "House with room standar "+houseStandar+
-                " and number of floors : "+numberOfFloor+super.toString();
+    public String toString() {
+        return "House{" +
+                "houseStandar=" + houseStandar +
+                ", numberOfFloor=" + numberOfFloor +
+                '}'+super.toString();
     }
 }

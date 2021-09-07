@@ -178,7 +178,6 @@ public class FuramaController {
                 case 3:
                     displayMainMenu();
                     break;
-
                 case 0:
                     System.exit(0);
             }

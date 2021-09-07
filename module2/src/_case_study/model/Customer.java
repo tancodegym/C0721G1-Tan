@@ -1,9 +1,45 @@
 package _case_study.model;
 
+import java.time.LocalDate;
+
 public class Customer extends Person {
     private String customerCode;
     private CustomerType customerType;
-    private Address address;
+
+    public Customer() {
+    }
+
+    public Customer(String name, String dateOfBirth, String gender, String idCard,
+                    String phoneNumber, String email, Address address,
+                    String customerCode, CustomerType customerType) {
+        super(name, dateOfBirth, gender, idCard, phoneNumber, email, address);
+        this.customerCode = customerCode;
+        this.customerType = customerType;
+    }
+
+    public String getCustomerCode() {
+        return customerCode;
+    }
+
+    public void setCustomerCode(String customerCode) {
+        this.customerCode = customerCode;
+    }
+
+    public CustomerType getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(CustomerType customerType) {
+        this.customerType = customerType;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerCode='" + customerCode + '\'' +
+                ", customerType=" + customerType +
+                '}'+super.toString();
+    }
 }
 class CustomerType{
     private String customerType;
@@ -20,39 +56,11 @@ class CustomerType{
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
     }
-    @Override
-    public String toString(){
-        return "Customer type is: "+customerType;
-    }
-
-}
- class Address {
-    private String houseNumber;
-    private String stress;
-    private String ward;
-    private String district;
-    private String province;
-    public Address() {
-    }
-
-    public Address(String houseNumber, String stress, String ward, String district, String province) {
-        this.houseNumber = houseNumber;
-        this.stress = stress;
-        this.ward = ward;
-        this.district = district;
-        this.province = province;
-    }
 
     @Override
     public String toString() {
-        return "{" +
-                "houseNumber='" + houseNumber + '\'' +
-                ", stress='" + stress + '\'' +
-                ", ward='" + ward + '\'' +
-                ", district='" + district + '\'' +
-                ", province='" + province + '\'' +
+        return "CustomerType{" +
+                "customerType='" + customerType + '\'' +
                 '}';
     }
-
-
 }

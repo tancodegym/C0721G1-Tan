@@ -6,7 +6,6 @@ private double area;
 private int cost;
 private int numberOfPeople;
 private RentalType rentalType;
-
     public Facility(String name_service, double area, int cost, int numberOfPeople, RentalType rentalType) {
         this.nameService = name_service;
         this.area = area;
@@ -57,13 +56,16 @@ private RentalType rentalType;
     public void setRentalType(RentalType rentalType) {
         this.rentalType = rentalType;
     }
+
     @Override
-    public String toString(){
-        return " Facility has name: "+getNameService()+
-                " ,  area: "+getArea()+
-                " , cost: "+getCost()+
-                " , maximum number of people is: " +getNumberOfPeople()+
-                " , with rental type is: "+getRentalType();
+    public String toString() {
+        return "Facility{" +
+                "nameService='" + nameService + '\'' +
+                ", area=" + area +
+                ", cost=" + cost +
+                ", numberOfPeople=" + numberOfPeople +
+                ", rentalType=" + rentalType +
+                '}';
     }
 }
 class RentalType{
@@ -83,9 +85,12 @@ class RentalType{
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
     }
+
     @Override
-    public String toString(){
-        return "Rental type is: "+rentalType;
+    public String toString() {
+        return "RentalType{" +
+                "rentalType='" + rentalType + '\'' +
+                '}';
     }
 }
 class RoomStandar{
@@ -105,8 +110,11 @@ class RoomStandar{
     public void setRoomStandar(String roomStandar) {
         this.roomStandar = roomStandar;
     }
+
     @Override
-    public String toString(){
-        return "Room standar is: "+ roomStandar;
+    public String toString() {
+        return "RoomStandar{" +
+                "roomStandar='" + roomStandar + '\'' +
+                '}';
     }
 }

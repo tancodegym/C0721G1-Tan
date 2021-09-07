@@ -1,4 +1,5 @@
 package _case_study.service;
 
-public interface EmployeeService {
+public interface EmployeeService extends FuramaService {
+
 }

@@ -18,10 +18,12 @@ public class Room extends Facility {
     public void setExtraService(ExtraService extraService) {
         this.extraService = extraService;
     }
+
     @Override
-    public String toString(){
-        return "Room with free service included : "+extraService+
-                super.toString();
+    public String toString() {
+        return "Room{" +
+                "extraService=" + extraService +
+                '}'+super.toString();
     }
 }
 class ExtraService{
@@ -38,8 +40,11 @@ class ExtraService{
     public void setExtraService(String extraService) {
         this.extraService = extraService;
     }
+
     @Override
-    public String toString(){
-        return "Extra service : "+extraService;
+    public String toString() {
+        return "ExtraService{" +
+                "extraService='" + extraService + '\'' +
+                '}';
     }
 }
