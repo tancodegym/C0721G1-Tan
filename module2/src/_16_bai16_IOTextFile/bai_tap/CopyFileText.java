@@ -3,8 +3,7 @@ package _16_bai16_IOTextFile.bai_tap;
 import java.io.*;
 import java.util.Scanner;
 
-//Cách 1 copy bằng  stream:
-class CopyFileExample {
+public class CopyFileText {
     public static void main(String[] args) throws IOException {
         InputStream inStream = null;
         OutputStream outStream = null;
@@ -35,12 +34,13 @@ class CopyFileExample {
         }
     }
 }
-//Cách 2: Copy file sử dụng File class:
-//private static void copyFile(File source, File dest) throws IOException {
-//    Files.copy(source.toPath(), dest.toPath());
-//}
-
-//Cách 3: Copy bằng đọc ghi file:
+//
+////Cách 2: Copy file sử dụng File class:
+////private static void copyFile(File source, File dest) throws IOException {
+////    Files.copy(source.toPath(), dest.toPath());
+////}
+//
+////Cách 3: Copy bằng đọc ghi file:
 //import java.io.*;
 //import java.util.Scanner;
 //
@@ -59,7 +59,6 @@ class CopyFileExample {
 //                   readString+=line;
 //                }
 //                bufferedReader.close();
-//
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
@@ -67,11 +66,11 @@ class CopyFileExample {
 //        }
 //        public void writeFile(String filePath, String writeString){
 //            try{
-//                FileWriter writer = new FileWriter(filePath,true);
+//                FileWriter writer = new FileWriter(filePath,false);
 //                BufferedWriter bufferedWriter = new BufferedWriter(writer);
 //                bufferedWriter.write(writeString);
 //                bufferedWriter.close();
-//
+//                System.out.println("File write completed");
 //            } catch (IOException e) {
 //                e.printStackTrace();
 //            }
@@ -85,6 +84,5 @@ class CopyFileExample {
 //        String writeFilePath = input.nextLine();
 //        ReadAndWriteFile readAndWriteFile =new ReadAndWriteFile();
 //        readAndWriteFile.writeFile(writeFilePath,readAndWriteFile.readFile(readFilePath));
-//
 //    }
 //}

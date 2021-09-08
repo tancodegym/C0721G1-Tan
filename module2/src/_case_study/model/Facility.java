@@ -1,6 +1,6 @@
 package _case_study.model;
 
-abstract class Facility {
+public abstract class Facility {
 private String nameService;
 private double area;
 private int cost;
@@ -68,53 +68,4 @@ private RentalType rentalType;
                 '}';
     }
 }
-class RentalType{
-    private String rentalType;
 
-    public RentalType() {
-    }
-
-    public RentalType(String rentalType) {
-        this.rentalType = rentalType;
-    }
-
-    public String getRentalType() {
-        return rentalType;
-    }
-
-    public void setRentalType(String rentalType) {
-        this.rentalType = rentalType;
-    }
-
-    @Override
-    public String toString() {
-        return "RentalType{" +
-                "rentalType='" + rentalType + '\'' +
-                '}';
-    }
-}
-class RoomStandar{
-    private String roomStandar;
-
-    public RoomStandar() {
-    }
-
-    public RoomStandar(String roomStandar) {
-        this.roomStandar = roomStandar;
-    }
-
-    public String getRoomStandar() {
-        return roomStandar;
-    }
-
-    public void setRoomStandar(String roomStandar) {
-        this.roomStandar = roomStandar;
-    }
-
-    @Override
-    public String toString() {
-        return "RoomStandar{" +
-                "roomStandar='" + roomStandar + '\'' +
-                '}';
-    }
-}

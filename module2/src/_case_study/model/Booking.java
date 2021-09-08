@@ -7,10 +7,8 @@ public class Booking {
     private String serviceName;
     private String customerCode;
     private String serviceType;
-
     public Booking() {
     }
-
     public Booking(String bookingCode, String startDate, String endDate,
                    String serviceName, String customerCode, String serviceType) {
         this.bookingCode = bookingCode;

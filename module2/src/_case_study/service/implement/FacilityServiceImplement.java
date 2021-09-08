@@ -3,33 +3,29 @@ package _case_study.service.implement;
 import _case_study.service.FacilityService;
 
 public class FacilityServiceImplement implements FacilityService {
+
     @Override
-    public void addService() {
+    public void displayListMaintenance() {
 
     }
 
     @Override
-    public void displayService() {
+    public void addList() {
 
     }
 
     @Override
-    public void editService() {
+    public void displayList() {
 
     }
 
     @Override
-    public void deleteService() {
+    public void editList() {
 
     }
 
     @Override
-    public void sortService() {
-
-    }
-
-    @Override
-    public void searchService() {
+    public void deleteList() {
 
     }
 }

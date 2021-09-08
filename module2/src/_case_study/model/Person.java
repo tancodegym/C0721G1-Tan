@@ -9,10 +9,9 @@ abstract class Person {
  private String idCard;
  private String phoneNumber;
  private String email;
- private Address address;
+ private String address;
 
- public Person(String name, String dateOfBirth, String gender,
-               String idCard, String phoneNumber, String email, Address address) {
+ public Person(String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address) {
   this.name = name;
   this.dateOfBirth = dateOfBirth;
   this.gender = gender;
@@ -33,11 +32,11 @@ abstract class Person {
   this.dateOfBirth = dateOfBirth;
  }
 
- public Address getAddress() {
+ public String getAddress() {
   return address;
  }
 
- public void setAddress(Address address) {
+ public void setAddress(String address) {
   this.address = address;
  }
 
@@ -87,42 +86,12 @@ abstract class Person {
  public String toString() {
   return "Person{" +
           "name='" + name + '\'' +
-          ", dateOfBirth=" + dateOfBirth +
+          ", dateOfBirth='" + dateOfBirth + '\'' +
           ", gender='" + gender + '\'' +
           ", idCard='" + idCard + '\'' +
           ", phoneNumber='" + phoneNumber + '\'' +
           ", email='" + email + '\'' +
-          ", address=" + address +
+          ", Address='" + address + '\'' +
           '}';
  }
-}
- class Address {
- private String houseNumber;
- private String stress;
- private String ward;
- private String district;
- private String province;
- public Address() {
- }
-
- public Address(String houseNumber, String stress, String ward, String district, String province) {
-  this.houseNumber = houseNumber;
-  this.stress = stress;
-  this.ward = ward;
-  this.district = district;
-  this.province = province;
- }
-
- @Override
- public String toString() {
-  return "{" +
-          "houseNumber='" + houseNumber + '\'' +
-          ", stress='" + stress + '\'' +
-          ", ward='" + ward + '\'' +
-          ", district='" + district + '\'' +
-          ", province='" + province + '\'' +
-          '}';
- }
-
-
 }

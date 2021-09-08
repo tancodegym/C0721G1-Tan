@@ -3,33 +3,24 @@ package _case_study.service.implement;
 import _case_study.service.ContractService;
 
 public class ContractImplement  implements ContractService {
+
     @Override
-    public void addService() {
+    public void addList() {
 
     }
 
     @Override
-    public void displayService() {
+    public void displayList() {
 
     }
 
     @Override
-    public void editService() {
+    public void editList() {
 
     }
 
     @Override
-    public void deleteService() {
-
-    }
-
-    @Override
-    public void sortService() {
-
-    }
-
-    @Override
-    public void searchService() {
+    public void deleteList() {
 
     }
 }

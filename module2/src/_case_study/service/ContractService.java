@@ -1,4 +1,7 @@
 package _case_study.service;
 
-public interface ContractService extends FuramaService {
+import _case_study.model.Contract;
+
+public interface ContractService extends FuramaService<Contract> {
+
 }
