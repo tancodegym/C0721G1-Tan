@@ -1,9 +1,7 @@
 package _15_bai15_XuLyNgoaiLeVaDebug.bai_tap;
 
 import java.util.Scanner;
-
-public class SuDungLopIllegalTriangleException {
-    static class RightTriangle {
+  class RightTriangle {
         public RightTriangle(int side1, int side2, int side3) throws IllegalRightTriangleException {
             boolean checkSide1= side1<0||side1>=side2+side3;
             boolean checkSide2= side2<0||side2>=side1+side3;
@@ -22,7 +20,7 @@ public class SuDungLopIllegalTriangleException {
         }
     }
 
-    static class IllegalRightTriangleException extends Exception {
+     class IllegalRightTriangleException extends Exception {
         String errorMessage;
 
         public IllegalRightTriangleException(String inErrorMessage) {
@@ -35,7 +33,7 @@ public class SuDungLopIllegalTriangleException {
     }
 
 
-    public static class Main {
+      class Main {
 
         public static void main(String[] args) {
             Scanner input = new Scanner(System.in);
@@ -55,5 +53,5 @@ public class SuDungLopIllegalTriangleException {
 
         }
     }
-}
+
 
