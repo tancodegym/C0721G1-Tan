@@ -1,28 +1,20 @@
 package _17_bai17_IOBinaryFileAndSerialization.bai_tap.quan_ly_san_pham_luu_ra_file_nhi_phan;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 public class QuanLySanPham {
-    String path="src\\_17_bai17_IOBinaryFileAndSerialization\\bai_tap\\quan_ly_san_pham_luu_ra_file_nhi_phan\\sanpham.csv";
-
-
     public static void hienThiSanPham(String path) {
        List<SanPham> listSanPham = ReadAndWriteFile.readDataFromFile(path);
         IdSanPhamCompartor idProductCompartor = new IdSanPhamCompartor();
-        Collections.sort(listSanPham, idProductCompartor);
+        listSanPham.sort(idProductCompartor);
         for (SanPham sanPham : listSanPham) {
             System.out.println(sanPham.toString());
         }
     }
     public static void themSanPham(String path) {
-
-//        List<SanPham> listSanPham = new ArrayList<>();
-//        listSanPham.add(new SanPham(1,"A","b",555));
-//        ReadAndWriteFile.writeToFile(path,listSanPham);
         List<SanPham> listSanPham = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
         int id = 0;
@@ -31,8 +23,8 @@ public class QuanLySanPham {
             System.out.println("Nhập mã sản phẩm");
             id = Integer.parseInt(input.nextLine());
             flag = false;
-            for (int i = 0; i < listSanPham.size(); i++) {
-                if (listSanPham.get(i).getMaSanPham() == id) {
+            for (SanPham sanPham : listSanPham) {
+                if (sanPham.getMaSanPham() == id) {
                     System.out.println("Mã sản phẩm đã tồn tại, vui lòng nhập lại mã khác");
                     flag = true;
                     break;
@@ -54,21 +46,20 @@ public class QuanLySanPham {
     public static void timSanPhamTheoID(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
-        int id = 0;
+        int id;
         boolean flag = true;
         boolean check = true;
         while (flag) {
             System.out.println("Nhập mã sản phẩm");
             id = Integer.parseInt(input.nextLine());
             flag = false;
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getMaSanPham() == id) {
+            for (SanPham sanPham : list) {
+                if (sanPham.getMaSanPham() == id) {
                     System.out.println("Đã tìm thấy sản phẩm !");
                     System.out.println(list.get(id - 1).toString());
                     check = false;
                     break;
                 }
-
             }
             if (check) {
                 System.out.println("Mã sản phẩm không tồn tại, vui lòng nhập lại mã khác");
@@ -76,7 +67,6 @@ public class QuanLySanPham {
             }
         }
     }
-
     public static void timSanPhamTheoTen(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
@@ -89,11 +79,11 @@ public class QuanLySanPham {
             System.out.println("Nhập tên sản phẩm");
             tenSP = input.nextLine();
             flag = false;
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getTenSanPham().equals(tenSP)) {
+            for (SanPham sanPham : list) {
+                if (sanPham.getTenSanPham().equals(tenSP)) {
                     count++;
                     check = false;
-                    ketQua.add(list.get(i));
+                    ketQua.add(sanPham);
                 }
             }
             if (check) {
@@ -109,7 +99,6 @@ public class QuanLySanPham {
             countKQ++;
         }
     }
-
     public static void timSanPhamTheoHang(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
@@ -122,11 +111,11 @@ public class QuanLySanPham {
             System.out.println("Nhập hãng sản xuất sản phẩm");
             hangSX = input.nextLine();
             flag = false;
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getHangSanXuat().equals(hangSX)) {
+            for (SanPham sanPham : list) {
+                if (sanPham.getHangSanXuat().equals(hangSX)) {
                     count++;
                     check = false;
-                    ketQua.add(list.get(i));
+                    ketQua.add(sanPham);
                 }
             }
             if (check) {
@@ -142,7 +131,6 @@ public class QuanLySanPham {
             countKQ++;
         }
     }
-
     public static void timSanPhamTheoGia(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
@@ -155,11 +143,11 @@ public class QuanLySanPham {
             System.out.println("Nhập giá sản phẩm");
             giaSP = Double.parseDouble(input.nextLine());
             flag = false;
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getGia() == giaSP) {
+            for (SanPham sanPham : list) {
+                if (sanPham.getGia() == giaSP) {
                     count++;
                     check = false;
-                    ketQua.add(list.get(i));
+                    ketQua.add(sanPham);
                 }
             }
             if (check) {
@@ -174,11 +162,10 @@ public class QuanLySanPham {
             countKQ++;
         }
     }
-
     public static void suaSanPham(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         Scanner input = new Scanner(System.in);
-        int id = 0;
+        int id ;
         boolean flag = true;
         while (flag) {
             System.out.println("Nhập mã sản phẩm");
@@ -196,7 +183,7 @@ public class QuanLySanPham {
                     int giaSP = Integer.parseInt(input.nextLine());
                     list.get(i).setGia(giaSP);
                     System.out.println("Đã sửa thành công sản phẩm có mã: " + id);
-//                    hienThiSanPham();
+                    hienThiSanPham(path);
                     break;
                 }
                 if (list.get(list.size() - 1).getMaSanPham() != id) {
@@ -208,9 +195,7 @@ public class QuanLySanPham {
         }
         ReadAndWriteFile.writeToFile(path,list);
         hienThiSanPham(path);
-
     }
-
     public static void xoaSanPham(String path) {
         List<SanPham> list = ReadAndWriteFile.readDataFromFile(path);
         List<Integer> listID = new LinkedList<>();
@@ -218,14 +203,13 @@ public class QuanLySanPham {
             listID.add(sanPham.getMaSanPham());
         }
         Scanner input = new Scanner(System.in);
-        int id = 0;
+        int id ;
         boolean flag = true;
-
         while (flag) {
             System.out.println("Nhập mã sản phẩm");
             id = Integer.parseInt(input.nextLine());
             flag = false;
-            if (listID.indexOf(id) == -1) {
+            if (!listID.contains(id)) {
                 System.out.println("Mã sản phẩm bạn nhập sai hoặc không tồn tại, vui lòng nhập lại !");
                 flag = true;
                 continue;
@@ -236,15 +220,12 @@ public class QuanLySanPham {
                     System.out.println("Đã xóa sản phẩm có mã sản phẩm: " + id);
                     break;
                 }
-
             }
             System.out.println("Đã xóa xong sản phẩm có mã :" + id);
             System.out.println(list.size());
             ReadAndWriteFile.writeToFile(path,list);
             System.out.println(list.size());
             hienThiSanPham(path);
-
-
         }
     }
 

@@ -8,7 +8,7 @@ class IllegalRightTriangleException extends Exception {
    }
 
    public String getString() {
-       return "One of the three sides is a negative number or the sum of two sides is less than the other side!! ";
+       return this.errorMessage;
    }
 }
 

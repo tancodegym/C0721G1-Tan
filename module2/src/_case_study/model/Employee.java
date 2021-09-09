@@ -1,16 +1,12 @@
 package _case_study.model;
 
-import java.time.LocalDate;
-
 public class Employee  extends  Person{
     private String employeeCode;
     private Level level;
     private Position position;
     private int salary;
-
     public Employee() {
     }
-
     public Employee(String name, String dateOfBirth, String gender, String idCard,
                     String phoneNumber, String email, String address,
                     String employeeCode, Level level, Position position, int salary) {
@@ -20,7 +16,6 @@ public class Employee  extends  Person{
         this.position = position;
         this.salary = salary;
     }
-
     public Level getLevel() {
         return level;
     }
@@ -45,8 +40,6 @@ public class Employee  extends  Person{
         this.employeeCode = employeeCode;
     }
 
-
-
     public int getSalary() {
         return salary;
     }
@@ -57,11 +50,6 @@ public class Employee  extends  Person{
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeCode='" + employeeCode + '\'' +
-                ", level='" + level + '\'' +
-                ", position='" + position + '\'' +
-                ", salary=" + salary +
-                '}'+super.toString();
+        return this.getEmployeeCode()+","+this.getLevel()+","+this.getPosition()+","+this.getSalary()
     }
 }

@@ -1,8 +1,18 @@
 package _case_study.controller;
 
+import _17_bai17_IOBinaryFileAndSerialization.bai_tap.quan_ly_san_pham_luu_ra_file_nhi_phan.RuinMain;
+import _case_study.service.FuramaService;
+import _case_study.service.implement.*;
+import _case_study.view.RunMain;
+
 import java.util.Scanner;
 
 public class FuramaController {
+    public static EmployeeServiceImplement employeeService;
+    public static CustomerServiceImplement customerService;
+    public static  FacilityServiceImplement facilityService;
+    public static  BookingServiceImplement bookingService ;
+    public static PromotionServiceImplement promotionService ;
     public static void displayMainMenu() {
         Scanner input = new Scanner(System.in);
         boolean flag = true;
@@ -45,6 +55,7 @@ public class FuramaController {
 
     public static void displayMenuEmployeeManagement(Scanner input) {
         boolean check = true;
+        String path = "src\\_case_study\\data\\employee.csv";
         while (check) {
             System.out.println("Menu Employee Management\n" +
                     "1.\tDisplay list employees\n" +
@@ -56,17 +67,19 @@ public class FuramaController {
             int choose1 = Integer.parseInt(input.nextLine());
             switch (choose1) {
                 case 1:
+                    employeeService.displayList(path);
                     break;
                 case 2:
+                    employeeService.addList(path);
                     break;
                 case 3:
+                    employeeService.editList(path);
                     break;
                 case 4:
                     displayMainMenu();
                     break;
                 case 0:
                     System.exit(0);
-
             }
         }
     }

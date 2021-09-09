@@ -1,8 +1,9 @@
 package _case_study.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-abstract class Person {
+abstract class Person implements Serializable {
  private String name;
  private String dateOfBirth;
  private String gender;
