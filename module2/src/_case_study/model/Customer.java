@@ -1,7 +1,5 @@
 package _case_study.model;
 
-import java.time.LocalDate;
-
 public class Customer extends Person {
     private String customerCode;
     private CustomerType customerType;
@@ -20,9 +18,11 @@ public class Customer extends Person {
     public CustomerType getCustomerType() {
         return customerType;
     }
+
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
+
     public String getCustomerCode() {
         return customerCode;
     }
@@ -30,11 +30,16 @@ public class Customer extends Person {
     public void setCustomerCode(String customerCode) {
         this.customerCode = customerCode;
     }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "customerCode='" + customerCode + '\'' +
-                ", customerType='" + customerType + '\'' +
+                ", customerType=" + customerType +
                 '}'+super.toString();
+    }
+
+    public String getCustomerString() {
+        return super.getPersonString() + "," + getCustomerCode() + "," + getCustomerType();
     }
 }

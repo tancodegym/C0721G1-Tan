@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Menu {
     public static void mainMenu(){
         Scanner input = new Scanner(System.in);
-//        boolean flag = true;
          String path="src\\_17_bai17_IOBinaryFileAndSerialization\\bai_tap\\quan_ly_san_pham_luu_ra_file_nhi_phan\\sanpham.csv";
         while (true) {
             System.out.println("---Main Menu---");

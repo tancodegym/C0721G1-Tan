@@ -3,7 +3,7 @@ package _case_study.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-abstract class Person implements Serializable {
+abstract class Person  {
  private String name;
  private String dateOfBirth;
  private String gender;
@@ -92,7 +92,11 @@ abstract class Person implements Serializable {
           ", idCard='" + idCard + '\'' +
           ", phoneNumber='" + phoneNumber + '\'' +
           ", email='" + email + '\'' +
-          ", Address='" + address + '\'' +
+          ", address='" + address + '\'' +
           '}';
+ }
+
+ public String getPersonString() {
+  return this.getName()+","+this.getDateOfBirth()+","+this.getGender()+","+this.getIdCard()+","+this.getPhoneNumber()+","+this.getEmail()+","+this.getAddress();
  }
 }

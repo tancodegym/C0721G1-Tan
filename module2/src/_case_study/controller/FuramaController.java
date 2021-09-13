@@ -1,22 +1,22 @@
 package _case_study.controller;
 
-import _17_bai17_IOBinaryFileAndSerialization.bai_tap.quan_ly_san_pham_luu_ra_file_nhi_phan.RuinMain;
-import _case_study.service.FuramaService;
+import _case_study.service.CustomerService;
+import _case_study.service.EmployeeService;
 import _case_study.service.implement.*;
-import _case_study.view.RunMain;
 
 import java.util.Scanner;
 
 public class FuramaController {
-    public static EmployeeServiceImplement employeeService;
-    public static CustomerServiceImplement customerService;
-    public static  FacilityServiceImplement facilityService;
-    public static  BookingServiceImplement bookingService ;
-    public static PromotionServiceImplement promotionService ;
+    public static EmployeeService employeeService = new EmployeeServiceImplement();
+    public static CustomerService customerService = new CustomerServiceImplement();
+    public static FacilityServiceImplement facilityService = new FacilityServiceImplement();
+    public static BookingServiceImplement bookingService = new BookingServiceImplement();
+    public static PromotionServiceImplement promotionService = new PromotionServiceImplement();
+
     public static void displayMainMenu() {
         Scanner input = new Scanner(System.in);
-        boolean flag = true;
-        while (flag) {
+
+        while (true) {
             System.out.println("\t\tMAIN MENU\n" +
                     "1.\tEmployee Management\n" +
                     "2.\tCustomer Management\n" +
@@ -45,18 +45,14 @@ public class FuramaController {
                 case 6:
                     System.exit(0);
                 default:
-
-                    System.exit(-1);
+                    throw new IllegalStateException("Unexpected value: " + choose);
             }
         }
-
-
     }
 
     public static void displayMenuEmployeeManagement(Scanner input) {
-        boolean check = true;
-        String path = "src\\_case_study\\data\\employee.csv";
-        while (check) {
+        final String path = "src\\_case_study\\data\\employee.csv";
+        while (true) {
             System.out.println("Menu Employee Management\n" +
                     "1.\tDisplay list employees\n" +
                     "2.\tAdd new employee\n" +
@@ -80,13 +76,16 @@ public class FuramaController {
                     break;
                 case 0:
                     System.exit(0);
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose1);
+
             }
         }
     }
 
     public static void displayMenuCustomerManagement(Scanner input) {
-        boolean check = true;
-        while (check) {
+        final String path = "src\\_case_study\\data\\customer.csv";
+        while (true) {
             System.out.println("Menu Customer Management \n" +
                     "1.\tDisplay list customers\n" +
                     "2.\tAdd new customers\n" +
@@ -97,10 +96,13 @@ public class FuramaController {
             int choose2 = Integer.parseInt(input.nextLine());
             switch (choose2) {
                 case 1:
+                    customerService.displayList(path);
                     break;
                 case 2:
+                    customerService.addList(path);
                     break;
                 case 3:
+                    customerService.editList(path);
                     break;
                 case 4:
                     displayMainMenu();
@@ -113,8 +115,8 @@ public class FuramaController {
     }
 
     public static void displayMenuFacilityManagement(Scanner input) {
-        boolean check = true;
-        while (check) {
+        final String facilityPath = "src\\_case_study\\data\\facility.csv";
+        while (true) {
             System.out.println("Menu Facility Management \n" +
                     "1.\tDisplay list facility\n" +
                     "2.\tAdd new facility\n" +
@@ -127,6 +129,7 @@ public class FuramaController {
                 case 1:
                     break;
                 case 2:
+                    facilityService.addList(facilityPath);
                     break;
                 case 3:
                     break;
@@ -141,8 +144,7 @@ public class FuramaController {
     }
 
     public static void displayMenuBookingManagement(Scanner input) {
-        boolean check = true;
-        while (check) {
+        while (true) {
             System.out.println("Menu Booking  Management \n" +
                     "1.\tAdd new booking\n" +
                     "2.\tDisplay list booking\n" +
@@ -174,8 +176,8 @@ public class FuramaController {
     }
 
     public static void displayMenuPromotionManagement(Scanner input) {
-        boolean check = true;
-        while (check) {
+
+        while (true) {
             System.out.println("Menu Promotion  Management \n" +
                     "1.\tDisplay list customers use service\n" +
                     "2.\tDisplay list customers get voucher\n" +

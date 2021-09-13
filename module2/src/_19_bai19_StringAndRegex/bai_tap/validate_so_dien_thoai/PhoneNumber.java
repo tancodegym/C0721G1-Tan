@@ -7,7 +7,7 @@ class PhoneNumber {
     public PhoneNumber() {
     }
 
-    private static final String PHONENUMBER_REGEX = "^[\\(]+\\d{2,}+[\\)\\-\\(]+\\d{10}+[\\)]$";
+    private static final String PHONENUMBER_REGEX = "^[\\(]+\\d{2}+[\\)\\-\\(]+0\\d{9}+[\\)]$";
     public boolean validatePhoneNumber(String regex) {
         Pattern pattern = Pattern.compile(PHONENUMBER_REGEX);
         Matcher matcher = pattern.matcher(regex);

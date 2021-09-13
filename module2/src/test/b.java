@@ -39,7 +39,6 @@ abstract class NhanVien {
         System.out.println("- Lương: " + luong + " VND");
     }
 }
-
 class NhanVienFullTime extends NhanVien {
     private int ngayLamThem;
     private int loaiChucVu;

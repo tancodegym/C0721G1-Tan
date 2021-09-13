@@ -6,8 +6,8 @@ public class Room extends Facility {
     public Room() {
     }
 
-    public Room(String name_service, double area, int cost, int numberOfPeople, RentalType rentalType, ExtraService extraService) {
-        super(name_service, area, cost, numberOfPeople, rentalType);
+    public Room(String idService,String name_service, double area, int cost, int numberOfPeople, RentalType rentalType, ExtraService extraService) {
+        super(idService,name_service, area, cost, numberOfPeople, rentalType);
         this.extraService = extraService;
     }
 
@@ -23,6 +23,9 @@ public class Room extends Facility {
     public String toString() {
         return "Room{" +
                 "extraService=" + extraService +
-                '}'+super.toString();
+                '}';
+    }
+    public String getRoomString(){
+        return super.getFacilityString()+","+this.getExtraService();
     }
 }
