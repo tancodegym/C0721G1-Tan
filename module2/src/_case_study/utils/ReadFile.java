@@ -44,6 +44,40 @@ public class ReadFile {
         }
         return customerList;
     }
+    public static TreeSet<Booking> getBookingSet(String path){
+        List<String> stringList = readFromCSV(path);
+        TreeSet<Booking> bookingTreeSet = new TreeSet<>();
+        for(int i =0;i<stringList.size();i++){
+            String[] array = stringList.get(i).split(",");
+            Booking booking = new Booking(array[0], array[1], array[2], array[3],
+                    array[4], array[5]);
+            bookingTreeSet.add(booking);
+        }
+        return bookingTreeSet;
+    }
+    public static Queue<Booking> getBookingQueue(String path){
+        List<String> stringList = readFromCSV(path);
+        Queue<Booking> bookingQueue = new LinkedList<>();
+        for(int i =0;i<stringList.size();i++){
+            String[] array = stringList.get(i).split(",");
+            Booking booking = new Booking(array[0], array[1], array[2], array[3],
+                    array[4], array[5]);
+            bookingQueue.add(booking);
+        }
+        return bookingQueue;
+    }
+    public static Set<Contract> getContractSet(String path){
+        List<String> stringList = readFromCSV(path);
+        Set<Contract> contractSet = new TreeSet<>();
+        for(int i =0;i<stringList.size();i++){
+            String[] array = stringList.get(i).split(",");
+            Contract contract = new Contract(Integer.parseInt(array[0]), array[1]
+                    , Integer.parseInt(array[2]), Integer.parseInt(array[3]),
+                    array[4]);
+            contractSet.add(contract);
+        }
+        return contractSet;
+    }
     public static Map<Facility,Integer> getFacilityMap(String path){
         List<String> listString = readFromCSV(path);
         Map<Facility,Integer> facilityMap = new LinkedHashMap<>();

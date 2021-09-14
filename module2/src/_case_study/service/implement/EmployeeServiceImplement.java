@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class EmployeeServiceImplement implements EmployeeService {
     Scanner input = new Scanner(System.in);
     @Override
-    public void addList(String path) {
+    public void add(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
         String employeeCode = "";
         boolean flag = true;
@@ -50,20 +50,20 @@ public class EmployeeServiceImplement implements EmployeeService {
         employeeList.add(new Employee(name, dateOfBirth, gender, idCard, phoneNumber, email, address, employeeCode, level, position, salary));
         System.out.println("Add employee completed !");
         WriteFile.writeEmployeeToCSV(path, employeeList, false);
-        displayList(path);
+        display(path);
 
     }
     @Override
-    public void displayList(String path) {
+    public void display(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
         for (Employee employee : employeeList) {
             System.out.println(employee.toString());
         }
     }
     @Override
-    public void editList(String path) {
+    public void edit(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
-        displayList(path);
+        display(path);
         String codeOfEmployee;
         boolean flag = true;
         boolean check = true;
@@ -157,7 +157,7 @@ public class EmployeeServiceImplement implements EmployeeService {
             }
         }
         WriteFile.writeEmployeeToCSV(path, employeeList, false);
-        displayList(path);
+        display(path);
     }
 }
 

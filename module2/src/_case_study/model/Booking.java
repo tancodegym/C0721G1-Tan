@@ -1,6 +1,9 @@
 package _case_study.model;
 
-public class Booking {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Booking implements  Comparable<Booking> {
     private String bookingCode;
     private String startDate;
     private String endDate;
@@ -81,7 +84,35 @@ public class Booking {
                 '}';
     }
 
-    public String getString(){
-        return getBookingCode()+","+getStartDate()+","+getEndDate()+","+getServiceName()+","+getCustomerCode()+","+getServiceType();
+    public String getString() {
+        return getBookingCode() + "," + getStartDate() + "," + getEndDate() + "," + getServiceName() + "," + getCustomerCode() + "," + getServiceType();
+    }
+
+    @Override
+    public int compareTo(Booking b) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern( "dd/MM/uuuu" );
+
+        LocalDate thisStartDate = LocalDate.parse(getStartDate(),dateTimeFormatter);
+
+        LocalDate bookingStartDate = LocalDate.parse(b.getStartDate(),dateTimeFormatter);
+
+        LocalDate thisEndDate= LocalDate.parse(getEndDate(),dateTimeFormatter);
+
+        LocalDate bookingEndDate = LocalDate.parse(b.getEndDate(),dateTimeFormatter);
+
+        if(thisStartDate.compareTo(bookingStartDate)==0){
+            if(thisEndDate.compareTo(bookingEndDate)>0){
+                return 1;
+            }
+            else {return -1;}
+        }
+        else if(thisStartDate.compareTo(bookingStartDate)>0){
+            return 1;
+        }
+        else {
+            return -1;
+        }
+
     }
 }
+

@@ -1,7 +1,6 @@
 package _case_study.controller;
 
-import _case_study.service.CustomerService;
-import _case_study.service.EmployeeService;
+import _case_study.service.*;
 import _case_study.service.implement.*;
 
 import java.util.Scanner;
@@ -9,8 +8,9 @@ import java.util.Scanner;
 public class FuramaController {
     public static EmployeeService employeeService = new EmployeeServiceImplement();
     public static CustomerService customerService = new CustomerServiceImplement();
-    public static FacilityServiceImplement facilityService = new FacilityServiceImplement();
-    public static BookingServiceImplement bookingService = new BookingServiceImplement();
+    public static FacilityService facilityService = new FacilityServiceImplement();
+    public static BookingService bookingService = new BookingServiceImplement();
+    public static ContractService contractService = new ContractServiceImplement();
     public static PromotionServiceImplement promotionService = new PromotionServiceImplement();
 
     public static void displayMainMenu() {
@@ -63,13 +63,13 @@ public class FuramaController {
             int choose1 = Integer.parseInt(input.nextLine());
             switch (choose1) {
                 case 1:
-                    employeeService.displayList(path);
+                    employeeService.display(path);
                     break;
                 case 2:
-                    employeeService.addList(path);
+                    employeeService.add(path);
                     break;
                 case 3:
-                    employeeService.editList(path);
+                    employeeService.edit(path);
                     break;
                 case 4:
                     displayMainMenu();
@@ -96,13 +96,13 @@ public class FuramaController {
             int choose2 = Integer.parseInt(input.nextLine());
             switch (choose2) {
                 case 1:
-                    customerService.displayList(path);
+                    customerService.display(path);
                     break;
                 case 2:
-                    customerService.addList(path);
+                    customerService.add(path);
                     break;
                 case 3:
-                    customerService.editList(path);
+                    customerService.edit(path);
                     break;
                 case 4:
                     displayMainMenu();
@@ -127,11 +127,13 @@ public class FuramaController {
             int choose3 = Integer.parseInt(input.nextLine());
             switch (choose3) {
                 case 1:
+                    facilityService.display(facilityPath);
                     break;
                 case 2:
-                    facilityService.addList(facilityPath);
+                    facilityService.add(facilityPath);
                     break;
                 case 3:
+                    facilityService.displayListMaintenance(facilityPath);
                     break;
                 case 4:
                     displayMainMenu();
@@ -144,6 +146,8 @@ public class FuramaController {
     }
 
     public static void displayMenuBookingManagement(Scanner input) {
+        final String BOOKING_PATH = "src\\_case_study\\data\\booking.csv";
+        final String CONTRACT_PATH = "src\\_case_study\\data\\contract.csv";
         while (true) {
             System.out.println("Menu Booking  Management \n" +
                     "1.\tAdd new booking\n" +
@@ -157,14 +161,19 @@ public class FuramaController {
             int choose4 = Integer.parseInt(input.nextLine());
             switch (choose4) {
                 case 1:
+                    bookingService.add(BOOKING_PATH);
                     break;
                 case 2:
+                    bookingService.display(BOOKING_PATH);
                     break;
                 case 3:
+                    contractService.add(CONTRACT_PATH);
                     break;
                 case 4:
+                    contractService.display(CONTRACT_PATH);
                     break;
                 case 5:
+                    contractService.edit(CONTRACT_PATH);
                     break;
                 case 6:
                     displayMainMenu();

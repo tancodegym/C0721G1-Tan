@@ -3,7 +3,7 @@ package _case_study.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-abstract class Person  {
+ public abstract class Person  {
  private String name;
  private String dateOfBirth;
  private String gender;

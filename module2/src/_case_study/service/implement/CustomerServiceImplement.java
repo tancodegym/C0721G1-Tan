@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class CustomerServiceImplement implements CustomerService {
     Scanner input = new Scanner(System.in);
     @Override
-    public void addList(String path) {
+    public void add(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
         String customerCode = "";
         boolean flag = true;
@@ -46,20 +46,20 @@ public class CustomerServiceImplement implements CustomerService {
         customerList.add(new Customer(name, dateOfBirth, gender, idCard, phoneNumber, email, address, customerCode, customerType));
         System.out.println("Add customer completed !");
         WriteFile.writeCustomerToCSV(path, customerList, false);
-        displayList(path);
+        display(path);
 
     }
     @Override
-    public void displayList(String path) {
+    public void display(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
         for (Customer customer : customerList) {
             System.out.println(customer.toString());
         }
     }
     @Override
-    public void editList(String path) {
+    public void edit(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
-        displayList(path);
+        display(path);
         String codeOfCustomer;
         boolean flag = true;
         boolean check = true;
@@ -129,7 +129,7 @@ public class CustomerServiceImplement implements CustomerService {
                             customer.setCustomerType(customerType);
                             break;
                         default:
-                            break;
+                            throw new IllegalStateException("Unexpected value: " + choose);
                     }
                     check = false;
                     break;
@@ -141,7 +141,7 @@ public class CustomerServiceImplement implements CustomerService {
             }
         }
         WriteFile.writeCustomerToCSV(path, customerList, false);
-        displayList(path);
+        display(path);
     }
 
 

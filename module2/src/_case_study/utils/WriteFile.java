@@ -51,6 +51,32 @@ public class WriteFile {
         }
         writeToFile(path, stringList, append);
     }
+    public static void writeBookingToCSV(String path, TreeSet<Booking> bookingTreeSet, boolean append){
+        List<String> stringList = new ArrayList<>();
+        for(Booking booking:bookingTreeSet){
+            stringList.add(booking.getString());
+        }
+        writeToFile(path,stringList,append);
+    }
+    public static void writeBookingQueueToCSV(String path, Queue<Booking> bookingQueue, boolean append){
+        List<String> stringList = new ArrayList<>();
+        for(Booking booking:bookingQueue){
+            stringList.add(booking.getString());
+        }
+        writeToFile(path,stringList,append);
+    }
+    public static void writeContractToCSV(String path, Set<Contract> contractSet, boolean append){
+        List<String> stringList = new ArrayList<>();
+        for(Contract contract:contractSet){
+            stringList.add(contract.getString());
+        }
+        writeToFile(path,stringList,append);
+    }
+
+
+
+
+
 //    public static void writerVillaToCSV(String path, Map<Villa, Integer> villaMap, boolean append) {
 //        List<String> stringList = new ArrayList<>();
 //        Set<Villa> setVilla = villaMap.keySet();
