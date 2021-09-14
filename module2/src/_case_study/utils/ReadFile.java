@@ -12,7 +12,7 @@ public class ReadFile {
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = "";
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 stringList.add(line);
             }
@@ -24,10 +24,10 @@ public class ReadFile {
     public static List<Employee> getListEmployee(String path) {
         List<String> listString = readFromCSV(path);
         List<Employee> employeeList = new ArrayList<>();
-        for (int i = 0; i < listString.size(); i++) {
-            String[] array = listString.get(i).split(",");
+        for (String s : listString) {
+            String[] array = s.split(",");
             Employee employee = new Employee(array[0], array[1], array[2], array[3],
-                    array[4], array[5], array[6], array[7], new Level(array[8]), new Position(array[9]), Integer.parseInt(array[10]));
+                    array[4], array[5], array[6], array[7], array[8], array[9], Integer.parseInt(array[10]));
             employeeList.add(employee);
         }
         return employeeList;
@@ -36,10 +36,10 @@ public class ReadFile {
     public static List<Customer> getListCustomer(String path) {
         List<String> listString = readFromCSV(path);
         List<Customer> customerList = new LinkedList<>();
-        for (int i = 0; i < listString.size(); i++) {
-            String[] array = listString.get(i).split(",");
+        for (String s : listString) {
+            String[] array = s.split(",");
             Customer customer = new Customer(array[0], array[1], array[2], array[3],
-                    array[4], array[5], array[6], array[7], new CustomerType(array[8]));
+                    array[4], array[5], array[6], array[7], array[8]);
             customerList.add(customer);
         }
         return customerList;
@@ -47,8 +47,8 @@ public class ReadFile {
     public static TreeSet<Booking> getBookingSet(String path){
         List<String> stringList = readFromCSV(path);
         TreeSet<Booking> bookingTreeSet = new TreeSet<>();
-        for(int i =0;i<stringList.size();i++){
-            String[] array = stringList.get(i).split(",");
+        for (String s : stringList) {
+            String[] array = s.split(",");
             Booking booking = new Booking(array[0], array[1], array[2], array[3],
                     array[4], array[5]);
             bookingTreeSet.add(booking);
@@ -58,8 +58,8 @@ public class ReadFile {
     public static Queue<Booking> getBookingQueue(String path){
         List<String> stringList = readFromCSV(path);
         Queue<Booking> bookingQueue = new LinkedList<>();
-        for(int i =0;i<stringList.size();i++){
-            String[] array = stringList.get(i).split(",");
+        for (String s : stringList) {
+            String[] array = s.split(",");
             Booking booking = new Booking(array[0], array[1], array[2], array[3],
                     array[4], array[5]);
             bookingQueue.add(booking);
@@ -69,8 +69,8 @@ public class ReadFile {
     public static Set<Contract> getContractSet(String path){
         List<String> stringList = readFromCSV(path);
         Set<Contract> contractSet = new TreeSet<>();
-        for(int i =0;i<stringList.size();i++){
-            String[] array = stringList.get(i).split(",");
+        for (String s : stringList) {
+            String[] array = s.split(",");
             Contract contract = new Contract(Integer.parseInt(array[0]), array[1]
                     , Integer.parseInt(array[2]), Integer.parseInt(array[3]),
                     array[4]);
@@ -81,24 +81,24 @@ public class ReadFile {
     public static Map<Facility,Integer> getFacilityMap(String path){
         List<String> listString = readFromCSV(path);
         Map<Facility,Integer> facilityMap = new LinkedHashMap<>();
-        for(int i=0;i<listString.size();i++){
-            String[] array = listString.get(i).split(",");
-            if(array[0].equals("Villa")){
-                Facility villa = new Villa(array[1],array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
-                    Integer.parseInt(array[5]), new RentalType(array[6]), new RoomStandar(array[7]),
-                    Double.parseDouble(array[8]), Integer.parseInt(array[9]));
-                facilityMap.put(villa,Integer.parseInt(array[10]));
+        for (String s : listString) {
+            String[] array = s.split(",");
+            if (array[0].equals("Villa")) {
+                Facility villa = new Villa(array[1], array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
+                        Integer.parseInt(array[5]), array[6], array[7],
+                        Double.parseDouble(array[8]), Integer.parseInt(array[9]));
+                facilityMap.put(villa, Integer.parseInt(array[10]));
             }
-            if(array[0].equals("House")){
-                Facility house = new House(array[1],array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
-                    Integer.parseInt(array[5]), new RentalType(array[6]), new RoomStandar(array[7]),
-                    Integer.parseInt(array[8]));
-                facilityMap.put(house,Integer.parseInt(array[9]));
+            if (array[0].equals("House")) {
+                Facility house = new House(array[1], array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
+                        Integer.parseInt(array[5]), array[6], array[7],
+                        Integer.parseInt(array[8]));
+                facilityMap.put(house, Integer.parseInt(array[9]));
             }
-            if(array[0].equals("Room")){
-                Facility room = new Room(array[1],array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
-                    Integer.parseInt(array[5]), new RentalType(array[6]), new ExtraService(array[7]));
-                facilityMap.put(room,Integer.parseInt(array[8]));
+            if (array[0].equals("Room")) {
+                Facility room = new Room(array[1], array[2], Double.parseDouble(array[3]), Integer.parseInt(array[4]),
+                        Integer.parseInt(array[5]), array[6], array[7]);
+                facilityMap.put(room, Integer.parseInt(array[8]));
             }
         }
         return facilityMap;

@@ -1,4 +1,4 @@
-package _case_study.model;
+package _case_study.model.trash;
 
 public class Position {
     private String position;

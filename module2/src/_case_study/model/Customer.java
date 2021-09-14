@@ -2,24 +2,24 @@ package _case_study.model;
 
 public class Customer extends Person {
     private String customerCode;
-    private CustomerType customerType;
+    private String customerType;
 
     public Customer() {
     }
 
     public Customer(String name, String dateOfBirth, String gender, String idCard,
                     String phoneNumber, String email, String address, String customerCode,
-                    CustomerType customerType) {
+                    String customerType) {
         super(name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         this.customerCode = customerCode;
         this.customerType = customerType;
     }
 
-    public CustomerType getCustomerType() {
+    public String getCustomerType() {
         return customerType;
     }
 
-    public void setCustomerType(CustomerType customerType) {
+    public void setCustomerType(String customerType) {
         this.customerType = customerType;
     }
 

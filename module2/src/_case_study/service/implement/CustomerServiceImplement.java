@@ -28,7 +28,7 @@ public class CustomerServiceImplement implements CustomerService {
             }
         }
         System.out.println("Enter type of customer: ");
-        CustomerType customerType = new CustomerType(input.nextLine());
+        String customerType =  input.nextLine();
         System.out.println("Enter name of customer");
         String name = input.nextLine();
         System.out.println("Enter date of birth  of customer:");
@@ -125,7 +125,7 @@ public class CustomerServiceImplement implements CustomerService {
                             break;
                         case "9":
                             System.out.println("Enter new type of customer : ");
-                            CustomerType customerType = new CustomerType(input.nextLine());
+                            String customerType =  input.nextLine();
                             customer.setCustomerType(customerType);
                             break;
                         default:

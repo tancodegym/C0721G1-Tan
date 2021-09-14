@@ -2,33 +2,33 @@ package _case_study.model;
 
 public class Employee  extends  Person{
     private String employeeCode;
-    private Level level;
-    private Position position;
+    private String level;
+    private String position;
     private int salary;
     public Employee() {
     }
     public Employee(String name, String dateOfBirth, String gender, String idCard,
                     String phoneNumber, String email, String address,
-                    String employeeCode, Level level, Position position, int salary) {
+                    String employeeCode, String level, String position, int salary) {
         super(name, dateOfBirth, gender, idCard, phoneNumber, email, address);
         this.employeeCode = employeeCode;
         this.level = level;
         this.position = position;
         this.salary = salary;
     }
-    public Level getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
-    public Position getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 

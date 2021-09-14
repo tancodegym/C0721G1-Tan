@@ -18,7 +18,7 @@ public class BookingServiceImplement implements BookingService {
         List<Customer> customerList = ReadFile.getListCustomer(CUSTOMER_FILE_PATH);
         int i = 1;
         for (Customer customer : customerList) {
-            System.out.println(+i + " : " + customer.getCustomerCode());
+            System.out.println(+i + " : " + customer.getCustomerString());
             i++;
         }
         String customerCode = "";
@@ -75,7 +75,15 @@ public class BookingServiceImplement implements BookingService {
         Set<Facility> keySet = facilityIntegerMap.keySet();
         for (Facility key : keySet) {
             if (key.getNameService().equals(nameService)) {
-                serviceType += key;
+               if(key instanceof Villa){
+                   serviceType= "Villa";
+               }
+               if(key instanceof House){
+                   serviceType="House";
+               }
+               if(key instanceof Room){
+                   serviceType= "Room";
+               }
             }
         }
         return serviceType;
@@ -105,22 +113,27 @@ public class BookingServiceImplement implements BookingService {
         System.out.println("Enter end date");
         String endDate = input.nextLine();
         String serviceType = getServiceType(nameService);
+        System.out.println(serviceType);
         Booking booking = new Booking(bookingCode, startDate, endDate, nameService, customerCode, serviceType);
         bookingTreeSet.add(booking);
         System.out.println("Add booking completed !");
+
+
         //Tăng số lần sử dụng facility khi booking thành công .
         FacilityServiceImplement facilityServiceImplement = new FacilityServiceImplement();
         facilityServiceImplement.addemployment(nameService, FACILITY_FILE_PATH);
         WriteFile.writeBookingToCSV(path, bookingTreeSet, false);
         display(path);
+
+
         //add booking to queue.
-        Queue<Booking> queueBooking = new LinkedList<>();
+        String bookingQueuePath = "src\\_case_study\\data\\bookingQueue.csv";
+        Queue<Booking> queueBooking = ReadFile.getBookingQueue(bookingQueuePath);
         for (Booking booking1 : bookingTreeSet) {
             if(booking1.getServiceType().equals("Villa")||booking1.getServiceType().equals("House")){
                 queueBooking.add(booking1);
             }
         }
-        String bookingQueuePath = "src\\_case_study\\data\\bookingQueue.csv";
         WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);
 
     }
@@ -198,7 +211,7 @@ public class BookingServiceImplement implements BookingService {
                     break;
                 }
                 if (check) {
-                    System.out.println("Customer name does not exist, please re-enter another name !");
+                    System.out.println("Code booking does not exist, please re-enter another code !");
                     flag = true;
                 }
             }

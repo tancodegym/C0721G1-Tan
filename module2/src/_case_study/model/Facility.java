@@ -8,8 +8,8 @@ private String nameService;
 private double area;
 private int cost;
 private int numberOfPeople;
-private RentalType rentalType;
-    public Facility(String idService,String name_service, double area, int cost, int numberOfPeople, RentalType rentalType) {
+private String rentalType;
+    public Facility(String idService,String name_service, double area, int cost, int numberOfPeople, String rentalType) {
         this.idService=idService;
         this.nameService = name_service;
         this.area = area;
@@ -61,11 +61,11 @@ private RentalType rentalType;
         this.numberOfPeople = numberOfPeople;
     }
 
-    public RentalType getRentalType() {
+    public String getRentalType() {
         return rentalType;
     }
 
-    public void setRentalType(RentalType rentalType) {
+    public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
     }
 

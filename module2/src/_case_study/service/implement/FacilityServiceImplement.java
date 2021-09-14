@@ -60,9 +60,9 @@ public  class FacilityServiceImplement implements FacilityService {
         System.out.println("Enter the number of people of villa: ");
         int numberOfPeople = Integer.parseInt(input.nextLine());
         System.out.println("Enter rental type of villa:");
-        RentalType rentalType = new RentalType(input.nextLine());
+        String rentalType = input.nextLine();
         System.out.println("Enter room standard of villa:");
-        RoomStandar roomStandar = new RoomStandar(input.nextLine());
+        String roomStandar = input.nextLine();
         System.out.println("Enter area of pool:");
         double poolArea = Double.parseDouble(input.nextLine());
         System.out.println("Enter the number of floors of villa:");
@@ -99,9 +99,9 @@ public  class FacilityServiceImplement implements FacilityService {
         System.out.println("Enter the number of people of house: ");
         int numberOfPeople = Integer.parseInt(input.nextLine());
         System.out.println("Enter rental type of house:");
-        RentalType rentalType = new RentalType(input.nextLine());
+        String rentalType = input.nextLine();
         System.out.println("Enter room standard of house:");
-        RoomStandar roomStandar = new RoomStandar(input.nextLine());
+        String roomStandar = input.nextLine();
         System.out.println("Enter the number of floors of house:");
         int numberOfFloor = Integer.parseInt(input.nextLine());
         Facility house = new House(idService, nameOfService, areaOfService, costOfService, numberOfPeople, rentalType, roomStandar, numberOfFloor);
@@ -129,16 +129,16 @@ public  class FacilityServiceImplement implements FacilityService {
         }
         System.out.println("Enter name of service:");
         String nameOfService = input.nextLine();
-        System.out.println("Enter area of house:");
+        System.out.println("Enter area of room:");
         double areaOfService = Double.parseDouble(input.nextLine());
-        System.out.println("Enter cost of house: ");
+        System.out.println("Enter cost of room: ");
         int costOfService = Integer.parseInt(input.nextLine());
-        System.out.println("Enter the number of people of house: ");
+        System.out.println("Enter the number of people of room: ");
         int numberOfPeople = Integer.parseInt(input.nextLine());
-        System.out.println("Enter rental type of house:");
-        RentalType rentalType = new RentalType(input.nextLine());
+        System.out.println("Enter rental type of room:");
+        String rentalType = input.nextLine();
         System.out.println("Enter extra service of room:");
-        ExtraService extraService = new ExtraService(input.nextLine());
+        String extraService = input.nextLine();
 
         Facility room = new Room(idService, nameOfService, areaOfService, costOfService, numberOfPeople, rentalType, extraService);
         facilitiMap.put(room, 0);
@@ -252,12 +252,12 @@ public  class FacilityServiceImplement implements FacilityService {
                 break;
             case "5":
                 System.out.println("Enter rental type of villa:");
-                RentalType rentalType = new RentalType(input.nextLine());
+                String rentalType = input.nextLine();
                 key.setRentalType(rentalType);
                 break;
             case "6":
                 System.out.println("Enter room standard of villa:");
-                RoomStandar roomStandar = new RoomStandar(input.nextLine());
+                String roomStandar = input.nextLine();
                 ((Villa) key).setVillaStandar(roomStandar);
                 break;
             case "7":
@@ -312,12 +312,12 @@ public  class FacilityServiceImplement implements FacilityService {
                 break;
             case "5":
                 System.out.println("Enter rental type of House:");
-                RentalType rentalType = new RentalType(input.nextLine());
+                String rentalType =input.nextLine();
                 key.setRentalType(rentalType);
                 break;
             case "6":
                 System.out.println("Enter room standard of House:");
-                RoomStandar roomStandar = new RoomStandar(input.nextLine());
+                String roomStandar = input.nextLine();
                 ((House) key).setHouseStandar(roomStandar);
                 break;
             case "7":
@@ -367,12 +367,12 @@ public  class FacilityServiceImplement implements FacilityService {
                 break;
             case "5":
                 System.out.println("Enter rental type of Room:");
-                RentalType rentalType = new RentalType(input.nextLine());
+                String rentalType = input.nextLine();
                 key.setRentalType(rentalType);
                 break;
             case "6":
                 System.out.println("Enter room standard of Room:");
-                ExtraService extraService = new ExtraService(input.nextLine());
+                String extraService =  input.nextLine();
                 ((Room) key).setExtraService(extraService);
                 break;
             case "0":

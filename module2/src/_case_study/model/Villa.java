@@ -1,24 +1,26 @@
 package _case_study.model;
 
 public class Villa extends Facility {
-    private RoomStandar villaStandar;
+    private String villaStandar;
     private double poolArea;
     private int numberOfFloor;
 
     public Villa() {
     }
-    public Villa(String idService, String name_service, double area, int cost, int numberOfPeople, RentalType rentalType, RoomStandar villaStandar, double poolArea, int numberOfFloor) {
+    public Villa(String idService, String name_service, double area, int cost,
+                 int numberOfPeople, String rentalType, String villaStandar,
+                 double poolArea, int numberOfFloor) {
         super(idService,name_service, area, cost, numberOfPeople, rentalType);
         this.villaStandar = villaStandar;
         this.poolArea = poolArea;
         this.numberOfFloor = numberOfFloor;
     }
 
-    public RoomStandar getVillaStandar() {
+    public String getVillaStandar() {
         return villaStandar;
     }
 
-    public void setVillaStandar(RoomStandar villaStandar) {
+    public void setVillaStandar(String villaStandar) {
         this.villaStandar = villaStandar;
     }
 

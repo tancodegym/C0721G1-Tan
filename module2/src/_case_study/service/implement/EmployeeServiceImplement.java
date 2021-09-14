@@ -1,8 +1,6 @@
 package _case_study.service.implement;
 
 import _case_study.model.Employee;
-import _case_study.model.Level;
-import _case_study.model.Position;
 import _case_study.service.EmployeeService;
 import _case_study.utils.ReadFile;
 import _case_study.utils.WriteFile;
@@ -28,9 +26,9 @@ public class EmployeeServiceImplement implements EmployeeService {
             }
         }
         System.out.println("Enter level of employee: ");
-        Level level = new Level(input.nextLine());
+        String level = input.nextLine();
         System.out.println("Enter position of employee:");
-        Position position = new Position(input.nextLine());
+        String position = input.nextLine();
         System.out.println("Enter salary of employee:");
         int salary = Integer.parseInt(input.nextLine());
         System.out.println("Enter name of employee");
@@ -131,12 +129,12 @@ public class EmployeeServiceImplement implements EmployeeService {
                             break;
                         case "9":
                             System.out.println("Enter new level of employeee : ");
-                            Level level = new Level(input.nextLine());
+                            String level =  input.nextLine();
                             employee.setLevel(level);
                             break;
                         case "10":
                             System.out.println("Enter new position of employeee : ");
-                            Position position = new Position(input.nextLine());
+                            String position = input.nextLine();
                             employee.setPosition(position);
                             break;
                         case "11":

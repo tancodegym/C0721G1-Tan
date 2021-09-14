@@ -1,23 +1,23 @@
 package _case_study.model;
 
 public class House extends Facility{
-    private RoomStandar houseStandar;
+    private String houseStandar;
     private int numberOfFloor;
 
     public House() {
     }
 
-    public House(String idService,String name_service, double area, int cost, int numberOfPeople, RentalType rentalType, RoomStandar houseStandar, int numberOfFloor) {
+    public House(String idService,String name_service, double area, int cost, int numberOfPeople, String rentalType, String houseStandar, int numberOfFloor) {
         super(idService,name_service, area, cost, numberOfPeople, rentalType);
         this.houseStandar = houseStandar;
         this.numberOfFloor = numberOfFloor;
     }
 
-    public RoomStandar getHouseStandar() {
+    public String getHouseStandar() {
         return houseStandar;
     }
 
-    public void setHouseStandar(RoomStandar houseStandar) {
+    public void setHouseStandar(String houseStandar) {
         this.houseStandar = houseStandar;
     }
 

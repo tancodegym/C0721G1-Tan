@@ -1,3 +1,4 @@
-bk1,15/09/2021,20/10/2021,house 5,1,VIPhouse
-bk3,15/09/2021,21/10/2021,Villa2,1,VIPVILLA
-bk2,20/10/2021,25/10/2021,Villa2,1,VIPVilla
+1,14/09/2021,20/09/2021,HouseVIP,3,House{houseStandar=best
+Booking1,14/09/2021,20/09/2021,VillaVIP,1,Villa{villaStandar=VIP
+4,20/12/2021,25/12/2021,VillaVIP,2,Villa{villaStandar=VIP
+2,25/12/2021,26/12/2021,HouseVIP,1,House
