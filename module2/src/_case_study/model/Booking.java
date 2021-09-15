@@ -3,7 +3,7 @@ package _case_study.model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Booking implements  Comparable<Booking> {
+public class Booking implements Comparable<Booking> {
     private String bookingCode;
     private String startDate;
     private String endDate;
@@ -90,29 +90,37 @@ public class Booking implements  Comparable<Booking> {
 
     @Override
     public int compareTo(Booking b) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern( "dd/MM/uuuu" );
+        LocalDate thisStartDate = LocalDate.now();
+        LocalDate bookingStartDate = LocalDate.now();
+        LocalDate thisEndDate = LocalDate.now();
+        LocalDate bookingEndDate = LocalDate.now();
 
-        LocalDate thisStartDate = LocalDate.parse(getStartDate(),dateTimeFormatter);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        try {
+            thisStartDate = LocalDate.parse(getStartDate(), dateTimeFormatter);
 
-        LocalDate bookingStartDate = LocalDate.parse(b.getStartDate(),dateTimeFormatter);
+            bookingStartDate = LocalDate.parse(b.getStartDate(), dateTimeFormatter);
 
-        LocalDate thisEndDate= LocalDate.parse(getEndDate(),dateTimeFormatter);
+            thisEndDate = LocalDate.parse(getEndDate(), dateTimeFormatter);
 
-        LocalDate bookingEndDate = LocalDate.parse(b.getEndDate(),dateTimeFormatter);
+            bookingEndDate = LocalDate.parse(b.getEndDate(), dateTimeFormatter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        if(thisStartDate.compareTo(bookingStartDate)==0){
-            if(thisEndDate.compareTo(bookingEndDate)>0){
+        if (thisStartDate.compareTo(bookingStartDate) == 0) {
+            if (thisEndDate.compareTo(bookingEndDate) > 0) {
                 return 1;
+            } else {
+                return -1;
             }
-            else {return -1;}
-        }
-        else if(thisStartDate.compareTo(bookingStartDate)>0){
+        } else if (thisStartDate.compareTo(bookingStartDate) > 0) {
             return 1;
-        }
-        else {
+        } else {
             return -1;
         }
 
     }
 }
+
 

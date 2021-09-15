@@ -1,3 +1,4 @@
-Villa,VL01,VillaVIP,500.0,15000000,20,Year,VIP,50.0,4,2
+Villa,VL01,VillaVIP,500.0,15000000,20,Year,VIP,50.0,4,3
 House,2,HouseVIP,300.0,5000000,15,month,best,2,2
-Room,3,RoomVIP,150.0,1500000,10,VIP,Free BBQ,0
+Room,3,RoomVIP,150.0,1500000,10,VIP,Free BBQ,1
+House,4,HousePerfect,250.0,5000000,15,Month,Normal,2,0

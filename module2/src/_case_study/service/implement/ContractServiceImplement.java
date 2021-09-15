@@ -19,17 +19,19 @@ public class ContractServiceImplement implements ContractService {
     public void add(String path) {
         Queue<Booking> queueBooking = ReadFile.getBookingQueue(BOOKING_QUEUE_PATH);
         Set<Contract> contractSet = ReadFile.getContractSet(path);
-        assert queueBooking.peek() != null;
         String bookingCode = queueBooking.peek().getBookingCode();
-        assert queueBooking.peek() != null;
         String customerCode = queueBooking.peek().getCustomerCode();
         queueBooking.remove();
         WriteFile.writeBookingQueueToCSV(BOOKING_QUEUE_PATH, queueBooking, false);
         int contractNumber = 0;
         boolean flag = true;
         while (flag) {
-            System.out.println("Enter number of contract");
-            contractNumber = Integer.parseInt(input.nextLine());
+            try {
+                System.out.println("Enter number of contract");
+                contractNumber = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Contract contract : contractSet) {
                 if (contract.getContractNumber() == contractNumber) {
@@ -40,13 +42,17 @@ public class ContractServiceImplement implements ContractService {
             }
 
         }
-        System.out.println("Enter number of deposit");
-        int deposit = Integer.parseInt(input.nextLine());
-        System.out.println("Enter number of payment");
-        int payment = Integer.parseInt(input.nextLine());
-        Contract contract = new Contract(contractNumber, bookingCode, deposit, payment, customerCode);
-        contractSet.add(contract);
-        WriteFile.writeContractToCSV(path, contractSet, false);
+        try {
+            System.out.println("Enter number of deposit");
+            int deposit = Integer.parseInt(input.nextLine());
+            System.out.println("Enter number of payment");
+            int payment = Integer.parseInt(input.nextLine());
+            Contract contract = new Contract(contractNumber, bookingCode, deposit, payment, customerCode);
+            contractSet.add(contract);
+            WriteFile.writeContractToCSV(path, contractSet, false);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -65,8 +71,12 @@ public class ContractServiceImplement implements ContractService {
         boolean flag = true;
         boolean check = true;
         while (flag) {
-            System.out.println("Enter number of contract you want to edit:");
-            contractNumber = Integer.parseInt(input.nextLine());
+            try {
+                System.out.println("Enter number of contract you want to edit:");
+                contractNumber = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Contract contract : contractSet) {
                 if (contract.getContractNumber() == contractNumber) {
@@ -81,28 +91,53 @@ public class ContractServiceImplement implements ContractService {
                     String choose = input.nextLine();
                     switch (choose) {
                         case "1":
-                            System.out.println("Enter number of Contract");
-                            int numberOfContract = Integer.parseInt(input.nextLine());
+                            int numberOfContract = 0;
+                            try {
+                                System.out.println("Enter number of Contract");
+                                numberOfContract = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
                             contract.setContractNumber(numberOfContract);
                             break;
                         case "2":
-                            System.out.println("Enter booking codeof Contract");
-                            String bookingCode = input.nextLine();
+                            String bookingCode = "";
+                            try {
+                                System.out.println("Enter booking codeof Contract");
+                                bookingCode = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             contract.setBookingCode(bookingCode);
                             break;
                         case "3":
-                            System.out.println("Enter deposit of Contract");
-                            int deposit = Integer.parseInt(input.nextLine());
+                            int deposit = 0;
+                            try {
+                                System.out.println("Enter deposit of Contract");
+                                deposit = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
                             contract.setDeposits(deposit);
                             break;
                         case "4":
-                            System.out.println("Enter payments of Contract");
-                            int payments = Integer.parseInt(input.nextLine());
+                            int payments = 0;
+                            try {
+                                System.out.println("Enter payments of Contract");
+                                payments = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
                             contract.setPayments(payments);
                             break;
                         case "5":
+                            String customerCode="";
+                            try{
                             System.out.println("Enter customer code Contract");
-                            String customerCode = input.nextLine();
+                             customerCode = input.nextLine();}
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             contract.setCustomerCode(customerCode);
                             break;
                         case "0":
@@ -113,7 +148,7 @@ public class ContractServiceImplement implements ContractService {
                     check = false;
                     break;
                 }
-                if(check){
+                if (check) {
                     System.out.println("Number contract does not exist, please re-enter another number !");
                     flag = true;
                 }

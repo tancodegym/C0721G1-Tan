@@ -22,6 +22,7 @@ public class ReadFile {
         return stringList;
     }
     public static List<Employee> getListEmployee(String path) {
+
         List<String> listString = readFromCSV(path);
         List<Employee> employeeList = new ArrayList<>();
         for (String s : listString) {

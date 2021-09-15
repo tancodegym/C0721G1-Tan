@@ -10,14 +10,19 @@ import java.util.Scanner;
 
 public class CustomerServiceImplement implements CustomerService {
     Scanner input = new Scanner(System.in);
+
     @Override
     public void add(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
         String customerCode = "";
         boolean flag = true;
         while (flag) {
-            System.out.println("Enter new employee code");
-            customerCode = input.nextLine();
+            try {
+                System.out.println("Enter new employee code");
+                customerCode = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Customer customer : customerList) {
                 if (customer.getCustomerCode().equals(customerCode)) {
@@ -27,28 +32,32 @@ public class CustomerServiceImplement implements CustomerService {
                 }
             }
         }
-        System.out.println("Enter type of customer: ");
-        String customerType =  input.nextLine();
-        System.out.println("Enter name of customer");
-        String name = input.nextLine();
-        System.out.println("Enter date of birth  of customer:");
-        String dateOfBirth = input.nextLine();
-        System.out.println("Enter gender of customer:");
-        String gender = input.nextLine();
-        System.out.println("Enter id card of customer:");
-        String idCard = input.nextLine();
-        System.out.println("Enter phone number of customer:");
-        String phoneNumber = input.nextLine();
-        System.out.println("Enter email of customer:");
-        String email = input.nextLine();
-        System.out.println("Enter address of customer");
-        String address = input.nextLine();
-        customerList.add(new Customer(name, dateOfBirth, gender, idCard, phoneNumber, email, address, customerCode, customerType));
+        try {
+            String customerType = chooseTypeCustomer();
+            System.out.println("Enter name of customer");
+            String name = input.nextLine();
+            System.out.println("Enter date of birth  of customer:");
+            String dateOfBirth = input.nextLine();
+            System.out.println("Enter gender of customer:");
+            String gender = input.nextLine();
+            System.out.println("Enter id card of customer:");
+            String idCard = input.nextLine();
+            System.out.println("Enter phone number of customer:");
+            String phoneNumber = input.nextLine();
+            System.out.println("Enter email of customer:");
+            String email = input.nextLine();
+            System.out.println("Enter address of customer");
+            String address = input.nextLine();
+            customerList.add(new Customer(name, dateOfBirth, gender, idCard, phoneNumber, email, address, customerCode, customerType));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Add customer completed !");
         WriteFile.writeCustomerToCSV(path, customerList, false);
         display(path);
 
     }
+
     @Override
     public void display(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
@@ -56,16 +65,21 @@ public class CustomerServiceImplement implements CustomerService {
             System.out.println(customer.toString());
         }
     }
+
     @Override
     public void edit(String path) {
         List<Customer> customerList = ReadFile.getListCustomer(path);
         display(path);
-        String codeOfCustomer;
+        String codeOfCustomer = "";
         boolean flag = true;
         boolean check = true;
         while (flag) {
-            System.out.println("Enter code of customer you want to edit:");
-            codeOfCustomer = input.nextLine();
+            try {
+                System.out.println("Enter code of customer you want to edit:");
+                codeOfCustomer = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Customer customer : customerList) {
                 if (customer.getCustomerCode().equals(codeOfCustomer)) {
@@ -84,48 +98,80 @@ public class CustomerServiceImplement implements CustomerService {
                     String choose = input.nextLine();
                     switch (choose) {
                         case "1":
-                            System.out.println("Enter new name of customer : ");
-                            String name = input.nextLine();
+                            String name = "";
+                            try {
+                                System.out.println("Enter new name of customer : ");
+                                name = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setName(name);
                             break;
                         case "2":
+                            String dateOfBirth="";
+                            try{
                             System.out.println("Enter new date of birth  of customer : ");
-                            String dateOfBirth = input.nextLine();
+                             dateOfBirth = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setDateOfBirth(dateOfBirth);
                             break;
                         case "3":
+                            String gender="";
+                            try{
                             System.out.println("Enter new gender of customer : ");
-                            String gender = input.nextLine();
+                             gender = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setGender(gender);
                             break;
                         case "4":
+                            String idCard="";
+                            try{
                             System.out.println("Enter new id card of customer : ");
-                            String idCard = input.nextLine();
+                             idCard = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setIdCard(idCard);
                             break;
                         case "5":
+                            String phoneNumber="";
+                            try{
                             System.out.println("Enter phone number of customer : ");
-                            String phoneNumber = input.nextLine();
+                             phoneNumber = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setPhoneNumber(phoneNumber);
                             break;
                         case "6":
+                            String email="";
+                            try{
                             System.out.println("Enter new email of customer : ");
-                            String email = input.nextLine();
+                             email = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setEmail(email);
                             break;
                         case "7":
+                            String address="";
+                            try{
                             System.out.println("Enter new address of customer : ");
-                            String address = input.nextLine();
+                             address = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setAddress(address);
                             break;
                         case "8":
+                            String code="";
+                            try{
                             System.out.println("Enter new code of customer : ");
-                            String code = input.nextLine();
+                             code = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             customer.setCustomerCode(code);
                             break;
                         case "9":
-                            System.out.println("Enter new type of customer : ");
-                            String customerType =  input.nextLine();
+                            String customerType = chooseTypeCustomer();
                             customer.setCustomerType(customerType);
                             break;
                         default:
@@ -142,6 +188,38 @@ public class CustomerServiceImplement implements CustomerService {
         }
         WriteFile.writeCustomerToCSV(path, customerList, false);
         display(path);
+    }
+
+    private String chooseTypeCustomer() {
+        System.out.println("Choose type of customer: ");
+        String customerType;
+        String choose = input.nextLine();
+        System.out.println("Choose type of customer: "
+                + "1.Diamond \n"
+                + "2.Platinium \n"
+                + "3.Gold \n"
+                + "4.Silver \n"
+                + "5.Member ");
+        switch (choose) {
+            case "1":
+                customerType = "Diamond";
+                break;
+            case "2":
+                customerType = "Platinium";
+                break;
+            case "3":
+                customerType = "Gold";
+                break;
+            case "4":
+                customerType = "Silver";
+                break;
+            case "5":
+                customerType = "Member";
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + choose);
+        }
+        return customerType;
     }
 
 

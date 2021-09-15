@@ -4,18 +4,25 @@ import _case_study.model.Employee;
 import _case_study.service.EmployeeService;
 import _case_study.utils.ReadFile;
 import _case_study.utils.WriteFile;
+
 import java.util.List;
 import java.util.Scanner;
+
 public class EmployeeServiceImplement implements EmployeeService {
     Scanner input = new Scanner(System.in);
+
     @Override
     public void add(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
         String employeeCode = "";
         boolean flag = true;
         while (flag) {
-            System.out.println("Enter new employee code");
-            employeeCode = input.nextLine();
+            try {
+                System.out.println("Enter new employee code");
+                employeeCode = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Employee employee : employeeList) {
                 if (employee.getEmployeeCode().equals(employeeCode)) {
@@ -25,32 +32,35 @@ public class EmployeeServiceImplement implements EmployeeService {
                 }
             }
         }
-        System.out.println("Enter level of employee: ");
-        String level = input.nextLine();
-        System.out.println("Enter position of employee:");
-        String position = input.nextLine();
-        System.out.println("Enter salary of employee:");
-        int salary = Integer.parseInt(input.nextLine());
-        System.out.println("Enter name of employee");
-        String name = input.nextLine();
-        System.out.println("Enter date of birth  of employee:");
-        String dateOfBirth = input.nextLine();
-        System.out.println("Enter gender of employee:");
-        String gender = input.nextLine();
-        System.out.println("Enter id card of employee:");
-        String idCard = input.nextLine();
-        System.out.println("Enter phone number of employee:");
-        String phoneNumber = input.nextLine();
-        System.out.println("Enter email of employee:");
-        String email = input.nextLine();
-        System.out.println("Enter address of employee");
-        String address = input.nextLine();
-        employeeList.add(new Employee(name, dateOfBirth, gender, idCard, phoneNumber, email, address, employeeCode, level, position, salary));
+        try {
+            String level = chooseLevel();
+            String position = choosePosition();
+            System.out.println("Enter salary of employee:");
+            int salary = Integer.parseInt(input.nextLine());
+            System.out.println("Enter name of employee");
+            String name = input.nextLine();
+            System.out.println("Enter date of birth  of employee:");
+            String dateOfBirth = input.nextLine();
+            System.out.println("Enter gender of employee:");
+            String gender = input.nextLine();
+            System.out.println("Enter id card of employee:");
+            String idCard = input.nextLine();
+            System.out.println("Enter phone number of employee:");
+            String phoneNumber = input.nextLine();
+            System.out.println("Enter email of employee:");
+            String email = input.nextLine();
+            System.out.println("Enter address of employee");
+            String address = input.nextLine();
+            employeeList.add(new Employee(name, dateOfBirth, gender, idCard, phoneNumber, email, address, employeeCode, level, position, salary));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         System.out.println("Add employee completed !");
         WriteFile.writeEmployeeToCSV(path, employeeList, false);
         display(path);
 
     }
+
     @Override
     public void display(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
@@ -58,16 +68,21 @@ public class EmployeeServiceImplement implements EmployeeService {
             System.out.println(employee.toString());
         }
     }
+
     @Override
     public void edit(String path) {
         List<Employee> employeeList = ReadFile.getListEmployee(path);
         display(path);
-        String codeOfEmployee;
+        String codeOfEmployee = "";
         boolean flag = true;
         boolean check = true;
         while (flag) {
-            System.out.println("Enter code of employee you want to edit:");
-            codeOfEmployee = input.nextLine();
+            try {
+                System.out.println("Enter code of employee you want to edit:");
+                codeOfEmployee = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             flag = false;
             for (Employee employee : employeeList) {
                 if (employee.getEmployeeCode().equals(codeOfEmployee)) {
@@ -88,58 +103,98 @@ public class EmployeeServiceImplement implements EmployeeService {
                     String choose = input.nextLine();
                     switch (choose) {
                         case "1":
-                            System.out.println("Enter new name of employeee : ");
-                            String name = input.nextLine();
+                            String name = "";
+                            try {
+                                System.out.println("Enter new name of employeee : ");
+                                name = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setName(name);
                             break;
                         case "2":
-                            System.out.println("Enter new date of birth  of employeee : ");
-                            String dateOfBirth = input.nextLine();
+                            String dateOfBirth = "";
+                            try {
+                                System.out.println("Enter new date of birth  of employeee : ");
+                                dateOfBirth = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setDateOfBirth(dateOfBirth);
                             break;
                         case "3":
-                            System.out.println("Enter new gender of employeee : ");
-                            String gender = input.nextLine();
+                            String gender = "";
+                            try {
+                                System.out.println("Enter new gender of employeee : ");
+                                gender = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setGender(gender);
                             break;
                         case "4":
-                            System.out.println("Enter new id card of employeee : ");
-                            String idCard = input.nextLine();
+                            String idCard = "";
+                            try {
+                                System.out.println("Enter new id card of employeee : ");
+                                idCard = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setIdCard(idCard);
                             break;
                         case "5":
-                            System.out.println("Enter phone number of employeee : ");
-                            String phoneNumber = input.nextLine();
+                            String phoneNumber = "";
+                            try {
+                                System.out.println("Enter phone number of employeee : ");
+                                phoneNumber = input.nextLine();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setPhoneNumber(phoneNumber);
                             break;
                         case "6":
+                            String email = "";
+                            try{
                             System.out.println("Enter new email of employeee : ");
-                            String email = input.nextLine();
+                             email = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setEmail(email);
                             break;
                         case "7":
+                            String address="";
+                            try{
                             System.out.println("Enter new address of employeee : ");
-                            String address = input.nextLine();
+                             address = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setAddress(address);
                             break;
                         case "8":
+                            String code ="";
+                            try{
                             System.out.println("Enter new code of employeee : ");
-                            String code = input.nextLine();
+                             code = input.nextLine();} catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             employee.setEmployeeCode(code);
                             break;
                         case "9":
-                            System.out.println("Enter new level of employeee : ");
-                            String level =  input.nextLine();
+                            String level = chooseLevel();
                             employee.setLevel(level);
                             break;
                         case "10":
-                            System.out.println("Enter new position of employeee : ");
-                            String position = input.nextLine();
+                            String position = choosePosition();
                             employee.setPosition(position);
                             break;
                         case "11":
+                            int salary=0;
+                            try{
                             System.out.println("Enter new salary of employeee : ");
-                            int salary = Integer.parseInt(input.nextLine());
+                             salary = Integer.parseInt(input.nextLine());}
+                            catch (NumberFormatException e) {
+                                e.printStackTrace();
+                            }
                             employee.setSalary(salary);
                             break;
                         default:
@@ -157,7 +212,74 @@ public class EmployeeServiceImplement implements EmployeeService {
         WriteFile.writeEmployeeToCSV(path, employeeList, false);
         display(path);
     }
+
+    private String chooseLevel() {
+        String level;
+        System.out.println("Choose level: "
+                + "1.Intermediate \n"
+                + "2.College \n"
+                + "3.University \n"
+                + "4.Postgraduate");
+        String choose = input.nextLine();
+        switch (choose) {
+            case "1":
+                level = "Intermediate";
+                break;
+            case "2":
+                level = "College";
+                break;
+            case "3":
+                level = "University";
+                break;
+            case "4":
+                level = "Postgraduate";
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + choose);
+        }
+        return level;
+    }
+
+    private String choosePosition() {
+
+        String position;
+
+        System.out.println("Choose position: "
+                + "1.Receptionist \n" //Lễ tân
+                + "2.Staff \n" //phục vụ
+                + "3.Expert \n" //chuyên viên
+                + "4.Monitor \n" //Giám sát
+                + "5.Manager \n"  //Quản lý
+                + "6.Direction"); //giám đốc
+        String choose = input.nextLine();
+        switch (choose) {
+            case "1":
+                position = "Receptionist";
+                break;
+            case "2":
+                position = "Staff";
+                break;
+            case "3":
+                position = "Expert";
+                break;
+            case "4":
+                position = "Monitor";
+                break;
+            case "5":
+                position = "Manager";
+                break;
+            case "6":
+                position = "Direction";
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + choose);
+        }
+        return position;
+    }
 }
+
 
 
 

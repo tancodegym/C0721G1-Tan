@@ -10,7 +10,8 @@ import java.util.*;
 public class BookingServiceImplement implements BookingService {
     static final String CUSTOMER_FILE_PATH = "src\\_case_study\\data\\customer.csv";
     static final String FACILITY_FILE_PATH = "src\\_case_study\\data\\facility.csv";
-    static final String CONTRACT_FILE_PATH = "src\\_case_study\\data\\contract.csv";
+
+//    static final String CONTRACT_FILE_PATH = "src\\_case_study\\data\\contract.csv";
 
     Scanner input = new Scanner(System.in);
 
@@ -25,8 +26,12 @@ public class BookingServiceImplement implements BookingService {
         boolean flag = true;
         boolean check = true;
         while (flag) {
-            System.out.println("Enter the employee code of your choice");
-            customerCode = input.nextLine();
+            try {
+                System.out.println("Enter the employee code of your choice");
+                customerCode = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             for (Customer customer : customerList) {
                 if (customer.getCustomerCode().equals(customerCode)) {
                     flag = false;
@@ -53,8 +58,12 @@ public class BookingServiceImplement implements BookingService {
         boolean flag1 = true;
         boolean check1 = true;
         while (flag1) {
-            System.out.println("Enter the employee code of your choice");
-            nameService = input.nextLine();
+            try {
+                System.out.println("Enter the employee code of your choice");
+                nameService = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             for (Facility key : keySet) {
                 if (key.getNameService().equals(nameService)) {
                     flag1 = false;
@@ -75,15 +84,15 @@ public class BookingServiceImplement implements BookingService {
         Set<Facility> keySet = facilityIntegerMap.keySet();
         for (Facility key : keySet) {
             if (key.getNameService().equals(nameService)) {
-               if(key instanceof Villa){
-                   serviceType= "Villa";
-               }
-               if(key instanceof House){
-                   serviceType="House";
-               }
-               if(key instanceof Room){
-                   serviceType= "Room";
-               }
+                if (key instanceof Villa) {
+                    serviceType = "Villa";
+                }
+                if (key instanceof House) {
+                    serviceType = "House";
+                }
+                if (key instanceof Room) {
+                    serviceType = "Room";
+                }
             }
         }
         return serviceType;
@@ -97,8 +106,13 @@ public class BookingServiceImplement implements BookingService {
         String bookingCode = "";
         boolean flag = true;
         while (flag) {
-            System.out.println("Enter new booking code");
-            bookingCode = input.nextLine();
+            try {
+                System.out.println("Enter new booking code");
+                bookingCode = input.nextLine();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             flag = false;
             for (Booking booking : bookingTreeSet) {
                 if (booking.getBookingCode().equals(bookingCode)) {
@@ -108,10 +122,12 @@ public class BookingServiceImplement implements BookingService {
                 }
             }
         }
+        try{
         System.out.println("Enter start date");
         String startDate = input.nextLine();
         System.out.println("Enter end date");
         String endDate = input.nextLine();
+
         String serviceType = getServiceType(nameService);
         System.out.println(serviceType);
         Booking booking = new Booking(bookingCode, startDate, endDate, nameService, customerCode, serviceType);
@@ -130,12 +146,14 @@ public class BookingServiceImplement implements BookingService {
         String bookingQueuePath = "src\\_case_study\\data\\bookingQueue.csv";
         Queue<Booking> queueBooking = ReadFile.getBookingQueue(bookingQueuePath);
         for (Booking booking1 : bookingTreeSet) {
-            if(booking1.getServiceType().equals("Villa")||booking1.getServiceType().equals("House")){
+            if (booking1.getServiceType().equals("Villa") || booking1.getServiceType().equals("House")) {
                 queueBooking.add(booking1);
             }
         }
-        WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);
-
+        WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);}
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

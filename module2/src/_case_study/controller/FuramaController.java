@@ -6,12 +6,12 @@ import _case_study.service.implement.*;
 import java.util.Scanner;
 
 public class FuramaController {
-    public static EmployeeService employeeService = new EmployeeServiceImplement();
-    public static CustomerService customerService = new CustomerServiceImplement();
-    public static FacilityService facilityService = new FacilityServiceImplement();
-    public static BookingService bookingService = new BookingServiceImplement();
-    public static ContractService contractService = new ContractServiceImplement();
-    public static PromotionServiceImplement promotionService = new PromotionServiceImplement();
+     static EmployeeService employeeService = new EmployeeServiceImplement();
+     static CustomerService customerService = new CustomerServiceImplement();
+     static FacilityService facilityService = new FacilityServiceImplement();
+     static BookingService bookingService = new BookingServiceImplement();
+     static ContractService contractService = new ContractServiceImplement();
+     static PromotionService promotionService = new PromotionServiceImplement();
 
     public static void displayMainMenu() {
         Scanner input = new Scanner(System.in);
@@ -25,31 +25,30 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit Menu\n");
             System.out.println("Enter your choose :");
-            int choose = Integer.parseInt(input.nextLine());
+            String choose = input.nextLine();
             switch (choose) {
-                case 1:
+                case "1":
                     displayMenuEmployeeManagement(input);
                     break;
-                case 2:
+                case "2":
                     displayMenuCustomerManagement(input);
                     break;
-                case 3:
+                case "3":
                     displayMenuFacilityManagement(input);
                     break;
-                case 4:
+                case "4":
                     displayMenuBookingManagement(input);
                     break;
-                case 5:
+                case "5":
                     displayMenuPromotionManagement(input);
                     break;
-                case 6:
+                case "6":
                     System.exit(0);
                 default:
                     throw new IllegalStateException("Unexpected value: " + choose);
             }
         }
     }
-
     public static void displayMenuEmployeeManagement(Scanner input) {
         final String path = "src\\_case_study\\data\\employee.csv";
         while (true) {
@@ -60,25 +59,24 @@ public class FuramaController {
                     "4.\tReturn main menu\n" +
                     "0.\tExit Menu\n");
             System.out.println("Enter your choose :");
-            int choose1 = Integer.parseInt(input.nextLine());
+            String choose1=input.nextLine();
             switch (choose1) {
-                case 1:
+                case "1":
                     employeeService.display(path);
                     break;
-                case 2:
+                case "2":
                     employeeService.add(path);
                     break;
-                case 3:
+                case "3":
                     employeeService.edit(path);
                     break;
-                case 4:
+                case "4":
                     displayMainMenu();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
                 default:
                     throw new IllegalStateException("Unexpected value: " + choose1);
-
             }
         }
     }
@@ -91,25 +89,27 @@ public class FuramaController {
                     "2.\tAdd new customers\n" +
                     "3.\tEdit customers\n" +
                     "4.\tReturn main menu\n" +
-                    "0.\tExit Menu\n");
+                    "0.\tExit Menu\n"
+                    );
             System.out.println("Enter your choose :");
-            int choose2 = Integer.parseInt(input.nextLine());
+            String choose2 = input.nextLine();
             switch (choose2) {
-                case 1:
+                case "1":
                     customerService.display(path);
                     break;
-                case 2:
+                case "2":
                     customerService.add(path);
                     break;
-                case 3:
+                case "3":
                     customerService.edit(path);
                     break;
-                case 4:
+                case "4":
                     displayMainMenu();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
-
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose2);
             }
         }
     }
@@ -124,23 +124,24 @@ public class FuramaController {
                     "4.\tReturn main menu\n" +
                     "0.\tExit Menu\n");
             System.out.println("Enter your choose :");
-            int choose3 = Integer.parseInt(input.nextLine());
+            String choose3 = input.nextLine();
             switch (choose3) {
-                case 1:
+                case "1":
                     facilityService.display(facilityPath);
                     break;
-                case 2:
+                case "2":
                     facilityService.add(facilityPath);
                     break;
-                case 3:
+                case "3":
                     facilityService.displayListMaintenance(facilityPath);
                     break;
-                case 4:
+                case "4":
                     displayMainMenu();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
-
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose3);
             }
         }
     }
@@ -158,34 +159,36 @@ public class FuramaController {
                     "6.\tReturn main menu\n" +
                     "0.\tExit Menu\n");
             System.out.println("Enter your choose :");
-            int choose4 = Integer.parseInt(input.nextLine());
+            String choose4 = input.nextLine();
             switch (choose4) {
-                case 1:
+                case "1":
                     bookingService.add(BOOKING_PATH);
                     break;
-                case 2:
+                case "2":
                     bookingService.display(BOOKING_PATH);
                     break;
-                case 3:
+                case "3":
                     contractService.add(CONTRACT_PATH);
                     break;
-                case 4:
+                case "4":
                     contractService.display(CONTRACT_PATH);
                     break;
-                case 5:
+                case "5":
                     contractService.edit(CONTRACT_PATH);
                     break;
-                case 6:
+                case "6":
                     displayMainMenu();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose4);
+
             }
         }
     }
 
     public static void displayMenuPromotionManagement(Scanner input) {
-
         while (true) {
             System.out.println("Menu Promotion  Management \n" +
                     "1.\tDisplay list customers use service\n" +
@@ -193,17 +196,21 @@ public class FuramaController {
                     "3.\tReturn main menu\n" +
                     "0.\tExit Menu\n");
             System.out.println("Enter your choose :");
-            int choose5 = Integer.parseInt(input.nextLine());
+            String choose5 = input.nextLine();
             switch (choose5) {
-                case 1:
+                case "1":
+                    promotionService.showServiceUser();
                     break;
-                case 2:
+                case "2":
+                    promotionService.showUserGetVoucher();
                     break;
-                case 3:
+                case "3":
                     displayMainMenu();
                     break;
-                case 0:
+                case "0":
                     System.exit(0);
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose5);
             }
         }
     }
