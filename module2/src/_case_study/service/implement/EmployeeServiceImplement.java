@@ -3,6 +3,7 @@ package _case_study.service.implement;
 import _case_study.model.Employee;
 import _case_study.service.EmployeeService;
 import _case_study.utils.ReadFile;
+import _case_study.utils.Validate;
 import _case_study.utils.WriteFile;
 
 import java.util.List;
@@ -39,8 +40,11 @@ public class EmployeeServiceImplement implements EmployeeService {
             int salary = Integer.parseInt(input.nextLine());
             System.out.println("Enter name of employee");
             String name = input.nextLine();
+            String dateOfBirth;
+            do{
             System.out.println("Enter date of birth  of employee:");
-            String dateOfBirth = input.nextLine();
+             dateOfBirth = input.nextLine();}
+            while(!Validate.validateDateOfBirth(dateOfBirth));
             System.out.println("Enter gender of employee:");
             String gender = input.nextLine();
             System.out.println("Enter id card of employee:");
@@ -115,8 +119,10 @@ public class EmployeeServiceImplement implements EmployeeService {
                         case "2":
                             String dateOfBirth = "";
                             try {
+                                do{
                                 System.out.println("Enter new date of birth  of employeee : ");
-                                dateOfBirth = input.nextLine();
+                                dateOfBirth = input.nextLine();}
+                                while(!Validate.validateDateOfBirth(dateOfBirth));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

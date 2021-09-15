@@ -10,8 +10,7 @@ import java.util.*;
 public class BookingServiceImplement implements BookingService {
     static final String CUSTOMER_FILE_PATH = "src\\_case_study\\data\\customer.csv";
     static final String FACILITY_FILE_PATH = "src\\_case_study\\data\\facility.csv";
-
-//    static final String CONTRACT_FILE_PATH = "src\\_case_study\\data\\contract.csv";
+    static final String BOOKING_QUEUE_FILE_PATH = "src\\_case_study\\data\\bookingQueue.csv";
 
     Scanner input = new Scanner(System.in);
 
@@ -122,36 +121,38 @@ public class BookingServiceImplement implements BookingService {
                 }
             }
         }
-        try{
-        System.out.println("Enter start date");
-        String startDate = input.nextLine();
-        System.out.println("Enter end date");
-        String endDate = input.nextLine();
+        try {
+            System.out.println("Enter start date");
+            String startDate = input.nextLine();
+            System.out.println("Enter end date");
+            String endDate = input.nextLine();
 
-        String serviceType = getServiceType(nameService);
-        System.out.println(serviceType);
-        Booking booking = new Booking(bookingCode, startDate, endDate, nameService, customerCode, serviceType);
-        bookingTreeSet.add(booking);
-        System.out.println("Add booking completed !");
-
-
-        //Tăng số lần sử dụng facility khi booking thành công .
-        FacilityServiceImplement facilityServiceImplement = new FacilityServiceImplement();
-        facilityServiceImplement.addemployment(nameService, FACILITY_FILE_PATH);
-        WriteFile.writeBookingToCSV(path, bookingTreeSet, false);
-        display(path);
+            String serviceType = getServiceType(nameService);
+            System.out.println(serviceType);
+            Booking booking = new Booking(bookingCode, startDate, endDate, nameService, customerCode, serviceType);
+            bookingTreeSet.add(booking);
+            System.out.println("Add booking completed !");
 
 
-        //add booking to queue.
-        String bookingQueuePath = "src\\_case_study\\data\\bookingQueue.csv";
-        Queue<Booking> queueBooking = ReadFile.getBookingQueue(bookingQueuePath);
-        for (Booking booking1 : bookingTreeSet) {
-            if (booking1.getServiceType().equals("Villa") || booking1.getServiceType().equals("House")) {
-                queueBooking.add(booking1);
+            //Tăng số lần sử dụng facility khi booking thành công .
+            FacilityServiceImplement facilityServiceImplement = new FacilityServiceImplement();
+            facilityServiceImplement.addemployment(nameService, FACILITY_FILE_PATH);
+
+
+            WriteFile.writeBookingToCSV(path, bookingTreeSet, false);
+            display(path);
+
+
+            //add booking to queue.
+            String bookingQueuePath = BOOKING_QUEUE_FILE_PATH;
+            Queue<Booking> queueBooking = ReadFile.getBookingQueue(bookingQueuePath);
+            for (Booking booking1 : bookingTreeSet) {
+                if (booking1.getServiceType().equals("Villa") || booking1.getServiceType().equals("House")) {
+                    queueBooking.add(booking1);
+                }
             }
-        }
-        WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);}
-        catch (Exception e) {
+            WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

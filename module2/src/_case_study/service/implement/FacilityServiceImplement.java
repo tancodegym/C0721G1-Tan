@@ -4,6 +4,7 @@ import _case_study.controller.FuramaController;
 import _case_study.model.*;
 import _case_study.service.FacilityService;
 import _case_study.utils.ReadFile;
+import _case_study.utils.Validate;
 import _case_study.utils.WriteFile;
 
 import java.util.Map;
@@ -42,8 +43,11 @@ public class FacilityServiceImplement implements FacilityService {
         boolean flag = true;
         while (flag) {
             try {
-                System.out.println("Enter new id service");
-                idService = input.nextLine();
+                do {
+                    System.out.println("Enter new id service(SVXX-YYYY)");
+                    idService = input.nextLine();
+                }
+                while (!Validate.validateCodeService(idService));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -57,21 +61,54 @@ public class FacilityServiceImplement implements FacilityService {
             }
         }
         try {
-            System.out.println("Enter name of service:");
-            String nameOfService = input.nextLine();
-            System.out.println("Enter area of villa:");
-            double areaOfService = Double.parseDouble(input.nextLine());
-            System.out.println("Enter cost of villa: ");
-            int costOfService = Integer.parseInt(input.nextLine());
-            System.out.println("Enter the number of people of villa: ");
-            int numberOfPeople = Integer.parseInt(input.nextLine());
-            String rentalType = chooseRentalType();
-            System.out.println("Enter room standard of villa:");
-            String roomStandar = input.nextLine();
-            System.out.println("Enter area of pool:");
-            double poolArea = Double.parseDouble(input.nextLine());
-            System.out.println("Enter the number of floors of villa:");
-            int numberOfFloor = Integer.parseInt(input.nextLine());
+            String nameOfService;
+            do {
+                System.out.println("Enter name of service:");
+                nameOfService = input.nextLine();
+            }
+            while (!Validate.validateNameService(nameOfService));
+
+            double areaOfService;
+            do {
+                System.out.println("Enter area of villa:");
+                areaOfService = Double.parseDouble(input.nextLine());
+            }
+            while (!Validate.validateArea(areaOfService));
+            int costOfService;
+            do {
+                System.out.println("Enter cost of villa: ");
+                costOfService = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateCost(costOfService));
+            int numberOfPeople;
+            do {
+                System.out.println("Enter the number of people of villa: ");
+                numberOfPeople = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateNumberOfPeople(numberOfPeople));
+            String rentalType;
+            do {
+                rentalType = chooseRentalType();
+            }
+            while (!Validate.validateRentalType(rentalType));
+            String roomStandar;
+            do {
+                System.out.println("Enter room standard of villa:");
+                roomStandar = input.nextLine();
+            }
+            while (!Validate.validateRoomStandard(roomStandar));
+            double poolArea;
+            do {
+                System.out.println("Enter area of pool:");
+                poolArea = Double.parseDouble(input.nextLine());
+            }
+            while (!Validate.validatePoolArea(poolArea));
+            int numberOfFloor;
+            do {
+                System.out.println("Enter the number of floors of villa:");
+                numberOfFloor = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateNumberOfFloor(numberOfFloor));
             Facility villa = new Villa(idService, nameOfService, areaOfService, costOfService, numberOfPeople, rentalType, roomStandar, poolArea, numberOfFloor);
             facilitiMap.put(villa, 0);
             WriteFile.writeFacilityToCSV(path, facilitiMap, false);
@@ -88,8 +125,11 @@ public class FacilityServiceImplement implements FacilityService {
         boolean flag = true;
         while (flag) {
             try {
-                System.out.println("Enter new id service");
-                idService = input.nextLine();
+                do {
+                    System.out.println("Enter new id service(SVXX-YYYY)");
+                    idService = input.nextLine();
+                }
+                while (!Validate.validateCodeService(idService));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,19 +143,44 @@ public class FacilityServiceImplement implements FacilityService {
             }
         }
         try {
-            System.out.println("Enter name of service:");
-            String nameOfService = input.nextLine();
-            System.out.println("Enter area of house:");
-            double areaOfService = Double.parseDouble(input.nextLine());
-            System.out.println("Enter cost of house: ");
-            int costOfService = Integer.parseInt(input.nextLine());
-            System.out.println("Enter the number of people of house: ");
-            int numberOfPeople = Integer.parseInt(input.nextLine());
-            String rentalType = chooseRentalType();
+            String nameOfService;
+            do {
+                System.out.println("Enter name of service:");
+                nameOfService = input.nextLine();
+            }
+            while (!Validate.validateNameService(nameOfService));
+            double areaOfService;
+            do {
+                System.out.println("Enter area of house:");
+                areaOfService = Double.parseDouble(input.nextLine());
+            }
+            while (!Validate.validateArea(areaOfService));
+            int costOfService;
+            do {
+                System.out.println("Enter cost of house: ");
+                costOfService = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateCost(costOfService));
+            int numberOfPeople;
+            do {
+                System.out.println("Enter the number of people of house: ");
+                numberOfPeople = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateNumberOfPeople(numberOfPeople));
+            String rentalType;
+            do{
+             rentalType = chooseRentalType();}
+            while(!Validate.validateRentalType(rentalType));
+            String roomStandar;
+            do{
             System.out.println("Enter room standard of house:");
-            String roomStandar = input.nextLine();
+             roomStandar = input.nextLine();}
+            while(!Validate.validateRoomStandard(roomStandar));
+            int numberOfFloor;
+            do{
             System.out.println("Enter the number of floors of house:");
-            int numberOfFloor = Integer.parseInt(input.nextLine());
+             numberOfFloor = Integer.parseInt(input.nextLine());}
+            while(!Validate.validateNumberOfFloor(numberOfFloor));
             Facility house = new House(idService, nameOfService, areaOfService, costOfService, numberOfPeople, rentalType, roomStandar, numberOfFloor);
             facilitiMap.put(house, 0);
             WriteFile.writeFacilityToCSV(path, facilitiMap, false);
@@ -132,8 +197,11 @@ public class FacilityServiceImplement implements FacilityService {
         boolean flag = true;
         while (flag) {
             try {
-                System.out.println("Enter new id service");
-                idService = input.nextLine();
+                do {
+                    System.out.println("Enter new id service(SVXX-YYYY)");
+                    idService = input.nextLine();
+                }
+                while (!Validate.validateCodeService(idService));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -147,15 +215,36 @@ public class FacilityServiceImplement implements FacilityService {
             }
         }
         try {
-            System.out.println("Enter name of service:");
-            String nameOfService = input.nextLine();
-            System.out.println("Enter area of room:");
-            double areaOfService = Double.parseDouble(input.nextLine());
-            System.out.println("Enter cost of room: ");
-            int costOfService = Integer.parseInt(input.nextLine());
-            System.out.println("Enter the number of people of room: ");
-            int numberOfPeople = Integer.parseInt(input.nextLine());
-            String rentalType = chooseRentalType();
+            String nameOfService;
+            do {
+                System.out.println("Enter name of service:");
+                nameOfService = input.nextLine();
+            }
+            while (!Validate.validateNameService(nameOfService));
+            double areaOfService;
+            do {
+                System.out.println("Enter area of room:");
+                areaOfService = Double.parseDouble(input.nextLine());
+            }
+            while (!Validate.validateArea(areaOfService));
+            int costOfService;
+            do {
+                System.out.println("Enter cost of room: ");
+                costOfService = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateCost(costOfService));
+            int numberOfPeople;
+            do {
+                System.out.println("Enter the number of people of room: ");
+                numberOfPeople = Integer.parseInt(input.nextLine());
+            }
+            while (!Validate.validateNumberOfPeople(numberOfPeople));
+            String rentalType;
+            do {
+                rentalType = chooseRentalType();
+            }
+            while (!Validate.validateRentalType(rentalType));
+
             System.out.println("Enter extra service of room:");
             String extraService = input.nextLine();
 
@@ -481,10 +570,11 @@ public class FacilityServiceImplement implements FacilityService {
                 key.setRentalType(rentalType);
                 break;
             case "6":
-                String extraService="";
-                try{
-                System.out.println("Enter room standard of Room:");
-                extraService= input.nextLine();} catch (Exception e) {
+                String extraService = "";
+                try {
+                    System.out.println("Enter room standard of Room:");
+                    extraService = input.nextLine();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 ((Room) key).setExtraService(extraService);

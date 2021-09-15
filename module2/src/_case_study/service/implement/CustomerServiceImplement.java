@@ -3,6 +3,7 @@ package _case_study.service.implement;
 import _case_study.model.*;
 import _case_study.service.CustomerService;
 import _case_study.utils.ReadFile;
+import _case_study.utils.Validate;
 import _case_study.utils.WriteFile;
 
 import java.util.List;
@@ -36,8 +37,12 @@ public class CustomerServiceImplement implements CustomerService {
             String customerType = chooseTypeCustomer();
             System.out.println("Enter name of customer");
             String name = input.nextLine();
-            System.out.println("Enter date of birth  of customer:");
-            String dateOfBirth = input.nextLine();
+            String dateOfBirth;
+            do {
+                System.out.println("Enter date of birth  of customer:");
+                dateOfBirth = input.nextLine();
+            }
+            while (!Validate.validateDateOfBirth(dateOfBirth));
             System.out.println("Enter gender of customer:");
             String gender = input.nextLine();
             System.out.println("Enter id card of customer:");
@@ -108,119 +113,128 @@ public class CustomerServiceImplement implements CustomerService {
                             customer.setName(name);
                             break;
                         case "2":
-                            String dateOfBirth="";
-                            try{
-                            System.out.println("Enter new date of birth  of customer : ");
-                             dateOfBirth = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
+                            String dateOfBirth = "";
+                            try {
+                                do {
+                                    System.out.println("Enter new date of birth  of customer : ");
+                                    dateOfBirth = input.nextLine();}
+                                while(!Validate.validateDateOfBirth(dateOfBirth));
+                                } catch(Exception e){
+                                    e.printStackTrace();
+                                }
+                                customer.setDateOfBirth(dateOfBirth);
+                                break;
+                                case "3":
+                                    String gender = "";
+                                    try {
+                                        System.out.println("Enter new gender of customer : ");
+                                        gender = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setGender(gender);
+                                    break;
+                                case "4":
+                                    String idCard = "";
+                                    try {
+                                        System.out.println("Enter new id card of customer : ");
+                                        idCard = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setIdCard(idCard);
+                                    break;
+                                case "5":
+                                    String phoneNumber = "";
+                                    try {
+                                        System.out.println("Enter phone number of customer : ");
+                                        phoneNumber = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setPhoneNumber(phoneNumber);
+                                    break;
+                                case "6":
+                                    String email = "";
+                                    try {
+                                        System.out.println("Enter new email of customer : ");
+                                        email = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setEmail(email);
+                                    break;
+                                case "7":
+                                    String address = "";
+                                    try {
+                                        System.out.println("Enter new address of customer : ");
+                                        address = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setAddress(address);
+                                    break;
+                                case "8":
+                                    String code = "";
+                                    try {
+                                        System.out.println("Enter new code of customer : ");
+                                        code = input.nextLine();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                    customer.setCustomerCode(code);
+                                    break;
+                                case "9":
+                                    String customerType = chooseTypeCustomer();
+                                    customer.setCustomerType(customerType);
+                                    break;
+                                default:
+                                    throw new IllegalStateException("Unexpected value: " + choose);
                             }
-                            customer.setDateOfBirth(dateOfBirth);
+                            check = false;
                             break;
-                        case "3":
-                            String gender="";
-                            try{
-                            System.out.println("Enter new gender of customer : ");
-                             gender = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setGender(gender);
-                            break;
-                        case "4":
-                            String idCard="";
-                            try{
-                            System.out.println("Enter new id card of customer : ");
-                             idCard = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setIdCard(idCard);
-                            break;
-                        case "5":
-                            String phoneNumber="";
-                            try{
-                            System.out.println("Enter phone number of customer : ");
-                             phoneNumber = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setPhoneNumber(phoneNumber);
-                            break;
-                        case "6":
-                            String email="";
-                            try{
-                            System.out.println("Enter new email of customer : ");
-                             email = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setEmail(email);
-                            break;
-                        case "7":
-                            String address="";
-                            try{
-                            System.out.println("Enter new address of customer : ");
-                             address = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setAddress(address);
-                            break;
-                        case "8":
-                            String code="";
-                            try{
-                            System.out.println("Enter new code of customer : ");
-                             code = input.nextLine();} catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            customer.setCustomerCode(code);
-                            break;
-                        case "9":
-                            String customerType = chooseTypeCustomer();
-                            customer.setCustomerType(customerType);
-                            break;
-                        default:
-                            throw new IllegalStateException("Unexpected value: " + choose);
                     }
-                    check = false;
-                    break;
+                }
+                if (check) {
+                    System.out.println("Customer name does not exist, please re-enter another name !");
+                    flag = true;
                 }
             }
-            if (check) {
-                System.out.println("Customer name does not exist, please re-enter another name !");
-                flag = true;
+            WriteFile.writeCustomerToCSV(path, customerList, false);
+            display(path);
+        }
+
+        private String chooseTypeCustomer () {
+            System.out.println("Choose type of customer: ");
+            String customerType;
+            String choose = input.nextLine();
+            System.out.println("Choose type of customer: "
+                    + "1.Diamond \n"
+                    + "2.Platinium \n"
+                    + "3.Gold \n"
+                    + "4.Silver \n"
+                    + "5.Member ");
+            switch (choose) {
+                case "1":
+                    customerType = "Diamond";
+                    break;
+                case "2":
+                    customerType = "Platinium";
+                    break;
+                case "3":
+                    customerType = "Gold";
+                    break;
+                case "4":
+                    customerType = "Silver";
+                    break;
+                case "5":
+                    customerType = "Member";
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choose);
             }
+            return customerType;
         }
-        WriteFile.writeCustomerToCSV(path, customerList, false);
-        display(path);
+
+
     }
-
-    private String chooseTypeCustomer() {
-        System.out.println("Choose type of customer: ");
-        String customerType;
-        String choose = input.nextLine();
-        System.out.println("Choose type of customer: "
-                + "1.Diamond \n"
-                + "2.Platinium \n"
-                + "3.Gold \n"
-                + "4.Silver \n"
-                + "5.Member ");
-        switch (choose) {
-            case "1":
-                customerType = "Diamond";
-                break;
-            case "2":
-                customerType = "Platinium";
-                break;
-            case "3":
-                customerType = "Gold";
-                break;
-            case "4":
-                customerType = "Silver";
-                break;
-            case "5":
-                customerType = "Member";
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + choose);
-        }
-        return customerType;
-    }
-
-
-}
