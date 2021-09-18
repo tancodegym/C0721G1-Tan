@@ -3,6 +3,7 @@ package _bai_tap_them.BAI1.model;
 public class Car extends Transport {
     private int numberOfSit;
     private String typeOfCar;
+    private String date;
 
     public Car() {
     }
@@ -10,6 +11,10 @@ public class Car extends Transport {
     public Car(int numberOfSit, String typeOfCar) {
         this.numberOfSit = numberOfSit;
         this.typeOfCar = typeOfCar;
+    }
+
+    public Car(String date) {
+        this.date = date;
     }
 
     public Car(String bks, String nameProducer, int yearProduce, String nameOwner, int numberOfSit, String typeOfCar) {

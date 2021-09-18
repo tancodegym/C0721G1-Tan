@@ -1,17 +1,30 @@
 package _bai_tap_them.BAI1.util;
 
+import _bai_tap_them.BAI1.util.exceptionUser.DateFormat1Exception;
+
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Validate {
+    public static void validateDate(String date) {
+        final String DATE_REGEX = "([0][1-9]|[1,2][0-9]|[3][0,1])[/]([0][1-9]|[1][0-2])[/](\\d){4}";
+        try {
+            if (!date.matches(DATE_REGEX)) {
+
+                throw new DateFormat1Exception("Sai định dạng ngày tháng năm, vui lòng nhập lại");
+            }
+        } catch (DateFormat1Exception e) {
+            System.err.println(e.getString());
+        }
+    }
     public static boolean validateBKSVans(String bks) {
-                final String BKS_REGEX = "\\d{2}C-\\d{3}.\\d{2}";
-                if (bks.matches(BKS_REGEX)) {
-                    return true;
-                } else {
-                    System.out.println("Please enter again, wrong text format !");
-                    return false;
-                }
+
+        final String BKS_REGEX = "\\d{2}C-\\d{3}.\\d{2}";
+        if (bks.matches(BKS_REGEX)) {
+            return true;
+        } else {
+            System.out.println("Please enter again, wrong text format !");
+            return false;
+        }
     }
 
     public static boolean validateBKSCar(String bks) {

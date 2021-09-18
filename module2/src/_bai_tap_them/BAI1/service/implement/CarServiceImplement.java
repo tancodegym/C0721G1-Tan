@@ -28,8 +28,9 @@ public class CarServiceImplement implements CarService {
         boolean flag = true;
         while (flag) {
             try {
+                do{
                 System.out.println("Enter new bks of car");
-                bks = input.nextLine();
+                bks = input.nextLine();}while(!Validate.validateBKSCar(bks));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -61,8 +62,17 @@ public class CarServiceImplement implements CarService {
                         break;
                     }
                 }
-                System.out.println("Enter year produce");
-                int yearProduce = Integer.parseInt(input.nextLine());
+                int yearProduce = 0;
+                do {
+                    try {
+                        System.out.println("Enter year produce");
+                        yearProduce = Integer.parseInt(input.nextLine());
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+
+                } while (!Validate.validateYearProduce(yearProduce));
+
                 System.out.println("Enter name of Owner");
                 String nameOfOwner = input.nextLine();
                 System.out.println("Enter type of Car");
@@ -98,14 +108,14 @@ public class CarServiceImplement implements CarService {
         do {
             System.out.println("Enter bks you want to delete");
             bks = input.nextLine();
-            check=false;
-            try{
-                if(!Validate.validateBKSCar(bks)&&!Validate.validateBKSMotorBike(bks)&&!Validate.validateBKSVans(bks)){
+            check = false;
+            try {
+                if (!Validate.validateBKSCar(bks) && !Validate.validateBKSMotorBike(bks) && !Validate.validateBKSVans(bks)) {
                     throw new NotFoundVehicelException("BKS is not exist, please enter again !");
                 }
             } catch (NotFoundVehicelException e) {
                 System.err.println(e.getString());
-                check=true;
+                check = true;
             }
         } while (check);
         for (Car car : carList) {
@@ -172,6 +182,7 @@ public class CarServiceImplement implements CarService {
         }
 
     }
+
     private String chooseTypeOfCar() {
         String typeOfCar;
         System.out.println("Choose type of car :"
