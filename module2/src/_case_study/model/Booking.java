@@ -85,7 +85,8 @@ public class Booking implements Comparable<Booking> {
     }
 
     public String getString() {
-        return getBookingCode() + "," + getStartDate() + "," + getEndDate() + "," + getServiceName() + "," + getCustomerCode() + "," + getServiceType();
+        return getBookingCode() + "," + getStartDate() + "," + getEndDate() + "," + getServiceName() + "," +
+                getCustomerCode() + "," + getServiceType();
     }
 
     @Override

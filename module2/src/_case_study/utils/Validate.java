@@ -1,10 +1,12 @@
 package _case_study.utils;
 
+import _case_study.utils.user_exception.AgeFormatException;
+import _case_study.utils.user_exception.DateFormatException;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 public class Validate {
     public static boolean validateNameService(String nameService) {
@@ -13,11 +15,60 @@ public class Validate {
         if (nameService.matches(SERVICE_NAME_REGEX)) {
             return true;
         } else {
-            System.out.println("Please enter again, wrong text format !");
+            System.err.println("Please enter again, wrong text format !");
             return false;
         }
 
     }
+    public static boolean validateSalary(int salary){
+        if (salary > 0) {
+            return true;
+        } else {
+            System.err.println("Please enter salary again, salary must be greater than zero !");
+            return false;
+        }
+    }
+    public static boolean validateGender(String gender){
+        if (gender=="Male"||gender=="Female") {
+            return true;
+        } else {
+            System.err.println("Please enter gender again, gender is 'Male' or 'Female' !");
+            return false;
+        }
+    }
+    public static boolean validateIdCard(String idCard){
+        final String ID_CARD_REGEX = "\\d{9}";
+        if(idCard.matches(ID_CARD_REGEX)){
+            return true;
+        }
+        else{
+            System.err.println("Please enter again, id card is 9-digit string ");
+            return false;
+        }
+    }
+    public static boolean validateNumberPhone(String numberPhone){
+        final String NUMBER_PHONE_REGEX = "\\d{10}";
+        if(numberPhone.matches(NUMBER_PHONE_REGEX)){
+            return true;
+        }
+        else{
+            System.err.println("Please enter again, number of phone is 10-digit string ");
+            return false;
+        }
+    }
+    public static boolean validateEmail(String email){
+        final String EMAIL_REGEX = "^[A-z]{1}((\\w)*[.]?(\\w)*|(\\w)*[-]?(\\w)*)@[a-z0-9]+([.][a-z]{2,3}){1,5}";
+        if(email.matches(EMAIL_REGEX)){
+            return true;
+        }
+        else{
+            System.err.println("Please enter again, wrong email format !");
+            return false;
+        }
+    }
+//    public static boolean validateAddress(String address){
+//
+//    }
 
     public static boolean validateCodeService(String codeOfService) {
         final String CODE_SERVICE_REGEX = "^[SV]+(VL|HO|RO)+[-]+\\d{4}";
@@ -25,7 +76,7 @@ public class Validate {
         if (codeOfService.matches(CODE_SERVICE_REGEX)) {
             return true;
         } else {
-            System.out.println("Please enter again, wrong text format !");
+            System.err.println("Please enter again, wrong text format !");
             return false;
 
         }
@@ -35,7 +86,7 @@ public class Validate {
         if (area > 30) {
             return true;
         } else {
-            System.out.println("Please enter area again, area must be greater than 30");
+            System.err.println("Please enter area again, area must be greater than 30");
             return false;
         }
     }
@@ -44,7 +95,7 @@ public class Validate {
         if (poolArea > 30) {
             return true;
         } else {
-            System.out.println("Please enter area again, area of pool must be greater than 30");
+            System.err.println("Please enter area again, area of pool must be greater than 30");
             return false;
         }
     }
@@ -53,7 +104,7 @@ public class Validate {
         if (cost > 0) {
             return true;
         } else {
-            System.out.println("Please enter cost again, Cost must be more than zero !");
+            System.err.println("Please enter cost again, Cost must be more than zero !");
             return false;
         }
     }
@@ -62,7 +113,7 @@ public class Validate {
         if (numberOfPeople > 0 && numberOfPeople < 20) {
             return true;
         } else {
-            System.out.println("Please enter  again, Number of people must be greater than 0 and less than 20 !");
+            System.err.println("Please enter  again, Number of people must be greater than 0 and less than 20 !");
             return false;
         }
     }
@@ -71,7 +122,7 @@ public class Validate {
         if (numberOfFloor > 0) {
             return true;
         } else {
-            System.out.println("Please enter again, number of floor must be greater than 0 !");
+            System.err.println("Please enter again, number of floor must be greater than 0 !");
             return false;
         }
     }
@@ -82,7 +133,7 @@ public class Validate {
         if (rentalType.matches(RENTAL_TYPE_REGEX)) {
             return true;
         } else {
-            System.out.println("Please enter again, wrong text format !");
+            System.err.println("Please enter again, wrong text format !");
             return false;
         }
 
@@ -94,21 +145,22 @@ public class Validate {
         if (roomStandard.matches(RENTAL_TYPE_REGEX)) {
             return true;
         } else {
-            System.out.println("Please enter again, wrong text format !");
+            System.err.println("Please enter again, wrong text format !");
             return false;
         }
     }
-    public static boolean validateDateOfBirth(String dateOfBirth){
+
+    public static boolean validateDateOfBirth(String dateOfBirth) {
         final String DATE_OF_BIRTH_REGEX = "(([1-2]{1}+[\\d]{1})|(0+[1-9]{1})|(3+[0-1]))+(\\/)+((0+[1-9]{1})|(1+[0-2]{1}))+(\\/)+[\\d]{4}";
         try {
             if (!dateOfBirth.matches(DATE_OF_BIRTH_REGEX)) {
                 throw new DateFormatException("Wrong format, please enter again.");
             }
         } catch (DateFormatException e) {
-            e.getString();
+            System.err.println(e.getString()+"(dd/mm/yyyy)");
             return false;
         }
-
+        //Tính số ngày từ ngày sinh đến hiện tại :
         String[] arrayDate = dateOfBirth.split("/");
         int day = Integer.parseInt(arrayDate[0]);
         int month = Integer.parseInt(arrayDate[1]);
@@ -117,7 +169,7 @@ public class Validate {
         Date currentDate = new Date();
         Date date1;
         Date date2;
-        long getDaysDiff = 0;
+        long getDayDiff = 0;
         try {
             String startDate = "" + day + "-" + month + "-" + year;
             String endDate = simpleDateFormat.format(currentDate);
@@ -125,24 +177,26 @@ public class Validate {
             date2 = simpleDateFormat.parse(endDate);
             long getDiff = date2.getTime() - date1.getTime();
 
-            getDaysDiff = getDiff / (24 * 60 * 60 * 1000);
+            getDayDiff = getDiff / (24 * 60 * 60 * 1000);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        boolean checkDateMin = getDaysDiff / 365 > 18;
-        boolean checkDateMax = getDaysDiff / 365 < 100;
-        try{
-        if (!checkDateMax) {
-            throw new AgeFormatException("Age must be less than 100 !");
-        }} catch (AgeFormatException e) {
-            e.getString();
+        boolean checkDateMin = getDayDiff/365 > 18;
+        boolean checkDateMax = getDayDiff/365  < 100;
+        try {
+            if (!checkDateMax) {
+                throw new AgeFormatException("Age must be less than 100, please enter again !");
+            }
+        } catch (AgeFormatException e) {
+            System.err.println(e.getString());
             return false;
         }
-        try{
-        if (!checkDateMin) {
-            throw new AgeFormatException("Age must be greater than 18 !");
-        }} catch (AgeFormatException e) {
-            e.getString();
+        try {
+            if (!checkDateMin) {
+                throw new AgeFormatException("Age must be greater than 18, please enter again !");
+            }
+        } catch (AgeFormatException e) {
+            System.err.println(e.getString());
             return false;
         }
         return true;

@@ -4,15 +4,12 @@ import _case_study.model.Booking;
 import _case_study.model.Customer;
 import _case_study.service.PromotionService;
 import _case_study.utils.ReadFile;
-
 import java.time.LocalDate;
 import java.util.*;
-
 public class PromotionServiceImplement implements PromotionService {
     static final String CUSTOMER_FILE_PATH = "src\\_case_study\\data\\customer.csv";
     static final String BOOKING_PATH = "src\\_case_study\\data\\booking.csv";
     Scanner input = new Scanner(System.in);
-
     @Override
     public void showServiceUser() {
         String year = "";
@@ -40,15 +37,14 @@ public class PromotionServiceImplement implements PromotionService {
             }
         }
         if (userInYear.size() == 0) {
-            System.out.println("Năm " + year + " không có khách hàng nào sử dụng dịch vụ.");
+            System.out.println("In " + year + " , furama had 0 customer.");
         } else {
-            System.out.println("Danh sách khách hàng đã sử dụng dịch vụ trong năm " + year + " là : ");
+            System.out.println("List customer in " + year + " is : ");
             for (Customer customer : userInYear) {
                 System.out.println(customer.toString());
             }
         }
     }
-
     @Override
     public void showUserGetVoucher() {
         Stack<Booking> bookingStack = new Stack<>();
@@ -96,7 +92,6 @@ public class PromotionServiceImplement implements PromotionService {
             displayListCustomer(bookingStack, customerList);
         }
     }
-
     public void displayListCustomer(Stack<Booking> stack, List<Customer> list) {
         if (!stack.empty()) {
             for (Customer customer : list) {

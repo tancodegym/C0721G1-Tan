@@ -4,9 +4,7 @@ import _case_study.model.*;
 import _case_study.service.BookingService;
 import _case_study.utils.ReadFile;
 import _case_study.utils.WriteFile;
-
 import java.util.*;
-
 public class BookingServiceImplement implements BookingService {
     static final String CUSTOMER_FILE_PATH = "src\\_case_study\\data\\customer.csv";
     static final String FACILITY_FILE_PATH = "src\\_case_study\\data\\facility.csv";
@@ -17,8 +15,10 @@ public class BookingServiceImplement implements BookingService {
     private String getCustomerCode() {
         List<Customer> customerList = ReadFile.getListCustomer(CUSTOMER_FILE_PATH);
         int i = 1;
+        System.out.println("List customer : ");
         for (Customer customer : customerList) {
-            System.out.println(+i + " : " + customer.getCustomerString());
+            System.out.println(+i + " : " + customer.getCustomerCode());
+            System.out.println(customer.toString());
             i++;
         }
         String customerCode = "";
@@ -26,7 +26,7 @@ public class BookingServiceImplement implements BookingService {
         boolean check = true;
         while (flag) {
             try {
-                System.out.println("Enter the employee code of your choice");
+                System.out.println("Enter the customer code of your choice");
                 customerCode = input.nextLine();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -45,26 +45,27 @@ public class BookingServiceImplement implements BookingService {
         return customerCode;
     }
 
-    private String getNameService() {
+    private String getIdService() {
         Map<Facility, Integer> facilityIntegerMap = ReadFile.getFacilityMap(FACILITY_FILE_PATH);
         Set<Facility> keySet = facilityIntegerMap.keySet();
         int j = 1;
+        System.out.println("List id of service: ");
         for (Facility key : keySet) {
-            System.out.println(j + " : " + key.getNameService());
+            System.out.println(j + " : " + key.getIdService());
             j++;
         }
-        String nameService = "";
+        String idService = "";
         boolean flag1 = true;
         boolean check1 = true;
         while (flag1) {
             try {
-                System.out.println("Enter the employee code of your choice");
-                nameService = input.nextLine();
+                System.out.println("Enter the id service of your choice");
+                idService = input.nextLine();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             for (Facility key : keySet) {
-                if (key.getNameService().equals(nameService)) {
+                if (key.getIdService().equals(idService)) {
                     flag1 = false;
                     check1 = false;
                     break;
@@ -74,15 +75,15 @@ public class BookingServiceImplement implements BookingService {
                 System.out.println("You entered wrong ,please enter again !");
             }
         }
-        return nameService;
+        return idService;
     }
 
-    private String getServiceType(String nameService) {
+    private String getServiceType(String idService) {
         String serviceType = "";
         Map<Facility, Integer> facilityIntegerMap = ReadFile.getFacilityMap(FACILITY_FILE_PATH);
         Set<Facility> keySet = facilityIntegerMap.keySet();
         for (Facility key : keySet) {
-            if (key.getNameService().equals(nameService)) {
+            if (key.getIdService().equals(idService)) {
                 if (key instanceof Villa) {
                     serviceType = "Villa";
                 }
@@ -96,12 +97,11 @@ public class BookingServiceImplement implements BookingService {
         }
         return serviceType;
     }
-
     @Override
     public void add(String path) {
         TreeSet<Booking> bookingTreeSet = ReadFile.getBookingSet(path);
         String customerCode = getCustomerCode();
-        String nameService = getNameService();
+        String idService = getIdService();
         String bookingCode = "";
         boolean flag = true;
         while (flag) {
@@ -126,17 +126,16 @@ public class BookingServiceImplement implements BookingService {
             String startDate = input.nextLine();
             System.out.println("Enter end date");
             String endDate = input.nextLine();
-
-            String serviceType = getServiceType(nameService);
+            String serviceType = getServiceType(idService);
             System.out.println(serviceType);
-            Booking booking = new Booking(bookingCode, startDate, endDate, nameService, customerCode, serviceType);
+            Booking booking = new Booking(bookingCode, startDate, endDate, idService, customerCode, serviceType);
             bookingTreeSet.add(booking);
             System.out.println("Add booking completed !");
 
 
             //Tăng số lần sử dụng facility khi booking thành công .
             FacilityServiceImplement facilityServiceImplement = new FacilityServiceImplement();
-            facilityServiceImplement.addemployment(nameService, FACILITY_FILE_PATH);
+            facilityServiceImplement.addemployment(idService, FACILITY_FILE_PATH);
 
 
             WriteFile.writeBookingToCSV(path, bookingTreeSet, false);
@@ -146,11 +145,10 @@ public class BookingServiceImplement implements BookingService {
             //add booking to queue.
             String bookingQueuePath = BOOKING_QUEUE_FILE_PATH;
             Queue<Booking> queueBooking = ReadFile.getBookingQueue(bookingQueuePath);
-            for (Booking booking1 : bookingTreeSet) {
-                if (booking1.getServiceType().equals("Villa") || booking1.getServiceType().equals("House")) {
-                    queueBooking.add(booking1);
+
+                if (booking.getServiceType().equals("Villa") || booking.getServiceType().equals("House")) {
+                    queueBooking.add(booking);
                 }
-            }
             WriteFile.writeBookingQueueToCSV(bookingQueuePath, queueBooking, false);
         } catch (Exception e) {
             e.printStackTrace();
@@ -164,7 +162,6 @@ public class BookingServiceImplement implements BookingService {
             System.out.println(booking.toString());
         }
     }
-
     @Override
     public void edit(String path) {
         TreeSet<Booking> bookingTreeSet = ReadFile.getBookingSet(path);

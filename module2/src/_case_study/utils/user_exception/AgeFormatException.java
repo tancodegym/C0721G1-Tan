@@ -1,4 +1,4 @@
-package _case_study.utils;
+package _case_study.utils.user_exception;
 
 public class AgeFormatException extends Exception {
     String errorMessage;

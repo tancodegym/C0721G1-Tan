@@ -12,7 +12,8 @@ import java.time.LocalDate;
  private String email;
  private String address;
 
- public Person(String name, String dateOfBirth, String gender, String idCard, String phoneNumber, String email, String address) {
+ public Person(String name, String dateOfBirth, String gender,
+               String idCard, String phoneNumber, String email, String address) {
   this.name = name;
   this.dateOfBirth = dateOfBirth;
   this.gender = gender;

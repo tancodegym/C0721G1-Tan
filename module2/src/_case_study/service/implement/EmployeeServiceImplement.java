@@ -27,7 +27,7 @@ public class EmployeeServiceImplement implements EmployeeService {
             flag = false;
             for (Employee employee : employeeList) {
                 if (employee.getEmployeeCode().equals(employeeCode)) {
-                    System.out.println("Employee code is exist, please enter again !");
+                    System.err.println("Employee code is exist, please enter again !");
                     flag = true;
                     break;
                 }
@@ -36,27 +36,53 @@ public class EmployeeServiceImplement implements EmployeeService {
         try {
             String level = chooseLevel();
             String position = choosePosition();
-            System.out.println("Enter salary of employee:");
-            int salary = Integer.parseInt(input.nextLine());
-            System.out.println("Enter name of employee");
-            String name = input.nextLine();
+            int salary;
+            do {
+                System.out.println("Enter salary of employee:");
+                salary = Integer.parseInt(input.nextLine());
+            } while (!Validate.validateSalary(salary));
+            String name;
+            do {
+                System.out.println("Enter name of employee");
+                name = input.nextLine();
+            }
+            while (!Validate.validateNameService(name));
             String dateOfBirth;
-            do{
-            System.out.println("Enter date of birth  of employee:");
-             dateOfBirth = input.nextLine();}
-            while(!Validate.validateDateOfBirth(dateOfBirth));
-            System.out.println("Enter gender of employee:");
-            String gender = input.nextLine();
-            System.out.println("Enter id card of employee:");
-            String idCard = input.nextLine();
-            System.out.println("Enter phone number of employee:");
-            String phoneNumber = input.nextLine();
-            System.out.println("Enter email of employee:");
-            String email = input.nextLine();
+            do {
+                System.out.println("Enter date of birth  of employee:");
+                dateOfBirth = input.nextLine();
+            }
+            while (!Validate.validateDateOfBirth(dateOfBirth));
+            String gender;
+            do {
+                System.out.println("Enter gender of employee:");
+                gender = input.nextLine();
+            }
+            while (!Validate.validateGender(gender));
+            String idCard;
+            do {
+                System.out.println("Enter id card of employee:");
+                idCard = input.nextLine();
+            }
+            while (!Validate.validateIdCard(idCard));
+            String phoneNumber;
+            do {
+                System.out.println("Enter phone number of employee:");
+                phoneNumber = input.nextLine();
+            }
+            while (!Validate.validateNumberPhone(phoneNumber));
+            String email;
+            do {
+                System.out.println("Enter email of employee:");
+                email = input.nextLine();
+            }
+            while (!Validate.validateEmail(email));
+
             System.out.println("Enter address of employee");
             String address = input.nextLine();
+
             employeeList.add(new Employee(name, dateOfBirth, gender, idCard, phoneNumber, email, address, employeeCode, level, position, salary));
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("Add employee completed !");
@@ -119,10 +145,11 @@ public class EmployeeServiceImplement implements EmployeeService {
                         case "2":
                             String dateOfBirth = "";
                             try {
-                                do{
-                                System.out.println("Enter new date of birth  of employeee : ");
-                                dateOfBirth = input.nextLine();}
-                                while(!Validate.validateDateOfBirth(dateOfBirth));
+                                do {
+                                    System.out.println("Enter new date of birth  of employeee : ");
+                                    dateOfBirth = input.nextLine();
+                                }
+                                while (!Validate.validateDateOfBirth(dateOfBirth));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -160,27 +187,30 @@ public class EmployeeServiceImplement implements EmployeeService {
                             break;
                         case "6":
                             String email = "";
-                            try{
-                            System.out.println("Enter new email of employeee : ");
-                             email = input.nextLine();} catch (Exception e) {
+                            try {
+                                System.out.println("Enter new email of employeee : ");
+                                email = input.nextLine();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             employee.setEmail(email);
                             break;
                         case "7":
-                            String address="";
-                            try{
-                            System.out.println("Enter new address of employeee : ");
-                             address = input.nextLine();} catch (Exception e) {
+                            String address = "";
+                            try {
+                                System.out.println("Enter new address of employeee : ");
+                                address = input.nextLine();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             employee.setAddress(address);
                             break;
                         case "8":
-                            String code ="";
-                            try{
-                            System.out.println("Enter new code of employeee : ");
-                             code = input.nextLine();} catch (Exception e) {
+                            String code = "";
+                            try {
+                                System.out.println("Enter new code of employeee : ");
+                                code = input.nextLine();
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             employee.setEmployeeCode(code);
@@ -194,11 +224,11 @@ public class EmployeeServiceImplement implements EmployeeService {
                             employee.setPosition(position);
                             break;
                         case "11":
-                            int salary=0;
-                            try{
-                            System.out.println("Enter new salary of employeee : ");
-                             salary = Integer.parseInt(input.nextLine());}
-                            catch (NumberFormatException e) {
+                            int salary = 0;
+                            try {
+                                System.out.println("Enter new salary of employeee : ");
+                                salary = Integer.parseInt(input.nextLine());
+                            } catch (NumberFormatException e) {
                                 e.printStackTrace();
                             }
                             employee.setSalary(salary);

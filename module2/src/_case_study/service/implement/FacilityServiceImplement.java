@@ -25,10 +25,10 @@ public class FacilityServiceImplement implements FacilityService {
         }
     }
 
-    public void addemployment(String nameService, String path) {
+    public void addemployment(String idService, String path) {
         Map<Facility, Integer> facilityIntegerMap = ReadFile.getFacilityMap(path);
         for (Map.Entry<Facility, Integer> entry : facilityIntegerMap.entrySet()) {
-            if (entry.getKey().getNameService().equals(nameService)) {
+            if (entry.getKey().getIdService().equals(idService)) {
                 entry.setValue(entry.getValue() + 1);
             }
         }
@@ -38,28 +38,9 @@ public class FacilityServiceImplement implements FacilityService {
     @Override
     public void addVilla(String path) {
         Map<Facility, Integer> facilitiMap = ReadFile.getFacilityMap(path);
-        Set<Facility> keySet = facilitiMap.keySet();
-        String idService = "";
-        boolean flag = true;
-        while (flag) {
-            try {
-                do {
-                    System.out.println("Enter new id service(SVXX-YYYY)");
-                    idService = input.nextLine();
-                }
-                while (!Validate.validateCodeService(idService));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            flag = false;
-            for (Facility key : keySet) {
-                if (key.getIdService().equals(idService)) {
-                    System.out.println("Id service is exist, please enter again !");
-                    flag = true;
-                    break;
-                }
-            }
-        }
+
+        String idService = getIdService(facilitiMap);
+
         try {
             String nameOfService;
             do {
@@ -70,13 +51,13 @@ public class FacilityServiceImplement implements FacilityService {
 
             double areaOfService;
             do {
-                System.out.println("Enter area of villa:");
+                System.out.println("Enter area of villa (m2):");
                 areaOfService = Double.parseDouble(input.nextLine());
             }
             while (!Validate.validateArea(areaOfService));
             int costOfService;
             do {
-                System.out.println("Enter cost of villa: ");
+                System.out.println("Enter cost of villa($): ");
                 costOfService = Integer.parseInt(input.nextLine());
             }
             while (!Validate.validateCost(costOfService));
@@ -99,7 +80,7 @@ public class FacilityServiceImplement implements FacilityService {
             while (!Validate.validateRoomStandard(roomStandar));
             double poolArea;
             do {
-                System.out.println("Enter area of pool:");
+                System.out.println("Enter area of pool(m2):");
                 poolArea = Double.parseDouble(input.nextLine());
             }
             while (!Validate.validatePoolArea(poolArea));
@@ -120,28 +101,8 @@ public class FacilityServiceImplement implements FacilityService {
     @Override
     public void addHouse(String path) {
         Map<Facility, Integer> facilitiMap = ReadFile.getFacilityMap(path);
-        Set<Facility> keySet = facilitiMap.keySet();
-        String idService = "";
-        boolean flag = true;
-        while (flag) {
-            try {
-                do {
-                    System.out.println("Enter new id service(SVXX-YYYY)");
-                    idService = input.nextLine();
-                }
-                while (!Validate.validateCodeService(idService));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            flag = false;
-            for (Facility key : keySet) {
-                if (key.getIdService().equals(idService)) {
-                    System.out.println("Id service is exist, please enter again !");
-                    flag = true;
-                    break;
-                }
-            }
-        }
+        String idService= getIdService(facilitiMap);
+
         try {
             String nameOfService;
             do {
@@ -192,28 +153,8 @@ public class FacilityServiceImplement implements FacilityService {
     @Override
     public void addRoom(String path) {
         Map<Facility, Integer> facilitiMap = ReadFile.getFacilityMap(path);
-        Set<Facility> keySet = facilitiMap.keySet();
-        String idService = "";
-        boolean flag = true;
-        while (flag) {
-            try {
-                do {
-                    System.out.println("Enter new id service(SVXX-YYYY)");
-                    idService = input.nextLine();
-                }
-                while (!Validate.validateCodeService(idService));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            flag = false;
-            for (Facility key : keySet) {
-                if (key.getIdService().equals(idService)) {
-                    System.out.println("Id service is exist, please enter again !");
-                    flag = true;
-                    break;
-                }
-            }
-        }
+        String idService = getIdService(facilitiMap);
+
         try {
             String nameOfService;
             do {
@@ -588,7 +529,6 @@ public class FacilityServiceImplement implements FacilityService {
 
     private String chooseRentalType() {
         String rentalType;
-
         System.out.println("Choose rental type: "
                 + "1.Year \n"
                 + "2.Month \n"
@@ -613,5 +553,30 @@ public class FacilityServiceImplement implements FacilityService {
                 throw new IllegalStateException("Unexpected value: " + choose);
         }
         return rentalType;
+    }
+    private String getIdService(Map<Facility,Integer> map){
+        Set<Facility> keySet = map.keySet();
+        String idService = "";
+        boolean flag = true;
+        while (flag) {
+            try {
+                do {
+                    System.out.println("Enter new id service(SVXX-YYYY)");
+                    idService = input.nextLine();
+                }
+                while (!Validate.validateCodeService(idService));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            flag = false;
+            for (Facility key : keySet) {
+                if (key.getIdService().equals(idService)) {
+                    System.out.println("Id service is exist, please enter again !");
+                    flag = true;
+                    break;
+                }
+            }
+        }
+        return idService;
     }
 }

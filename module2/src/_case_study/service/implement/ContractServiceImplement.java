@@ -6,6 +6,7 @@ import _case_study.service.ContractService;
 import _case_study.utils.ReadFile;
 import _case_study.utils.WriteFile;
 
+import java.util.Collections;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Set;
@@ -19,7 +20,9 @@ public class ContractServiceImplement implements ContractService {
     public void add(String path) {
         Queue<Booking> queueBooking = ReadFile.getBookingQueue(BOOKING_QUEUE_PATH);
         Set<Contract> contractSet = ReadFile.getContractSet(path);
+        assert queueBooking.peek() != null;
         String bookingCode = queueBooking.peek().getBookingCode();
+        assert queueBooking.peek() != null;
         String customerCode = queueBooking.peek().getCustomerCode();
         queueBooking.remove();
         WriteFile.writeBookingQueueToCSV(BOOKING_QUEUE_PATH, queueBooking, false);
@@ -58,6 +61,7 @@ public class ContractServiceImplement implements ContractService {
     @Override
     public void display(String path) {
         Set<Contract> contractSet = ReadFile.getContractSet(path);
+//        Collections.sort(contractSet);
         for (Contract contract : contractSet) {
             System.out.println(contract.toString());
         }

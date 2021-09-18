@@ -4,13 +4,15 @@ import java.io.Serializable;
 
 public abstract class Facility implements Serializable {
     private String idService;
-private String nameService;
-private double area;
-private int cost;
-private int numberOfPeople;
-private String rentalType;
-    public Facility(String idService,String name_service, double area, int cost, int numberOfPeople, String rentalType) {
-        this.idService=idService;
+    private String nameService;
+    private double area;
+    private int cost;
+    private int numberOfPeople;
+    private String rentalType;
+
+    public Facility(String idService, String name_service, double area, int cost, int numberOfPeople,
+                    String rentalType) {
+        this.idService = idService;
         this.nameService = name_service;
         this.area = area;
         this.cost = cost;
@@ -81,8 +83,8 @@ private String rentalType;
                 '}';
     }
 
-    public String getFacilityString(){
-        return this.getIdService()+","+this.getNameService()+","+this.getArea()+","+this.getCost()+","+this.getNumberOfPeople()+","+this.getRentalType();
+    public String getFacilityString() {
+        return this.getIdService() + "," + this.getNameService() + "," + this.getArea() + "," + this.getCost() + "," + this.getNumberOfPeople() + "," + this.getRentalType();
 
     }
 }

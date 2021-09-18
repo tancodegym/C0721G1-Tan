@@ -74,7 +74,7 @@ public class Contract implements Comparable<Contract> {
 
     @Override
     public int compareTo(Contract o) {
-        if (this.getContractNumber() < o.getContractNumber()) {
+        if (this.getContractNumber() > o.getContractNumber()) {
             return 1;
         } else if (this.getContractNumber() == o.getContractNumber()) {
             return 0;
