@@ -45,7 +45,9 @@ public class ElectricBillManagerment {
                 case "0":
                     System.exit(0);
                 default:
-                    throw new IllegalStateException("Unexpected value: " + choose);
+                    System.out.println("Enter again !");
+                    displayMainMenu();
+                    break;
             }
         }
     }

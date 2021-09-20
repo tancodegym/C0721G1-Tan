@@ -131,7 +131,9 @@ public class CustomerServiceImplement  implements CustomerService {
     @Override
     public void find() {
         List<Customer> customers= ReadElectricFile.getListCustomer(CUSTOMER_FILE_PATH);
+
         List<Customer> customerList = new ArrayList<>();
+
         System.out.println("Enter name of customer: ");
          String nameCustomer = input.nextLine();
         for( Customer customer: customers){
@@ -145,6 +147,5 @@ public class CustomerServiceImplement  implements CustomerService {
             System.out.println(i+" : "+customer.toString());
             i++;
         }
-
     }
 }

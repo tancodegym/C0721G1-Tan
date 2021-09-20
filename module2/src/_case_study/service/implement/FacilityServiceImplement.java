@@ -77,7 +77,7 @@ public class FacilityServiceImplement implements FacilityService {
                 System.out.println("Enter room standard of villa:");
                 roomStandar = input.nextLine();
             }
-            while (!Validate.validateRoomStandard(roomStandar));
+            while (Validate.validateRoomStandard(roomStandar));
             double poolArea;
             do {
                 System.out.println("Enter area of pool(m2):");
@@ -136,7 +136,7 @@ public class FacilityServiceImplement implements FacilityService {
             do{
             System.out.println("Enter room standard of house:");
              roomStandar = input.nextLine();}
-            while(!Validate.validateRoomStandard(roomStandar));
+            while(Validate.validateRoomStandard(roomStandar));
             int numberOfFloor;
             do{
             System.out.println("Enter the number of floors of house:");

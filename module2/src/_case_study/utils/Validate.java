@@ -2,6 +2,7 @@ package _case_study.utils;
 
 import _case_study.utils.user_exception.AgeFormatException;
 import _case_study.utils.user_exception.DateFormatException;
+import _case_study.utils.user_exception.SalaryFormatException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,55 +21,67 @@ public class Validate {
         }
 
     }
-    public static boolean validateSalary(int salary){
-        if (salary > 0) {
-            return true;
-        } else {
-            System.err.println("Please enter salary again, salary must be greater than zero !");
+
+    public static boolean validateSalary(int salary) {
+        try {
+            if (salary < 0) {
+                throw new SalaryFormatException("Lương không thể nhỏ hơn 0 !");
+            }
+
+        } catch (SalaryFormatException e) {
+            System.err.println(e.getString());
             return false;
         }
+        return true;
     }
-    public static boolean validateGender(String gender){
-        if (gender=="Male"||gender=="Female") {
+
+
+//        if (salary > 0) {
+//            return true;
+//        } else {
+//            System.err.println("Please enter salary again, salary must be greater than zero !");
+//            return false;
+//        }
+
+
+    public static boolean validateGender(String gender) {
+        if (gender == "Male" || gender == "Female") {
             return true;
         } else {
             System.err.println("Please enter gender again, gender is 'Male' or 'Female' !");
             return false;
         }
     }
-    public static boolean validateIdCard(String idCard){
+
+    public static boolean validateIdCard(String idCard) {
         final String ID_CARD_REGEX = "\\d{9}";
-        if(idCard.matches(ID_CARD_REGEX)){
+        if (idCard.matches(ID_CARD_REGEX)) {
             return true;
-        }
-        else{
+        } else {
             System.err.println("Please enter again, id card is 9-digit string ");
             return false;
         }
     }
-    public static boolean validateNumberPhone(String numberPhone){
+
+    public static boolean validateNumberPhone(String numberPhone) {
         final String NUMBER_PHONE_REGEX = "\\d{10}";
-        if(numberPhone.matches(NUMBER_PHONE_REGEX)){
+        if (numberPhone.matches(NUMBER_PHONE_REGEX)) {
             return true;
-        }
-        else{
+        } else {
             System.err.println("Please enter again, number of phone is 10-digit string ");
             return false;
         }
     }
-    public static boolean validateEmail(String email){
+
+    public static boolean validateEmail(String email) {
         final String EMAIL_REGEX = "^[A-z]{1}((\\w)*[.]?(\\w)*|(\\w)*[-]?(\\w)*)@[a-z0-9]+([.][a-z]{2,3}){1,5}";
-        if(email.matches(EMAIL_REGEX)){
+        if (email.matches(EMAIL_REGEX)) {
             return true;
-        }
-        else{
+        } else {
             System.err.println("Please enter again, wrong email format !");
             return false;
         }
     }
-//    public static boolean validateAddress(String address){
-//
-//    }
 
     public static boolean validateCodeService(String codeOfService) {
         final String CODE_SERVICE_REGEX = "^[SV]+(VL|HO|RO)+[-]+\\d{4}";
@@ -143,10 +156,10 @@ public class Validate {
         final String RENTAL_TYPE_REGEX = "^[A-Z][A-z]*";
 
         if (roomStandard.matches(RENTAL_TYPE_REGEX)) {
-            return true;
+            return false;
         } else {
             System.err.println("Please enter again, wrong text format !");
-            return false;
+            return true;
         }
     }
 
@@ -157,9 +170,10 @@ public class Validate {
                 throw new DateFormatException("Wrong format, please enter again.");
             }
         } catch (DateFormatException e) {
-            System.err.println(e.getString()+"(dd/mm/yyyy)");
+            System.err.println(e.getString() + "(dd/mm/yyyy)");
             return false;
         }
+
         //Tính số ngày từ ngày sinh đến hiện tại :
         String[] arrayDate = dateOfBirth.split("/");
         int day = Integer.parseInt(arrayDate[0]);
@@ -181,10 +195,10 @@ public class Validate {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        boolean checkDateMin = getDayDiff/365 > 18;
-        boolean checkDateMax = getDayDiff/365  < 100;
+        boolean checkDateMin = getDayDiff / 365 < 18;
+        boolean checkDateMax = getDayDiff / 365 > 100;
         try {
-            if (!checkDateMax) {
+            if (checkDateMax) {
                 throw new AgeFormatException("Age must be less than 100, please enter again !");
             }
         } catch (AgeFormatException e) {
@@ -192,7 +206,7 @@ public class Validate {
             return false;
         }
         try {
-            if (!checkDateMin) {
+            if (checkDateMin) {
                 throw new AgeFormatException("Age must be greater than 18, please enter again !");
             }
         } catch (AgeFormatException e) {
